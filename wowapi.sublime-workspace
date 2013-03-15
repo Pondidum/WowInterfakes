@@ -1,0 +1,1544 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"for",
+				"forp	for k,v in pairs()"
+			],
+			[
+				"makes",
+				"makeScriptObject"
+			],
+			[
+				"scr",
+				"scriptObject"
+			],
+			[
+				"event",
+				"eventName"
+			],
+			[
+				"eve",
+				"eventName"
+			],
+			[
+				"Cre",
+				"CreateTexture"
+			],
+			[
+				"Create",
+				"CreateFontString"
+			],
+			[
+				"ma",
+				"makeRegion"
+			],
+			[
+				"C",
+				"CreateTexture"
+			],
+			[
+				"mak",
+				"makeButton"
+			],
+			[
+				"button",
+				"makeButton"
+			],
+			[
+				"Se",
+				"SetText"
+			],
+			[
+				"con",
+				"container"
+			],
+			[
+				"on",
+				"onThreatListUpdated"
+			],
+			[
+				"threa",
+				"threatSort"
+			],
+			[
+				"sort",
+				"sortTable"
+			],
+			[
+				"thr",
+				"threatTable"
+			],
+			[
+				"t",
+				"threatTable"
+			],
+			[
+				"thre",
+				"threatValue"
+			],
+			[
+				"unit",
+				"unitGuid"
+			],
+			[
+				"uni",
+				"unitGuid"
+			],
+			[
+				"cre",
+				"createAction"
+			],
+			[
+				"partyu",
+				"partyUnits"
+			],
+			[
+				"par",
+				"partyPets"
+			],
+			[
+				"party",
+				"partyUnits"
+			],
+			[
+				"ra",
+				"raidPets"
+			],
+			[
+				"conta",
+				"container"
+			],
+			[
+				"NUM_S",
+				"NUM_SPACERS"
+			],
+			[
+				"NU",
+				"NUM_WORLD_RAID_MARKERS"
+			],
+			[
+				"l",
+				"local	local x = 1"
+			],
+			[
+				"Dark",
+				"DarkRaidWorldMarkers"
+			],
+			[
+				"slot",
+				"slotID"
+			],
+			[
+				"NUM",
+				"NUM_BAG_SLOTS"
+			],
+			[
+				"LightOn",
+				"LightOnDim"
+			],
+			[
+				"L",
+				"LightOnFull"
+			],
+			[
+				"Lig",
+				"LightOnFull"
+			],
+			[
+				"Light",
+				"LightOnDim"
+			],
+			[
+				"Li",
+				"LightOnDim"
+			],
+			[
+				"se",
+				"segment"
+			],
+			[
+				"p",
+				"POINT_HEIGHT"
+			],
+			[
+				"seg",
+				"segment"
+			],
+			[
+				"class",
+				"classSpecific"
+			],
+			[
+				"ele",
+				"element"
+			],
+			[
+				"unt",
+				"unitConfig"
+			],
+			[
+				"SetS",
+				"SetSize"
+			],
+			[
+				"classF",
+				"classFile"
+			],
+			[
+				"Set",
+				"SetAttribute"
+			],
+			[
+				"bar",
+				"bar1"
+			],
+			[
+				"hed",
+				"headerOther"
+			],
+			[
+				"hea",
+				"headerYoffset"
+			],
+			[
+				"headerother",
+				"headerOtherAnchor"
+			],
+			[
+				"SetP",
+				"SetPoint"
+			],
+			[
+				"la",
+				"layoutDefault"
+			],
+			[
+				"cr",
+				"createDefault"
+			],
+			[
+				"lay",
+				"layoutBoss"
+			],
+			[
+				"sp",
+				"spawners"
+			],
+			[
+				"spawnM",
+				"spawnMappings"
+			],
+			[
+				"tot",
+				"totemWidth"
+			],
+			[
+				"lefth",
+				"leftHalf"
+			],
+			[
+				"spec",
+				"specFile"
+			],
+			[
+				"loc",
+				"locked"
+			],
+			[
+				"bad",
+				"bagID"
+			],
+			[
+				"col",
+				"colorPicker"
+			],
+			[
+				"heal",
+				"healthBar"
+			],
+			[
+				"ru",
+				"RUNE_HEIGHT"
+			],
+			[
+				"Run",
+				"RUNE_HEIGHT"
+			],
+			[
+				"rune",
+				"RUNE_HEIGHT"
+			],
+			[
+				"BO",
+				"BOTTOM"
+			],
+			[
+				"pre",
+				"prevL"
+			],
+			[
+				"BOTTOM",
+				"BOTTOMLEFT"
+			],
+			[
+				"run",
+				"runes"
+			],
+			[
+				"de",
+				"deathknightSpecific"
+			],
+			[
+				"sh",
+				"shamanSpecific"
+			],
+			[
+				"Uni",
+				"UnitIsFriend"
+			],
+			[
+				"Unit",
+				"UnitHealth"
+			],
+			[
+				"c",
+				"config"
+			],
+			[
+				"un",
+				"unit"
+			],
+			[
+				"rai",
+				"raidGroups"
+			],
+			[
+				"gro",
+				"group"
+			],
+			[
+				"group",
+				"groupAnchor"
+			],
+			[
+				"grou",
+				"groupXoffset"
+			],
+			[
+				"spa",
+				"SpawnHelper"
+			],
+			[
+				"mode",
+				"modelName"
+			],
+			[
+				"Get",
+				"GetRegions"
+			],
+			[
+				"na",
+				"nameFrame"
+			],
+			[
+				"font",
+				"fontStyle"
+			],
+			[
+				"fonth",
+				"fontHeight"
+			],
+			[
+				"fo",
+				"fontName"
+			],
+			[
+				"even",
+				"eventStore"
+			],
+			[
+				"fil",
+				"fileName"
+			],
+			[
+				"fi",
+				"fileName"
+			],
+			[
+				"loadA",
+				"loadAddons"
+			],
+			[
+				"def",
+				"default"
+			],
+			[
+				"text",
+				"textControllers"
+			],
+			[
+				"glowm",
+				"glowmode"
+			],
+			[
+				"glow",
+				"glowControllers"
+			],
+			[
+				"spell",
+				"spellMonitor"
+			],
+			[
+				"mac",
+				"macroMonitor"
+			],
+			[
+				"i",
+				"itemMonitor"
+			],
+			[
+				"fun",
+				"function	function"
+			],
+			[
+				"usera",
+				"userAdjustments"
+			],
+			[
+				"user",
+				"userAdjustments"
+			],
+			[
+				"boun",
+				"boundaries"
+			],
+			[
+				"m",
+				"maxSpecIcons"
+			],
+			[
+				"TOP",
+				"TOPLEFT"
+			],
+			[
+				"classi",
+				"classIcons"
+			],
+			[
+				"bu",
+				"buttonOnHide"
+			],
+			[
+				"butt",
+				"button"
+			],
+			[
+				"buttonon",
+				"buttonOnLoad"
+			],
+			[
+				"dropdownarrow_template_onl",
+				"dropdownarrow_templates_onload"
+			],
+			[
+				"dro",
+				"dropdownarrow_template_onclick"
+			],
+			[
+				"arrowOnd",
+				"arrowOnMouseDown"
+			],
+			[
+				"arrowon",
+				"arrowOnMouseUp"
+			],
+			[
+				"arro",
+				"arrowOnLoad"
+			],
+			[
+				"d",
+				"dropdownarrow_templates_onload"
+			],
+			[
+				"fra",
+				"frameName"
+			],
+			[
+				"frame",
+				"frameName"
+			],
+			[
+				"Fr",
+				"frameParent"
+			],
+			[
+				"prevc",
+				"prevClass"
+			],
+			[
+				"crea",
+				"createCell"
+			],
+			[
+				"cl",
+				"classCell"
+			],
+			[
+				"cla",
+				"classID"
+			],
+			[
+				"pro",
+				"PriorityDecider"
+			],
+			[
+				"test",
+				"testDecider"
+			],
+			[
+				"re",
+				"requestedPrio"
+			],
+			[
+				"guild",
+				"guildRoster"
+			],
+			[
+				"upda",
+				"updatePoints"
+			],
+			[
+				"poi",
+				"pointsDisplay"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "init.lua",
+			"settings":
+			{
+				"buffer_size": 382,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "custom/constants.lua",
+			"settings":
+			{
+				"buffer_size": 99,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/fillLocalizedClassList.lua",
+			"settings":
+			{
+				"buffer_size": 957,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "addonloader.lua",
+			"settings":
+			{
+				"buffer_size": 978,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "FrameXml/Constants.lua",
+			"settings":
+			{
+				"buffer_size": 22566,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/registerStaticConstants.lua",
+			"settings":
+			{
+				"buffer_size": 112,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "api/bit.lua",
+			"settings":
+			{
+				"buffer_size": 65,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Lua/Lua.sublime-build",
+	"command_palette":
+	{
+		"height": 219.0,
+		"selected_items":
+		[
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"lua",
+				"Set Syntax: Lua"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"convert",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"plist",
+				"Package Control: List Packages"
+			],
+			[
+				"pci",
+				"Package Control: Install Package"
+			],
+			[
+				"c#",
+				"Set Syntax: C#"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown"
+			],
+			[
+				"lus",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"tabs",
+				"View: Toggle Tabs"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"packagei",
+				"Package Control: Install Package"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 118.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/dev/tools/lua/5.1/lua/wowapi/wowapi.sublime-project",
+		"/D/dev/tools/lua/5.1/lua/wowapi.lua",
+		"/D/dev/tools/lua/5.1/lua/wowapi/uiBuilder.lua",
+		"/D/dev/tools/lua/5.1/lua/wowapi.uiBuilder.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Core/events.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Core/layout.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/wowui.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/config.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/test.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/initialise.lua",
+		"/D/dev/downloaded-src/Omen/Omen.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Core/style.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/markers.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/run.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/threatMeter.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Core/ui.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/config.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/unitCache.lua",
+		"/D/dev/downloaded-src/SimpleThreatMeter/Core.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/... of Warcraft/Interface/AddOns/Dark.Raids/markers.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/run.lua",
+		"/D/dev/tools/lua/5.1/lua/addonloader.lua",
+		"/C/Users/Andy/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.sublime-build",
+		"/D/dev/addons/run.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/threatUi.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Raids/Dark.Raids.toc",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/aurasRun.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Core/layoutEngines/stack.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/settings/settings.lua",
+		"/C/Users/Andy/Downloads/LuaSocket-2.0.2-x64/README",
+		"/C/Users/Andy/Downloads/luasocket-2.0-beta2-win32/lua.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/aura.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/views/bar.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/run.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Warface/warface.sublime-project",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/core/functions.lua",
+		"/C/Users/Andy/AppData/Local/Temp/Temp1_OPie_WorldMarkers_0.1b.zip/OPie_WorldMarkers/Rings/WorldMarkers.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/buildUnit.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/config.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/factory.lua",
+		"/C/Program Files (x86)/World of Warcraft/WTF/Account/GUARDIANSTORM/SavedVariables/_DevPad.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/tags.lua",
+		"/D/dev/downloaded-src/broker-bagfu/Core.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/dark.r",
+		"/D/dev/addons/dark.sublime-project",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/notes.txt",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/modules/bags/bags.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/initialise.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/itemModel.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/containerModel.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/bagModel.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Bags/Dark.Bags.toc",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Nameplates/run.lua",
+		"/D/dev/projects/Finite/readme.md",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/auras.lua",
+		"/D/dev/projects/Finite/.gitignore",
+		"/D/dev/projects/Finite/readme.mdown",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.deathknight.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.shaman.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.druid.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.warlock.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/Dark.Unitframes.toc",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/builder.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF_Dark/oUF_DarkTotems.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/totems.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.generic.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/combopoints.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/menu.lua",
+		"/C/Users/Andy/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/castbar.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/classSpecific.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/experience.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/health.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/icons.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/name.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/power.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/elements/range.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/power.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/settings/profiles.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/initialise.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/run.lua",
+		"/C/Users/Andy/AppData/Roaming/Sublime Text 2/Packages/Git/Git.sublime-settings",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/cpoints.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/settings/colors.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/libs/oUF/elements/classicons.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.ActionBars/bars.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Actionbars/bars.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/modules/actionbars/bars.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Actionbars/Dark.Actionbars.toc",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/spawners/default.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Dark.Unitframes/spawners.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/raidIcon.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/classSpecific.deathknight.lua",
+		"/D/dev/addons/Dark.Unitframes/Dark.Unitframes.toc",
+		"/D/dev/addons/Dark.Unitframes/elements/classSpecific.lua",
+		"/D/dev/addons/Dark.Bags/itemModel.lua",
+		"/D/dev/addons/Dark.Nameplates/controller.lua",
+		"/D/dev/addons/Dark.Nameplates/model.lua",
+		"/D/dev/addons/Dark.Warface/controller.lua",
+		"/D/dev/addons/Dark.Growl/run.lua",
+		"/D/dev/addons/Dark.Growl/Dark.Growl.toc",
+		"/D/dev/addons/Dark.Bags/bagModel.lua",
+		"/D/dev/addons/Dark.Growl/config.lua",
+		"/D/dev/addons/Dark.Growl/initialise.lua",
+		"/D/dev/addons/Dark.Growl/growlers/print.lua",
+		"/D/dev/addons/Dark.Growl/listener.lua",
+		"/D/dev/addons/Dark.Nameplates/colorPicker.lua",
+		"/D/dev/addons/Dark.Nameplates/Dark.Nameplates.toc",
+		"/D/dev/addons/Dark.Unitframes/elements/classSpecific.shaman.lua",
+		"/D/dev/addons/Dark.Unitframes/config.lua",
+		"/D/dev/addons/test.lua",
+		"/D/dev/addons/Dark.Unitframes/run.lua",
+		"/D/dev/addons/Dark.Core/style.lua",
+		"/D/dev/addons/Dark.Nameplates/finder.lua",
+		"/D/dev/addons/Dark.Nameplates/initialise.lua",
+		"/D/dev/addons/Dark.Unitframes/buildUnit.lua",
+		"/C/Program Files (x86)/World of Warcraft/Interface/AddOns/Darkui/ui/unitframes.lua",
+		"/D/dev/addons/Dark.Unitframes/boot.lua",
+		"/D/dev/addons/Darkui/Darkui.toc",
+		"/D/dev/addons/Dark.Unitframes/elements/auras.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/castbar.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/health.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/name.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/power.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/menu.lua",
+		"/C/Users/Andy/AppData/Roaming/Sublime Text 2/Packages/Lua/Lua.tmLanguage",
+		"/D/dev/addons/Dark.Unitframes/tags/health.lua",
+		"/D/dev/addons/Dark.Unitframes/elements/mana.lua"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open folders>, *.lua",
+			"D:\\downloaded-src\\SharpLua, *.cs",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\, *.lua",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\_DevPad, *.lua",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\_DevPad.GUI, *.lua",
+			"<open folders>, *.lua",
+			"<open folders>",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui\\",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui\\libs",
+			"X:\\dev\\downloaded-src\\ElvUI",
+			"X:\\dev\\downloaded-src\\",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui\\libs",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui\\modules\\tracker",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui",
+			"X:\\dev\\downloaded-src\\wowui",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Darkui\\",
+			"X:\\dev\\downloaded-src\\wowui",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Kui, C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Kui_Nameplates",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\Kui",
+			"",
+			"C:\\Users\\Andy\\Downloads\\Elephant-3.1.2.1\\Elephant",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\",
+			"X:\\dev\\downloaded-src\\wowui",
+			"X:\\dev\\downloaded-src\\ElvUI\\modules\\misc",
+			"C:\\Program Files (x86)\\World of Warcraft\\Interface\\AddOns\\",
+			"C:\\Users\\Andy\\Downloads\\WeakAuras-1.4.5\\WeakAuras"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"NUM_WORLD_RAID_MARKERS",
+			"constants",
+			"LE_LFG_CATEGORY_LFD",
+			"LE_LFG_CATEGORY_LFD\n",
+			"RegisterStaticConstants",
+			"male",
+			"female",
+			"classMap",
+			"MONK",
+			"Shaman",
+			"SHAMAN",
+			"Shaman",
+			"SHAMAN",
+			"Shaman",
+			"SHAMAN",
+			"local make",
+			"region",
+			"frame",
+			"makeRegion",
+			"end",
+			"frame",
+			"dir",
+			"/",
+			"\\",
+			"getSortTable",
+			"guidNameLookup",
+			"round(",
+			"round",
+			"LEFT",
+			"UnitGUID",
+			"updatethreat",
+			"\"",
+			"onThreadListUpdated",
+			"frame",
+			"rptID",
+			"sortfunction",
+			"updatethreat",
+			"newTable",
+			"threatTable",
+			"normalizer",
+			"\n			",
+			"updatethreat",
+			"FindThreatMob",
+			"inRaid",
+			"1",
+			"value",
+			"createAuraIcon",
+			"local",
+			"updatethreat",
+			"unitdet",
+			"unitth",
+			"rID",
+			"petCache",
+			"rID",
+			"cache",
+			"32",
+			"3",
+			"GetName",
+			"LEFT",
+			"i",
+			"\\\"",
+			"\\n",
+			"level",
+			"rID",
+			"recordThreat",
+			"LEFT",
+			"UnitDetailedThreatSituation",
+			"LEFT",
+			"UnitDetailedThreatSituation",
+			"UpdateThreatValue",
+			"UNIT_THREAT_LIST_UPDATE",
+			"slot",
+			"Container",
+			"container",
+			"bag_update",
+			"BAG_UPDATE_DELAYED",
+			"State",
+			"self.Buffs",
+			"color",
+			"DarkTotems",
+			"frame[i]",
+			"totem",
+			"mushroom",
+			"ns.config.",
+			"W",
+			"w",
+			"totemWidth",
+			"NUM_COMBO_POINTS",
+			"points",
+			"POINTS",
+			"points",
+			"POINTS",
+			"points",
+			"POINTS",
+			"points",
+			"point",
+			"self.",
+			"largeFrame",
+			"frame",
+			"unit",
+			"bars",
+			"mushroomWidth",
+			"totem",
+			"eclipse",
+			"\\",
+			"points",
+			"unit",
+			":",
+			"_G[framePrefix .. \"FrameDropDown\"]",
+			"elements",
+			"ClassPowerType",
+			"MAX_BARS",
+			"MAX_TOTEMS",
+			"totems",
+			"TOTEMS",
+			"totems",
+			"TOTEMS",
+			"totems",
+			"TOTEMS",
+			"totems",
+			"bars[i]",
+			"TOTEM_HEIGHT",
+			"totems",
+			"layoutProperties",
+			"frame[",
+			"raidheader",
+			"bagContent",
+			"setHealthColor"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"media",
+			"local lastState = {",
+			"this:updated(lastState)",
+			"	",
+			"string.format(\"\\1\", ",
+			"string.format(\"\\1\",",
+			"string.format(\\1",
+			"Icon",
+			".CreateSpellIcon(",
+			"		--",
+			"\" }",
+			"",
+			"cachedframes",
+			"local function ",
+			"local function",
+			"S.textures.blank",
+			"S.textures.normal",
+			"S.textures.glow",
+			"S.fonts.normal",
+			"FormatNumber",
+			"OnUnitCastEvent",
+			"E:Register(",
+			"castShowNames",
+			"enableCastbar",
+			"castShowSpellIcon",
+			"castUseNames",
+			"showAltHp",
+			"mouseoverShowHp",
+			"preciseHp",
+			"tankBarColor",
+			"reactionColors",
+			"\"",
+			"\n",
+			"\"",
+			"	",
+			"S.tracker",
+			"auras"
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "init.lua",
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								331,
+								340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "custom/constants.lua",
+					"settings":
+					{
+						"buffer_size": 99,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "api/fillLocalizedClassList.lua",
+					"settings":
+					{
+						"buffer_size": 957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								909,
+								909
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "addonloader.lua",
+					"settings":
+					{
+						"buffer_size": 978,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "FrameXml/Constants.lua",
+					"settings":
+					{
+						"buffer_size": 22566,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22165,
+								22165
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 11265.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "api/registerStaticConstants.lua",
+					"settings":
+					{
+						"buffer_size": 112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "api/bit.lua",
+					"settings":
+					{
+						"buffer_size": 65,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								39,
+								39
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 29.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 211.0
+	},
+	"output.git":
+	{
+		"height": 94.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"const",
+				"FrameXml/Constants.lua"
+			],
+			[
+				"conf",
+				"Dark.Warface/config.lua"
+			],
+			[
+				"initia",
+				"Dark.Warface/initialise.lua"
+			],
+			[
+				"layout",
+				"Dark.Core/layout.lua"
+			],
+			[
+				"events",
+				"Dark.Core/events.lua"
+			],
+			[
+				"run",
+				"Dark.Raids/run.lua"
+			],
+			[
+				"style",
+				"Dark.Core/style.lua"
+			],
+			[
+				"ui",
+				"Dark.Core/ui.lua"
+			],
+			[
+				"markers",
+				"Dark.Raids/markers.lua"
+			],
+			[
+				"stack",
+				"Dark.Core/layoutEngines/stack.lua"
+			],
+			[
+				"aura",
+				"Dark.Unitframes/libs/oUF/elements/aura.lua"
+			],
+			[
+				"layou",
+				"Dark.Core/layout.lua"
+			],
+			[
+				"tags",
+				"Dark.Unitframes/libs/oUF/elements/tags.lua"
+			],
+			[
+				"config",
+				"Dark.Unitframes/config.lua"
+			],
+			[
+				"warlock",
+				"Dark.Unitframes/elements/classSpecific.warlock.lua"
+			],
+			[
+				"druid",
+				"Dark.Unitframes/elements/classSpecific.druid.lua"
+			],
+			[
+				"shaman",
+				"Dark.Unitframes/elements/classSpecific.shaman.lua"
+			],
+			[
+				"death",
+				"Dark.Unitframes/elements/classSpecific.deathknight.lua"
+			],
+			[
+				"builder",
+				"Dark.Unitframes/builder.lua"
+			],
+			[
+				"darktot",
+				"Dark.Unitframes/libs/oUF_Dark/oUF_DarkTotems.lua"
+			],
+			[
+				"totem",
+				"Dark.Unitframes/libs/oUF/elements/totems.lua"
+			],
+			[
+				"como",
+				"Dark.Unitframes/elements/combopoints.lua"
+			],
+			[
+				"combo",
+				"Dark.Unitframes/elements/combopoints.lua"
+			],
+			[
+				"castbar",
+				"Dark.Unitframes/elements/castbar.lua"
+			],
+			[
+				"auras",
+				"Dark.Unitframes/elements/auras.lua"
+			],
+			[
+				"power",
+				"Dark.Unitframes/elements/power.lua"
+			],
+			[
+				"health",
+				"Dark.Unitframes/elements/health.lua"
+			],
+			[
+				"conig",
+				"Dark.Unitframes/config.lua"
+			],
+			[
+				"cpoi",
+				"Dark.Unitframes/libs/oUF/elements/cpoints.lua"
+			],
+			[
+				"classic",
+				"Dark.Unitframes/libs/oUF/elements/classicons.lua"
+			],
+			[
+				"buildu",
+				"Dark.Unitframes/buildUnit.lua"
+			],
+			[
+				"toc",
+				"Dark.Unitframes/Dark.Unitframes.toc"
+			],
+			[
+				"generi",
+				"Dark.Unitframes/elements/classSpecific.generic.lua"
+			],
+			[
+				"itemmo",
+				"Dark.Bags/itemModel.lua"
+			],
+			[
+				"controller",
+				"Dark.Nameplates/controller.lua"
+			],
+			[
+				"model",
+				"Dark.Nameplates/model.lua"
+			],
+			[
+				"controll",
+				"Dark.Nameplates/controller.lua"
+			],
+			[
+				"dark.uni",
+				"Dark.Unitframes/Dark.Unitframes.toc"
+			],
+			[
+				"unitcomm",
+				"Dark.Unitframes/unitCommon.lua"
+			],
+			[
+				"view",
+				"Dark.Nameplates/view.lua"
+			],
+			[
+				"media",
+				"Dark.Core/media.lua"
+			],
+			[
+				"event",
+				"Dark.Core/events.lua"
+			],
+			[
+				"ini",
+				"Dark.Warface/initialise.lua"
+			],
+			[
+				"initi",
+				"Dark.Warface/initialise.lua"
+			],
+			[
+				"cd",
+				"Dark.Warface/cd.lua"
+			],
+			[
+				"control",
+				"Dark.Warface/controller.lua"
+			],
+			[
+				"tras",
+				"sbs.master/pointsTransactions.lua"
+			],
+			[
+				"itemw",
+				"sbs.master/transactions/itemWon.lua"
+			],
+			[
+				"itemre",
+				"sbs.master/transactions/itemReassign.lua"
+			],
+			[
+				"boss",
+				"sbs.master/transactions/bossKill.lua"
+			],
+			[
+				"uibu",
+				"sbs.core/uiBuilder.lua"
+			],
+			[
+				"lib",
+				"sbs.core/lib.lua"
+			],
+			[
+				"uib",
+				"sbs.core/uiBuilder.lua"
+			],
+			[
+				"chatl",
+				"sbs.core/chatListener.lua"
+			],
+			[
+				"bidhan",
+				"sbs.master/bidHandler.lua"
+			],
+			[
+				"sbs.points.x",
+				"sbs.points/sbs.points.xml"
+			],
+			[
+				"gui",
+				"sbs.core/guildRosterData.lua"
+			],
+			[
+				"notif",
+				"sbs.master/notifier.lua"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 208.0,
+	"status_bar_visible": true
+}
