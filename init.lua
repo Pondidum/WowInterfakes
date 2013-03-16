@@ -5,6 +5,7 @@ Api.export = function(name, action)
 	_G[name] = action
 end
 
+require "wowapi.util"
 require "wowapi.events"
 require "wowapi.addonloader"
 

@@ -9,8 +9,12 @@ Api.AddonLoader = {
 
 		local debug = function(...)
 			if this.debug then
-				print("Loader: ", ...)
+				print("Loader [Debug]: ", ...)
 			end
+		end
+
+		local warn = function(...)
+			print("Loader [Warn]: ", ...)
 		end
 
 		local loadAddon = function(name)
@@ -29,12 +33,17 @@ Api.AddonLoader = {
 					end
 
 					if fileName ~= '' and string.sub(fileName, 0, 2) ~= "##" then
-							
-						local x = loadfile(base..'\\'..name.."\\"..fileName) 
-					
-						debug("Loading", base..'\\'..name.."\\"..fileName)
+						
+						local path = base..'\\'..name.."\\"..fileName
+						
+						if io.exists(path) then
 
-						x(name, ns)
+							debug("Loading", path)
+
+							local x = loadfile(path)
+							x(name, ns)
+
+						end
 
 					end
 
