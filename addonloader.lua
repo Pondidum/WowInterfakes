@@ -43,6 +43,8 @@ Api.AddonLoader = {
 							local x = loadfile(path)
 							x(name, ns)
 
+						else
+							warn("Loading", "File doesn't exist: " .. path)
 						end
 
 					end
