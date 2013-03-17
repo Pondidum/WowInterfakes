@@ -35,16 +35,17 @@ Api.AddonLoader = {
 					if fileName ~= '' and string.sub(fileName, 0, 2) ~= "##" then
 						
 						local path = base..'\\'..name.."\\"..fileName
-						
-						if io.exists(path) then
+						local content = loadfile(path)
 
-							debug("Loading", path)
+						if content then
 
-							local x = loadfile(path)
-							x(name, ns)
+							debug("Loading", path)						
+							content(name, ns)
 
-						else
+						elseif not io.exists(path) then
 							warn("Loading", "File doesn't exist: " .. path)
+						else
+							warn("Loading", "Unable to open file: " .. path)
 						end
 
 					end
