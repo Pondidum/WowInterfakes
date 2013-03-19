@@ -152,15 +152,24 @@ local makeButton = function(type, name, parent, templates)
 	button.GetPushedTexture = function(self) return pushed end
 	button.GetHighlightTexture = function(self) return highlight end
 
-	_G[name.."Flash"] = button:CreateTexture()
-	_G[name.."Border"] = button:CreateTexture()
-	_G[name.."Count"] = button:CreateFontString()
-	_G[name.."Name"] = button:CreateFontString()
-	_G[name.."HotKey"] = button:CreateFontString()
-	_G[name.."NormalTexture"] = button:CreateTexture()
-	_G[name.."Icon"] = button:CreateTexture()
+	local flash = button:CreateTexture()
+	local border = button:CreateTexture()
+	local count = button:CreateFontString()
+	local nameText = button:CreateFontString()
+	local hotKey = button:CreateFontString()
+	local normalTexture = button:CreateTexture()
+	local icon = button:CreateTexture()
 
-
+	if name then 
+		_G[name.."Flash"] = flash
+		_G[name.."Border"] = border
+		_G[name.."Count"] = count
+		_G[name.."Name"] = nameText
+		_G[name.."HotKey"] = hotKey
+		_G[name.."NormalTexture"] = normalTexture
+		_G[name.."Icon"] = icon
+	end
+	
 	button.RegisterForClicks = function(self, value) end
 
 	return button

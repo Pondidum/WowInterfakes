@@ -10,3 +10,9 @@ io.exists = function(name)
 	end
 	
 end
+
+path = {}
+path.getDirectory = function(str,sep)
+    sep=sep or'\\'
+    return str:match("(.*"..sep..")")
+end
