@@ -6,7 +6,14 @@ Api.export = function(name, action)
 	_G[name] = action
 end
 
+require "wowapi.debugTools"
 require "wowapi.util"
+
+require "wowapi.parsers.parsers"
+require "wowapi.parsers.tocParser"
+require "wowapi.parsers.luaParser"
+require "wowapi.parsers.xmlParser"
+
 require "wowapi.events"
 require "wowapi.addonloader"
 
@@ -37,5 +44,6 @@ require "wowapi.wow-ui-source.framexml.ReputationFrame"
 require "wowapi.custom.fakeXml"
 --i'll write a blizzard addon loader at some point, this will do for now
 require "wowapi.wow-ui-source.addons.Blizzard_CompactRaidFrames.Blizzard_CompactRaidFrameManager"
+
 
 

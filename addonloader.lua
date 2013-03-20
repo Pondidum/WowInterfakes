@@ -1,4 +1,4 @@
-
+--[[
 local lineParsers = {}
 local getLineParser = function(base, line)
 
@@ -41,7 +41,7 @@ table.insert(lineParsers, {
 		for i, tag in pairs(x) do
 			if tag[0] == "Script" and tag.file then
 				
-				local content = loadfile(base .. "\\" .. path.getDirectory(line) .. tag.file)
+				local content = loadfile(base .. "\\" .. io.path.getDirectory(line) .. tag.file)
 
 				if content then
 					content(name, ns)
@@ -50,7 +50,7 @@ table.insert(lineParsers, {
 		end
 	end,
 })
-
+]]
 
 Api.AddonLoader = {
 	
@@ -58,22 +58,17 @@ Api.AddonLoader = {
 
 		local this = {}
 		this.addons = {}
-		this.debug = false
-		this.environments = {}
-
-		local debug = function(...)
-			if this.debug then
-				print("Loader [Debug]: ", ...)
-			end
-		end
-
-		local warn = function(...)
-			print("Loader [Warn]: ", ...)
-		end
 
 		local loadAddon = function(name)
 
-			local file = io.open(base..'\\'..name.."\\"..name..".toc", "r") 
+			local tocPath = base..'\\'..name.."\\"..name..".toc"
+			local parser = Api.parsers.get(tocPath)
+			local ns = {}
+
+			parser(tocPath, name, ns)
+
+			--[[
+			local file = io.open(tocPath, "r") 
 
 			if file then
 
@@ -98,21 +93,21 @@ Api.AddonLoader = {
 						end
 
 					end
-					--[[
-					local path = base..'\\'..name.."\\"..line
-					local content = loadfile(path)
+					
+					-- local path = base..'\\'..name.."\\"..line
+					-- local content = loadfile(path)
 
-					if content then
+					-- if content then
 
-						debug("Loading", path)						
-						content(name, ns)
+					-- 	debug("Loading", path)						
+					-- 	content(name, ns)
 
-					elseif not io.exists(path) then
-						warn("Loading", "File doesn't exist: " .. path)
-					else
-						warn("Loading", "Unable to open file: " .. path)
-					end
-					]]
+					-- elseif not io.exists(path) then
+					-- 	warn("Loading", "File doesn't exist: " .. path)
+					-- else
+					-- 	warn("Loading", "Unable to open file: " .. path)
+					-- end
+					
 				end
 
 				file:close()
@@ -121,18 +116,18 @@ Api.AddonLoader = {
 
 				return env
 			end
-
+			]]
 		end
 
 		this.load = function()
 
-			debug("Loading addons")
+			Api.debug.write("AddonLoader", "BeginLoad.")
 			
 			for i, name in ipairs(this.addons) do 
 				loadAddon(name)
 			end
 
-			debug("Loading done")
+			Api.debug.write("AddonLoader", "EndLoad.")
 
 		end
 

@@ -1,3 +1,7 @@
+string.endsWith = function(self, value)
+	return string.sub(self, #self - #value + 1) == value
+end
+
 io.exists = function(name)
 	
 	local f = io.open(name,"r")
@@ -11,8 +15,30 @@ io.exists = function(name)
 	
 end
 
-path = {}
-path.getDirectory = function(str,sep)
-    sep=sep or'\\'
-    return str:match("(.*"..sep..")")
-end
+io.path = {
+
+	getDirectory = function(str,sep)
+	    sep = sep or '\\'
+	    return str:match("(.*"..sep..")")
+	end,
+	
+	combine = function(...)	
+
+		local paths = {...}
+		local result = paths[1]
+
+		for i = 2, #paths do
+			
+			local part = paths[i]
+			
+			if not result:endsWith("\\") then
+				result = result .. "\\"
+			end
+
+			result = result .. part
+
+		end
+
+		return result 
+	end,
+}
