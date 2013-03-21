@@ -18,6 +18,7 @@ require "wowapi.events"
 require "wowapi.addonloader"
 
 require "wowapi.api.bit"
+require "wowapi.api.format"
 
 require "wowapi.api.fillLocalizedClassList"
 require "wowapi.api.registerStaticConstants"
