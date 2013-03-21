@@ -9,9 +9,6 @@ tagHandlers.Script = function(tag, directory, addonName, namespace)
 	end
 
 	local path = io.path.combine(directory, fileFragment)
-	
-	Api.debug.write("xmlParser", "ParseTag.Script", fileFragment)
-
 	local fileParser = Api.parsers.get(path)
 
 	fileParser(path, addonName, namespace)
