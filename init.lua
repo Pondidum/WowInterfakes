@@ -27,23 +27,9 @@ require "wowapi.api.unitClass"
 require "wowapi.api.createFrame"
 require "wowapi.api.getSpellInfo"
 require "wowapi.api.isLoggedIn"
+require "wowapi.api.getInventorySlotInfo"
+
 
 --uibuilder here (frameXml parser)
 
 require "wowapi.custom.constants"
-require "wowapi.wow-ui-source.framexml.constants"
-require "wowapi.wow-ui-source.framexml.globalstrings"
-require "wowapi.wow-ui-source.framexml.uiparent"
-require "wowapi.wow-ui-source.framexml.unitpopup"
-require "wowapi.wow-ui-source.framexml.UnitFrame"
-require "wowapi.wow-ui-source.framexml.TargetFrame"
-require "wowapi.wow-ui-source.framexml.ReputationFrame"
-
-
-
-require "wowapi.custom.fakeXml"
---i'll write a blizzard addon loader at some point, this will do for now
-require "wowapi.wow-ui-source.addons.Blizzard_CompactRaidFrames.Blizzard_CompactRaidFrameManager"
-
-
-
