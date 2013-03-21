@@ -3,10 +3,15 @@ local tagHandlers = {}
 tagHandlers.Script = function(tag, directory, addonName, namespace)
 
 	local fileFragment = tag.file
+
+	if not fileFragment then
+		return
+	end
+
 	local path = io.path.combine(directory, fileFragment)
 	
 	Api.debug.write("xmlParser", "ParseTag.Script", fileFragment)
-	
+
 	local fileParser = Api.parsers.get(path)
 
 	fileParser(path, addonName, namespace)
@@ -14,29 +19,29 @@ tagHandlers.Script = function(tag, directory, addonName, namespace)
 end
 
 tagHandlers.Include = function(tag)
-	print("Include")
+	--print("Include")
 end
 
 tagHandlers.Font = function(tag)
-	print("Font")
+	--print("Font")
 end
 
 tagHandlers.Frame = function(tag)
-	print("Frame")
+	--print("Frame")
 end
 
 tagHandlers.Animation = function(tag)
-	print("Animation")
+	--print("Animation")
 end
 
 tagHandlers.AnimationGroup = function(tag)
-	print("AnimationGroup")
+	--print("AnimationGroup")
 end
 
 	
 local parse = function(path, addonName, namespace)
 
-	Api.debug.write("xmlParser", "BeginParse.", path)
+	Api.debug.write("xmlParser", "BeginParse", path)
 
 	local xmlFile = xml.load(path)
 	local directory = io.path.getDirectory(path)
@@ -49,7 +54,7 @@ local parse = function(path, addonName, namespace)
 
 	end
 	
-	Api.debug.write("xmlParser", "EndParse.", path)
+	--Api.debug.write("xmlParser", "EndParse.", path)
 
 end
 
