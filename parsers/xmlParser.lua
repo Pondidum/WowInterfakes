@@ -24,7 +24,12 @@ tagHandlers.Font = function(tag)
 end
 
 tagHandlers.Frame = function(tag)
-	--print("Frame")
+	
+	local name = tag.name
+	local parent = UIParent or WorldFrame
+	local template = tag.inherits
+
+	CreateFrame("Frame", name, parent, template)
 end
 
 tagHandlers.Animation = function(tag)
@@ -52,7 +57,7 @@ local parse = function(path, addonName, namespace)
 		local handler = tagHandlers[tag]
 
 		if handler then 
-			
+
 			local wrap = function() handler(element, directory, addonName, namespace) end
 
 			if tag == "Script" then

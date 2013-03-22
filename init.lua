@@ -9,11 +9,6 @@ end
 require "wowapi.debugTools"
 require "wowapi.util"
 
-require "wowapi.parsers.parsers"
-require "wowapi.parsers.tocParser"
-require "wowapi.parsers.luaParser"
-require "wowapi.parsers.xmlParser"
-
 require "wowapi.events"
 require "wowapi.addonloader"
 
@@ -35,5 +30,10 @@ require "wowapi.api.securecall"
 require "wowapi.api.issecure"
 
 --uibuilder here (frameXml parser)
+require "wowapi.parsers.parsers"
+require "wowapi.parsers.tocParser"
+require "wowapi.parsers.luaParser"
+require "wowapi.parsers.xmlParser"
 
 require "wowapi.custom.constants"
+require "wowapi.custom.fakeXml"
