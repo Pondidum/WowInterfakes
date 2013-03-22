@@ -42,13 +42,35 @@ local parse = function(path, addonName, namespace)
 
 	local xmlFile = xml.load(path)
 	local directory = io.path.getDirectory(path)
+	
+	local scripts = {}
+	local tags = {}
 
 	for i, element in ipairs(xmlFile) do
 
-		if tagHandlers[element:tag()] then
-			tagHandlers[element:tag()](element, directory, addonName, namespace)
+		local tag = element:tag()
+		local handler = tagHandlers[tag]
+
+		if handler then 
+			
+			local wrap = function() handler(element, directory, addonName, namespace) end
+
+			if tag == "Script" then
+				table.insert(scripts, wrap)
+			else
+				table.insert(tags, wrap)
+			end
+
 		end
 
+	end
+
+	for i, handler in ipairs(tags) do
+		handler()
+	end
+
+	for i, handler in ipairs(scripts) do
+		handler()
 	end
 	
 	--Api.debug.write("xmlParser", "EndParse.", path)
