@@ -28,6 +28,8 @@ require "wowapi.api.isLoggedIn"
 require "wowapi.api.getInventorySlotInfo"
 require "wowapi.api.securecall"
 require "wowapi.api.issecure"
+require "wowapi.api.bnGetMaxPlayersInConversation"
+require "wowapi.api.getChatTypeIndex"
 
 --uibuilder here (frameXml parser)
 require "wowapi.parsers.parsers"
