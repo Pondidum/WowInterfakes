@@ -12,6 +12,7 @@ require "wowapi.util"
 require "wowapi.util.bit"
 require "wowapi.util.string"
 require "wowapi.util.table"
+require "wowapi.util.math"
 
 require "wowapi.events"
 require "wowapi.addonloader"
