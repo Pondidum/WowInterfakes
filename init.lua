@@ -9,11 +9,15 @@ end
 require "wowapi.debugTools"
 require "wowapi.util"
 
+require "wowapi.util.bit"
+require "wowapi.util.string"
+require "wowapi.util.table"
+
 require "wowapi.events"
 require "wowapi.addonloader"
 
-require "wowapi.api.bit"
-require "wowapi.api.format"
+
+
 
 require "wowapi.api.fillLocalizedClassList"
 require "wowapi.api.registerStaticConstants"
@@ -39,3 +43,4 @@ require "wowapi.parsers.xmlParser"
 
 require "wowapi.custom.constants"
 require "wowapi.custom.fakeXml"
+
