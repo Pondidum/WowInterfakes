@@ -36,6 +36,7 @@ require "wowapi.api.securecall"
 require "wowapi.api.issecure"
 require "wowapi.api.bnGetMaxPlayersInConversation"
 require "wowapi.api.getChatTypeIndex"
+require "wowapi.api.getExpansionLevel"
 
 --uibuilder here (frameXml parser)
 require "wowapi.parsers.parsers"
