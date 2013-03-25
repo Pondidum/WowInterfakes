@@ -17,26 +17,14 @@ require "wowapi.util.math"
 require "wowapi.events"
 require "wowapi.addonloader"
 
+--maybe change to luafilesystem for crossplatform 
+for file in io.popen("dir /b api"):lines() do
+	
+	if file:endsWith(".lua") then
+		require("wowapi.api." .. file:sub(0, #file-4))
+	end
 
-
-
-require "wowapi.api.fillLocalizedClassList"
-require "wowapi.api.registerStaticConstants"
-require "wowapi.api.getAddonMetadata"
-require "wowapi.api.getItemQualityColor"
-require "wowapi.api.unitClass"
-require "wowapi.api.unitRace"
-require "wowapi.api.unitSex"
-require "wowapi.api.unitName"
-require "wowapi.api.createFrame"
-require "wowapi.api.getSpellInfo"
-require "wowapi.api.isLoggedIn"
-require "wowapi.api.getInventorySlotInfo"
-require "wowapi.api.securecall"
-require "wowapi.api.issecure"
-require "wowapi.api.bnGetMaxPlayersInConversation"
-require "wowapi.api.getChatTypeIndex"
-require "wowapi.api.getExpansionLevel"
+end
 
 --uibuilder here (frameXml parser)
 require "wowapi.parsers.parsers"
