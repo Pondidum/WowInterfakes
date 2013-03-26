@@ -6,6 +6,8 @@ Api.export = function(name, action)
 	_G[name] = action
 end
 
+Api.print = print
+
 require "wowapi.debugTools"
 require "wowapi.util"
 
