@@ -1,3 +1,5 @@
+local startInfo = ...
+
 Api.AddonLoader = {
 	
 	new = function()
@@ -6,13 +8,19 @@ Api.AddonLoader = {
 		this.addonBase = ""
 		this.addons = {}
 
-		local loadAddon = function(name)
+		local loadAddon = function(base, name)
 
-			local tocPath = io.path.combine(this.addonBase, name, name .. ".toc")
+			local tocPath = io.path.combine(base, name, name .. ".toc")
 			local parser = Api.parsers.get(tocPath)
 			local ns = {}
 
 			parser(tocPath, name, ns)
+
+		end
+
+		this.loadBlizzard = function()
+
+			loadAddon("wow-ui-source", "FrameXml")
 
 		end
 
@@ -21,7 +29,7 @@ Api.AddonLoader = {
 			Api.debug.write("AddonLoader", "BeginLoad.")
 			
 			for i, name in ipairs(this.addons) do 
-				loadAddon(name)
+				loadAddon(this.addonBase, name)
 			end
 
 			Api.debug.write("AddonLoader", "EndLoad.")
