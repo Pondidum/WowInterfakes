@@ -1,13 +1,14 @@
 Api.AddonLoader = {
 	
-	new = function(base)
+	new = function()
 
 		local this = {}
+		this.addonBase = ""
 		this.addons = {}
 
 		local loadAddon = function(name)
 
-			local tocPath = base..'\\'..name.."\\"..name..".toc"
+			local tocPath = io.path.combine(this.addonBase, name, name .. ".toc")
 			local parser = Api.parsers.get(tocPath)
 			local ns = {}
 

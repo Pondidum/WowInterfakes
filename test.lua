@@ -3,8 +3,11 @@ require "wowinterfakes"
 Api.debug.enabled = true
 
 
-local loader = Api.AddonLoader.new("D:\\dev\\tools\\lua\\5.1\\lua\\wowinterfakes\\wow-ui-source")
+local loader = Api.AddonLoader.new()
+
+loader.addonBase = "D:\\dev\\tools\\lua\\5.1\\lua\\wowinterfakes\\wow-ui-source"
 loader.addons = {"FrameXML"}
+--loader.loadBlizzard()
 loader.load()
 
 print("Done.")
