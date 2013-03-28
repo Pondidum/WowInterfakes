@@ -11,13 +11,14 @@ Api.print = print
 require "wowinterfakes.debugTools"
 require "wowinterfakes.util"
 
-require "wowinterfakes.util.bit"
-require "wowinterfakes.util.string"
-require "wowinterfakes.util.table"
-require "wowinterfakes.util.math"
-
 require "wowinterfakes.events"
 require "wowinterfakes.addonloader"
+
+
+require "wowinterfakes.api.util.bit"
+require "wowinterfakes.api.util.string"
+require "wowinterfakes.api.util.table"
+require "wowinterfakes.api.util.math"
 
 --maybe change to luafilesystem for crossplatform 
 for file in io.popen("dir /b api"):lines() do
