@@ -10,10 +10,10 @@ Api.print = print
 
 require "wowinterfakes.debugTools"
 require "wowinterfakes.util"
+require "wowinterfakes.stringBuilder"
 
 require "wowinterfakes.events"
 require "wowinterfakes.addonloader"
-
 
 require "wowinterfakes.api.util.bit"
 require "wowinterfakes.api.util.string"
@@ -29,12 +29,12 @@ for file in io.popen("dir /b api"):lines() do
 
 end
 
+require "wowinterfakes.api.custom.constants"
+require "wowinterfakes.api.custom.fakeXml"
+
 --uibuilder here (frameXml parser)
 require "wowinterfakes.parsers.parsers"
 require "wowinterfakes.parsers.tocParser"
 require "wowinterfakes.parsers.luaParser"
 require "wowinterfakes.parsers.xmlParser"
-
-require "wowinterfakes.custom.constants"
-require "wowinterfakes.custom.fakeXml"
 
