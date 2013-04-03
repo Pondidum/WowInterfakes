@@ -25,10 +25,10 @@ end
 
 tagHandlers.Frame = function(tag)
 	
-	local name = tag.name
-	local parent = UIParent or WorldFrame
-	local template = tag.inherits
-
+	local name = tag.name:gsub("$parent", "")
+	local variableName = "frame" .. name:gsub(" ", "")
+	local template = tag.inherits or ""	
+	
 	CreateFrame("Frame", name, parent, template)
 end
 

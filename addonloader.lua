@@ -20,7 +20,7 @@ Api.AddonLoader = {
 
 		this.loadBlizzard = function()
 
-			loadAddon("wow-ui-source", "FrameXml")
+			loadAddon(Api.root .. "wow-ui-source", "FrameXml")
 
 		end
 
