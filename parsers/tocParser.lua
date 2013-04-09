@@ -7,7 +7,7 @@ local parser = function(path, addonName, namespace)
 		return 
 	end
 
-	Api.debug.write("tocParser", "BeginParse.", path)
+	Api.debug.write("tocParser", "BeginParse", path)
 
 	local directory = io.path.getDirectory(path)
 
