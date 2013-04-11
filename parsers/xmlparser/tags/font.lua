@@ -1,5 +1,8 @@
-Api.parsers.xml.addTag("Font", function(this) 
+local customise = function(this) 
 
 	this.processChildren = false
 
-end)
+end
+
+Api.parsers.xml.addTag("Font", customise)
+Api.parsers.xml.addTag("NormalFont", customise)

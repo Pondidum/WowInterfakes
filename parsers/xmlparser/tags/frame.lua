@@ -28,8 +28,9 @@ local customise = function(this)
 end
 
 Api.parsers.xml.addTag("Button", customise)
-Api.parsers.xml.addTag("EditBox", customise)
 Api.parsers.xml.addTag("CheckButton", customise)
+Api.parsers.xml.addTag("Cooldown", customise)
+Api.parsers.xml.addTag("EditBox", customise)
 Api.parsers.xml.addTag("Frame", customise)
 Api.parsers.xml.addTag("MessageFrame", customise)
 Api.parsers.xml.addTag("ScrollChild", customise)
