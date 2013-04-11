@@ -11,4 +11,12 @@ debugTools.write = function(...)
 
 end
 
+debugTools.warn = function(...)
+
+	if debugTools.enabled then
+		Api.print("Api.Warning: ", ...)
+	end
+
+end
+
 Api.debug = debugTools

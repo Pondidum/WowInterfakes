@@ -5,8 +5,8 @@ local stringBuilder = {
 		local parts = {}
 		local this = {}
 
-		this.append = function(value)
-			table.insert(parts, value)
+		this.append = function(format, ...)
+			table.insert(parts, string.format(format, ...))
 		end
 
 		this.toString = function()
