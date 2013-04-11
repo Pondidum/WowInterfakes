@@ -1,7 +1,7 @@
-Api.parsers.xml.addTag("Script", {
+Api.parsers.xml.addTag("Script", function(this) 
 
-	processChildren = false,
-	run = function(self, builder, parent, element, extra)
+	this.processChildren = false
+	this.run = function(self, builder, parent, element, extra)
 		
 		local fileFragment = element.file
 
@@ -15,6 +15,6 @@ Api.parsers.xml.addTag("Script", {
 		
 		--fileParser(path, addonName, namespace)
 
-	end,
-	
-})
+	end
+
+end)

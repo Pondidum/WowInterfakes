@@ -1,7 +1,1 @@
-Api.parsers.xml.addTag("Color", {
-
-	run = function(self, builder, parent, element)
-
-	end,
-	
-})
+Api.parsers.xml.addTag("Color", function(this) end)

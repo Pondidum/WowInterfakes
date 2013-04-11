@@ -1,8 +1,5 @@
-Api.parsers.xml.addTag("Font", {
-	
-	processChildren = false,
-	run = function(self, builder, parent, element)
+Api.parsers.xml.addTag("Font", function(this) 
 
-	end,
-	
-})
+	this.processChildren = false
+
+end)
