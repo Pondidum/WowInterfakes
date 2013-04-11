@@ -1,1 +1,0 @@
-VideoOptionsFrameCategoryFrame = CreateFrame("Frame", "VideoOptionsFrameCategoryFrame", VideoOptionsFrame)
