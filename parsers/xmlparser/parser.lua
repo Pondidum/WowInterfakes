@@ -34,13 +34,13 @@ local handlerBase = {
 local handlerMeta = { __index = handlerBase }
 
 local proxy = function(this) 
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 		element.variable = parent.variable		
 	end
 end
 
 local unknown = function(this)
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 		Api.debug.write("xmlParser", string.format("No handler defined for tag '%s'", element:tag()))
 	end
 end
@@ -93,7 +93,8 @@ local luaFromXml = {
 					local tag = element:tag()
 					local handler = this.getTag(tag)
 
-					handler:run(builder, parent, element, extra)
+					handler.builder = builder
+					handler.run(parent, element, extra)
 
 					if handler.processChildren then
 						recurse(builder, element, extra)

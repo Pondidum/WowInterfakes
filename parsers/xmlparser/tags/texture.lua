@@ -1,6 +1,6 @@
 local customise = function(this) 
 
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 
 		if element.virtual then
 			
@@ -12,15 +12,15 @@ local customise = function(this)
 			return
 		end
 		
-		self.buildVariable(element)
+		this.buildVariable(element)
 		local prefix  = "local " .. element.variable
 		local level = parent.level or "ARTWORK"
 
-		builder.append("")
-		builder.append('%s = %s:CreateTexture("%s", %s)', prefix, parent.variable, level, self.buildName(element))
+		this.builder.append("")
+		this.builder.append('%s = %s:CreateTexture("%s", %s)', prefix, parent.variable, level, this.buildName(element))
 
 		if element.parentKey then
-			builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
+			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
 		end
 
 	end

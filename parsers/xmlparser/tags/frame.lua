@@ -1,6 +1,6 @@
 local customise = function(this)
 
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 
 		if element.virtual then
 			
@@ -13,14 +13,14 @@ local customise = function(this)
 			
 		end
 
-		self.buildVariable(element)
+		this.buildVariable(element)
 		local typeToCreate = element:tag()
 
-		builder.append("")
-		builder.append('local %s = CreateFrame("%s", %s, UIParent)', element.variable, typeToCreate, self.buildName(element))
+		this.builder.append("")
+		this.builder.append('local %s = CreateFrame("%s", %s, UIParent)', element.variable, typeToCreate, this.buildName(element))
 
 		if element.parentKey then
-			builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
+			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
 		end
 
 	end

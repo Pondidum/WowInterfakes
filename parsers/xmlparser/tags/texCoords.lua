@@ -1,13 +1,13 @@
 Api.parsers.xml.addTag("TexCoords", function(this)
 
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 
 		local left = element.left or 0
 		local right = element.right or 0
 		local top = element.top or 0
 		local bottom = element.bottom or 0
 
-		builder.append('%s:SetTexCoord(%s, %s, %s, %s)', parent.variable, left, right, top, bottom)
+		this.builder.append('%s:SetTexCoord(%s, %s, %s, %s)', parent.variable, left, right, top, bottom)
 
 	end
 
