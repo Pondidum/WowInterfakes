@@ -1,7 +1,7 @@
 Api.parsers.xml.addTag("Size", function(this) 
 
 	this.processChildren = false
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 
 		local x, y = 0, 0
 		local abs = element[1]
@@ -11,7 +11,7 @@ Api.parsers.xml.addTag("Size", function(this)
 			y = abs.y
 		end
 
-		builder.append('%s:SetSize(%s, %s)', parent.variable, x, y)
+		this.builder.append('%s:SetSize(%s, %s)', parent.variable, x, y)
 	end
 
 end)

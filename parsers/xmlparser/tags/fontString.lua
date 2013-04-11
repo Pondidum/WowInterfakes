@@ -1,8 +1,8 @@
 local customise = function(this)
 
-	this.run = function(self, builder, parent, element)
+	this.run = function(parent, element)
 	
-		self.buildVariable(element)
+		this.buildVariable(element)
 		
 	end
 
