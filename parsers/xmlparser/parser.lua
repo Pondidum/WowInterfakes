@@ -41,7 +41,7 @@ end
 
 local unknown = function(this)
 	this.run = function(parent, element)
-		Api.log.write("xmlParser", string.format("No handler defined for tag '%s'", element:tag()))
+		Api.log.write("xmlParser", "No handler", string.format("tag: '%s'", element:tag()))
 	end
 end
 
