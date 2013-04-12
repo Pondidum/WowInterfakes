@@ -1,6 +1,6 @@
 local parser = function(path, addonName, namespace)
 
-	Api.log.write("luaParser", "BeginParse", path)
+	Api.log.info("luaParser", "BeginParse", path)
 
 	local content = loadfile(path)
 

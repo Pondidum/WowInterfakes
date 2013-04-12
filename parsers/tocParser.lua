@@ -3,11 +3,11 @@ local parser = function(path, addonName, namespace)
 	local file = io.open(path, "r") 
 
 	if file == nil then
-		Api.log.write("tocParser", "Unable to open file.", path)
+		Api.log.warn("tocParser", "Unable to open file.", path)
 		return 
 	end
 
-	Api.log.write("tocParser", "BeginParse", path)
+	Api.log.info("tocParser", "BeginParse", path)
 
 	local directory = io.path.getDirectory(path)
 

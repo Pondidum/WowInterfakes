@@ -132,7 +132,7 @@ end
 
 local parse = function(path, addonName, namespace)
 
-	Api.log.write("xmlParser", "BeginParse", path)
+	Api.log.info("xmlParser", "BeginParse", path)
 
 	local xmlFile = xml.load(path)
 	local directory = io.path.getDirectory(path)
