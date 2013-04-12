@@ -26,13 +26,13 @@ Api.AddonLoader = {
 
 		this.load = function()
 
-			Api.debug.write("AddonLoader", "BeginLoad.")
+			Api.log.write("AddonLoader", "BeginLoad.")
 			
 			for i, name in ipairs(this.addons) do 
 				loadAddon(this.addonBase, name)
 			end
 
-			Api.debug.write("AddonLoader", "EndLoad.")
+			Api.log.write("AddonLoader", "EndLoad.")
 
 		end
 

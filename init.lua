@@ -9,7 +9,7 @@ end
 Api.print = print
 Api.root =  debug.getinfo(1).source:gsub("init.lua", ""):gsub("@", "")
 
-require "wowinterfakes.debugTools"
+require "wowinterfakes.logger"
 require "wowinterfakes.util"
 require "wowinterfakes.stringBuilder"
 require "wowinterfakes.loader"
