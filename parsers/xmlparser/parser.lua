@@ -41,7 +41,7 @@ end
 
 local unknown = function(this)
 	this.run = function(parent, element)
-		Api.debug.write("xmlParser", string.format("No handler defined for tag '%s'", element:tag()))
+		Api.log.write("xmlParser", string.format("No handler defined for tag '%s'", element:tag()))
 	end
 end
 
@@ -87,13 +87,14 @@ local luaFromXml = {
 			for i, element in ipairs(parent) do
 
 				if not element.tag then
-					Api.debug.warn("xmlParser", string.format("no tag on '%s'", element))
+					Api.log.warn("xmlParser", string.format("no tag on '%s'", element))
 				else
 
 					local tag = element:tag()
 					local handler = this.getTag(tag)
 
 					handler.builder = builder
+
 					handler.run(parent, element, extra)
 
 					if handler.processChildren then
@@ -131,7 +132,7 @@ end
 
 local parse = function(path, addonName, namespace)
 
-	Api.debug.write("xmlParser", "BeginParse", path)
+	Api.log.write("xmlParser", "BeginParse", path)
 
 	local xmlFile = xml.load(path)
 	local directory = io.path.getDirectory(path)

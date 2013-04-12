@@ -4,7 +4,7 @@ local customise = function(this)
 
 		if element.virtual then
 			
-			Api.debug.write("xmlParser", string.format("Adding template '%s'.", element.name))
+			Api.log.write("xmlParser", string.format("Adding template '%s'.", element.name))
 			
 			Api.templates.add(element.name, element)
 			this.processChildren = false

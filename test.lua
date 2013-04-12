@@ -1,7 +1,7 @@
 require "wowinterfakes"
 
-Api.debug.enabled = true
-Api.debug.level = Api.debug.levels.info
+Api.log.enabled = true
+Api.log.level = Api.log.levels.debug
 
 local loader = Api.AddonLoader.new()
 loader.loadBlizzard()

@@ -3,11 +3,11 @@ local parser = function(path, addonName, namespace)
 	local file = io.open(path, "r") 
 
 	if file == nil then
-		Api.debug.write("tocParser", "Unable to open file.", path)
+		Api.log.write("tocParser", "Unable to open file.", path)
 		return 
 	end
 
-	Api.debug.write("tocParser", "BeginParse", path)
+	Api.log.write("tocParser", "BeginParse", path)
 
 	local directory = io.path.getDirectory(path)
 
@@ -22,7 +22,7 @@ local parser = function(path, addonName, namespace)
 			local subParser = Api.parsers.get(line)
 
 			if not subParser then
-				Api.debug.write("tocParser", "Unable to find a parser for line.", line)
+				Api.log.write("tocParser", "Unable to find a parser for line.", line)
 			else
 				subParser(io.path.combine(directory, line), addonName, namespace)	
 			end
@@ -31,7 +31,7 @@ local parser = function(path, addonName, namespace)
 
 	end
 
-	Api.debug.write("tocParser", "EndParse.", path)
+	Api.log.write("tocParser", "EndParse.", path)
 
 	file:close()
 
