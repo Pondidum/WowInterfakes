@@ -15,37 +15,41 @@ This is a work in progress, things on the to-do list are:
 Usage
 ----------
 
-  require("wowinterfakes")
+````lua
 
-	-- set debug spam level...
-	Api.log.enabled = true	
-	Api.log.level = Api.log.levels.debug   --debug/info/warn/error
+require("wowinterfakes")
 
-	local loader = Api.AddonLoader.new()	
+-- set debug spam level...
+Api.log.enabled = true	
+Api.log.level = Api.log.levels.debug   --debug/info/warn/error
 
-	--guess what this does?
-	loader.loadBlizzard()
+local loader = Api.AddonLoader.new()	
 
-	--specify addons to load (order matters at the moment)
-	loader.addons = { "Dark.Core", "Dark.Unitframes", "Dark.Nameplates", "Skada" }
+--guess what this does?
+loader.loadBlizzard()
 
-	--loads addons
-	loader.load()
+--specify addons to load (order matters at the moment)
+loader.addons = { "Dark.Core", "Dark.Unitframes", "Dark.Nameplates", "Skada" }
+
+--loads addons
+loader.load()
 
 
-	--Features to be done:
-	------------------------------------------------------------------------------------
-	
-	--this will fire PLAYER_LOGIN, PLAYER_ENTERING_WORLD etc
-	Api.player.login({
-		name = "Darkend",
-		level = 90,
-		class = "SHAMAN",
-		specialisation = "Enhancement",
-		race = "pandaren",
-		sex = "female",
-		--etc etc
-	})
+--Features to be done:
+------------------------------------------------------------------------------------
 
-	--fire combatlog, unit updates, OnUpdate etc etc
-	Api.player.cast("Stormstrike", Api.units.target)
+--this will fire PLAYER_LOGIN, PLAYER_ENTERING_WORLD etc
+Api.player.login({
+	name = "Darkend",
+	level = 90,
+	class = "SHAMAN",
+	specialisation = "Enhancement",
+	race = "pandaren",
+	sex = "female",
+	--etc etc
+})
+
+--fire combatlog, unit updates, OnUpdate etc etc
+Api.player.cast("Stormstrike", Api.units.target)
+
+````
