@@ -28,8 +28,10 @@ local customise = function(this)
 end
 
 Api.parsers.xml.addTag("Texture", customise)
+Api.parsers.xml.addTag("BarTexture", customise)
 Api.parsers.xml.addTag("CheckedTexture", customise)
 Api.parsers.xml.addTag("DisabledTexture", customise)
+Api.parsers.xml.addTag("DisabledCheckedTexture", customise)
 Api.parsers.xml.addTag("HighlightTexture", customise)
 Api.parsers.xml.addTag("NormalTexture", customise)
 Api.parsers.xml.addTag("PushedTexture", customise)
