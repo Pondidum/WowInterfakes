@@ -50,24 +50,23 @@ local makeVisibleRegion = function()
 
 end
 
-local makeScriptObject = function()
+local applyScriptHandlers = function(frame)
 	
-	local scriptObject = {}
 	local scripts = {}
 
-	scriptObject.SetScript = function(self, name, handler) 
+	frame.SetScript = function(self, name, handler) 
 		scripts[name] = handler
 	end
 
-	scriptObject.GetScript = function(self, name)
+	frame.GetScript = function(self, name)
 		return scripts[name]
 	end
 
-	scriptObject.HasScript = function(self, name)
+	frame.HasScript = function(self, name)
 		return scripts[name] ~= nil
 	end
 
-	return scriptObject
+	return frame
 
 end
 
@@ -102,8 +101,8 @@ end
 
 local makeFrame = function(type, name, parent, templates)
 
-	local scriptObject = makeScriptObject()
-	local frame = setmetatable(makeVisibleRegion(), { __index = scriptObject})
+	local frame = makeVisibleRegion()
+	applyScriptHandlers(frame)
 
 	frame.GetName = function(self)
 		return name
@@ -187,17 +186,17 @@ local makeStatusbar = function(type, name, parent, templates)
 end
 
 
-local createFrame = function(type, ...)
+local createFrame = function(type, name, parent, template)
 	
 	local type = string.lower(type)
 
 	if type == "button" then
-		return makeButton(type, ...)
+		return makeButton(type, name, parent, template)
 	elseif type == "statusbar" then
-		return makeStatusbar(type, ...)
+		return makeStatusbar(type, name, parent, template)
 	end
 
-	return makeFrame(type, ...)
+	return makeFrame(type, name, parent, template)
 
 end
 
