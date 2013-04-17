@@ -10,7 +10,7 @@ local stringBuilder = {
 		end
 
 		this.toString = function()
-			return table.concat(parts)
+			return table.concat(parts, "\n")
 		end
 
 		return this
