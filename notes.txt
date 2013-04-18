@@ -1,0 +1,4 @@
+
+InterfaceOptionsPanels.xml : Ln 707 : floating text
+QuestLogFrame.xml : Ln 425 : value of "y"
+HelpFrame.xml : Ln 1323	: value of "y"
