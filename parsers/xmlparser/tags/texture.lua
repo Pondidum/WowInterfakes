@@ -13,11 +13,21 @@ local customise = function(this)
 		end
 		
 		this.buildVariable(element)
+		
 		local prefix  = "local " .. element.variable
-		local level = parent.level or "ARTWORK"
+		local level = "nil"
+		local template = "nil"
+
+		if parent.level then
+			level = '"' .. parent.level .. '"'
+		end
+
+		if element.inherits then
+			template = '"' .. element.inherits .. '"'
+		end
 
 		this.builder.append("")
-		this.builder.append('%s = %s:CreateTexture("%s", %s)', prefix, parent.variable, level, this.buildName(element))
+		this.builder.append('%s = %s:CreateTexture(%s, %s, %s)', prefix, parent.variable, this.buildName(element), level, template)
 
 		if element.parentKey then
 			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
