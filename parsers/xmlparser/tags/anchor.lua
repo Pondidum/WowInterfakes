@@ -4,6 +4,10 @@ local fixValue = function(value)
 		return nil
 	end
 
+	if value == "" then
+		return 0
+	end
+
 	return value:gsub("%a", "")
 end
 
