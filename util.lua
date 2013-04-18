@@ -21,6 +21,13 @@ io.path = {
 	    sep = sep or '\\'
 	    return str:match("(.*"..sep..")")
 	end,
+
+	getFilename = function( path )
+
+		local dir, file, ext = string.match(path, "(.-)([^\\/]-%.?([^%.\\/]*))$")
+
+		return file
+	end,
 	
 	combine = function(...)	
 
