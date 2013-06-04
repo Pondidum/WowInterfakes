@@ -16,8 +16,14 @@ local customise = function(this)
 		this.buildVariable(element)
 		local typeToCreate = element:tag()
 
+		local templateName = "nil"
+
+		if element.inherits then
+			templateName = '"' .. element.inherits .. '"'
+		end
+
 		this.builder.append("")
-		this.builder.append('local %s = CreateFrame("%s", %s, UIParent)', element.variable, typeToCreate, this.buildName(element))
+		this.builder.append('local %s = CreateFrame("%s", %s, UIParent, %s)', element.variable, typeToCreate, this.buildName(element), templateName)
 
 		if element.parentKey then
 			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
