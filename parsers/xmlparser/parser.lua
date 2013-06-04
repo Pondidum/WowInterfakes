@@ -5,7 +5,9 @@ local handlerBase = {
 		
 		if element.name == nil then
 			return "nil"
-		elseif element.name:find("$parent") then
+		end
+
+		if element.name:find("$parent") then
 			return string.format('"%s%s"',  element.variable, element.name:gsub("$parent", ""))
 		else
 			return string.format('"%s"', element.name)
@@ -24,6 +26,8 @@ local handlerBase = {
 			variableIndex = variableIndex + 1
 			var = string.lower(element:tag()) .. variableIndex
 		end
+
+		var = var:gsub("-", "")
 
 		element.variable = var
 		return var
@@ -145,7 +149,27 @@ local parse = function(path, addonName, namespace)
 
 	for i, element in ipairs(xmlFile) do
 
-		instance.build(element, extra)
+		local luaText = instance.build(element, extra)
+
+		if luaText ~= "" then
+			
+			Api.log.debug("xmlParser", "Executing Generated Lua", element.name or "")
+
+			local wrapped = "return function()\n\n" .. luaText .. "\n\nend"
+			local loadFunc, errorMessage = loadstring(wrapped)
+
+			local cache = io.open(Api.root .. "cache\\" .. io.path.getFilename(path) .. ".lua", "w")
+			cache:write(wrapped)
+			cache:close()
+
+			if loadFunc == nil then
+				Api.log.warn("xmlParser", "Execute", errorMessage)
+			end
+
+			local runFunc = loadFunc()
+			runFunc()
+
+		end
 
 	end
 
