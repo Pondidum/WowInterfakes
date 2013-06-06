@@ -6,13 +6,14 @@ local customise = function(this)
 			
 			Api.log.write("xmlParser", string.format("Adding template '%s'.", element.name))
 			
+			element.virtual = nil
 			Api.templates.add(element.name, element)
 			this.processChildren = false
 
 			return
 		end
 		
-		this.buildVariable(element)
+		this.buildVariable(element, parent.name)
 		
 		local prefix  = "local " .. element.variable
 		local level = "nil"
@@ -27,7 +28,7 @@ local customise = function(this)
 		end
 
 		this.builder.append("")
-		this.builder.append('%s = %s:CreateTexture(%s, %s, %s)', prefix, parent.variable, this.buildName(element), level, template)
+		this.builder.append('%s = %s:CreateTexture(%s, %s, %s)', prefix, parent.variable, this.buildName(element, parent.name), level, template)
 
 		if element.parentKey then
 			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)

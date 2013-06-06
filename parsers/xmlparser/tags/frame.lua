@@ -6,6 +6,7 @@ local customise = function(this)
 			
 			Api.log.write("xmlParser", string.format("Adding template '%s'.", element.name))
 			
+			element.virtual = nil
 			Api.templates.add(element.name, element)
 			this.processChildren = false
 
@@ -13,7 +14,7 @@ local customise = function(this)
 			
 		end
 
-		this.buildVariable(element)
+		this.buildVariable(element, parent.name)
 		local typeToCreate = element:tag()
 
 		local templateName = "nil"
@@ -23,7 +24,7 @@ local customise = function(this)
 		end
 
 		this.builder.append("")
-		this.builder.append('local %s = CreateFrame("%s", %s, UIParent, %s)', element.variable, typeToCreate, this.buildName(element), templateName)
+		this.builder.append('local %s = CreateFrame("%s", %s, UIParent, %s)', element.variable, typeToCreate, this.buildName(element, parent.name), templateName)
 
 		if element.parentKey then
 			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)

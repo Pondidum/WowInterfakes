@@ -2,7 +2,7 @@ local customise = function(this)
 
 	this.run = function(parent, element)
 	
-		this.buildVariable(element)
+		this.buildVariable(element, parent.name)
 	
 		local parentVariable = "UIParent"		
 		local layer = 'nil'
@@ -21,7 +21,7 @@ local customise = function(this)
 			parentVariable = parent.variable
 		end
 
-		this.builder.append('local %s = %s:CreateFontString(%s, %s, %s)', element.variable, parentVariable, this.buildName(element), layer, template)
+		this.builder.append('local %s = %s:CreateFontString(%s, %s, %s)', element.variable, parentVariable, this.buildName(element, parent.name), layer, template)
 
 	end
 

@@ -13,7 +13,7 @@ Api.parsers.xml.addTag("Script", function(this)
 		local path = io.path.combine(directory, fileFragment)
 		local fileParser = Api.parsers.get(path)
 		
-		--fileParser(path, addonName, namespace)
+		fileParser(path, addonName, namespace)
 
 	end
 
