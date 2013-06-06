@@ -100,7 +100,7 @@ local makeFontString = function()
 end
 
 local makeFrame = function(type, name, parent, templates)
-
+	
 	local frame = makeVisibleRegion()
 	applyScriptHandlers(frame)
 
@@ -188,6 +188,25 @@ end
 
 local createFrame = function(type, name, parent, template)
 	
+	if template and template ~= "" then
+
+		local xml = Api.templates.get(template)
+		xml.name = name
+
+		local luaText = Api.parsers.xml.build(xml, {})
+						
+		local wrapped = "return function()\n\n" .. luaText .. "\n\nend"
+		local loadFunc, errorMessage = loadstring(wrapped)
+
+		if loadFunc == nil then
+			Api.log.warn("CreateFrame", "Execute", errorMessage)
+		end
+
+		local runFunc = loadFunc()
+		runFunc()
+
+	end
+
 	local type = string.lower(type)
 
 	if type == "button" then
