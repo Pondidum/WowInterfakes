@@ -1,27 +1,30 @@
 local variableIndex = 0 
 local handlerBase = {
 
-	buildName = function(element)
+	buildName = function(element, parentName)
 		
 		if element.name == nil then
 			return "nil"
 		end
 
-		if element.name:find("$parent") then
-			return string.format('"%s%s"',  element.variable, element.name:gsub("$parent", ""))
-		else
-			return string.format('"%s"', element.name)
+		if parentName and parentName:find("$parent") then
+			Api.log.error("buildName", "parent.name", parentName)
 		end
+
+		local name = element.name:gsub("$parent", parentName or "")
+
+		element.name = name
+		return string.format('"%s"', name)
 
 	end,
 
 	
-	buildVariable = function(element)
+	buildVariable = function(element, parentName)
 		
 		local var
 
 		if element.name then
-			var = string.lower(element:tag()) .. element.name:gsub("$parent", "")
+			var = string.lower(element:tag()) .. element.name:gsub("$parent", parentName or "")
 		else
 			variableIndex = variableIndex + 1
 			var = string.lower(element:tag()) .. variableIndex
@@ -40,6 +43,7 @@ local handlerMeta = { __index = handlerBase }
 local proxy = function(this) 
 	this.run = function(parent, element)
 		element.variable = parent.variable		
+		element.name = parent.name
 	end
 end
 
@@ -158,9 +162,11 @@ local parse = function(path, addonName, namespace)
 			local wrapped = "return function()\n\n" .. luaText .. "\n\nend"
 			local loadFunc, errorMessage = loadstring(wrapped)
 
-			local cache = io.open(Api.root .. "cache\\" .. io.path.getFilename(path) .. ".lua", "w")
-			cache:write(wrapped)
-			cache:close()
+			if Api.cache then
+				local cache = io.open(Api.root .. "cache\\" .. io.path.getFilename(path) .. ".lua", "w")
+				cache:write(wrapped)
+				cache:close()
+			end
 
 			if loadFunc == nil then
 				Api.log.warn("xmlParser", "Execute", errorMessage)

@@ -6,6 +6,7 @@ Api.export = function(name, action)
 	_G[name] = action
 end
 
+Api.cache = true
 Api.print = print
 Api.root =  debug.getinfo(1).source:gsub("init.lua", ""):gsub("@", "")
 
