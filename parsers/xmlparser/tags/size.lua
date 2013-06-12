@@ -9,6 +9,9 @@ Api.parsers.xml.addTag("Size", function(this)
 		if abs then
 			x = abs.x
 			y = abs.y
+		else
+			x = element["x"]
+			y = element["y"]
 		end
 
 		this.builder.append('%s:SetSize(%s, %s)', parent.variable, x, y)
