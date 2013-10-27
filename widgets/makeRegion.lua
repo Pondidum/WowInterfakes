@@ -42,5 +42,9 @@ builder.applyRegion = function(region)
 		self.__storage.region:SetPoint("BOTTOMRIGHT", otherRegion, "BOTTOMRIGHT", 0, 0)
  
 	end
+
+	region.SetParent = function(self, target)
+		self.__storage.parent = target
+	end
  
 end

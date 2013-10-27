@@ -8,6 +8,7 @@ builder.init = function()
 	local frameMeta = {}
 
 	builder.applyUIObject(frameMeta)
+	builder.applyParentedObject(frameMeta)
 	builder.applyRegion(frameMeta)
 	builder.applyVisibleRegion(frameMeta)
 	builder.applyFrame(frameMeta)
