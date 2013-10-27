@@ -26,7 +26,5 @@ builder.applyVisibleRegion = function(region)
 	region.IsVisible = function(self)
 		return self.__storage.visible
 	end
-	 
-	return region
- 
+	
 end
