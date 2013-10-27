@@ -7,6 +7,7 @@ builder.init = function()
 	
 	local frameMeta = {}
 
+	builder.applyUIObject(frameMeta)
 	builder.applyRegion(frameMeta)
 	builder.applyVisibleRegion(frameMeta)
 	builder.applyFrame(frameMeta)
@@ -21,9 +22,9 @@ builder.createFrame = function(type, name, parent, template)
 
 	setmetatable(frame, builder.frameMeta)
 
-	frame:SetName(name)
+	frame.__storage.name = name 	--no publicly accessable SetName method()
 	frame:SetParent(parent)
-	
+
 	if template and template ~= "" then
 		templateManager.apply(template, frame)
 	end
