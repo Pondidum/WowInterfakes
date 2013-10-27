@@ -4,8 +4,8 @@ project:new({
 
 	files = project:io(function(io)
 
+		io.addFilesIn("core")
 		io.addFilesIn("widgets")
-		io.addFilesIn("Core")
 		
 	end),
 
