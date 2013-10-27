@@ -2,32 +2,29 @@ local ns = ...
 local builder = ns.builder
 
 builder.applyVisibleRegion = function(region)
-	
-	local alpha, visible
  
 	region.GetAlpha = function(self)
-		return alpha
+		return self.__storage.alpha
 	end
 	
 	region.SetAlpha = function(self, value)
-		alpha = value
-	end
-	
+		self.__storage.alpha = value
+	end	
  
 	region.Hide = function(self)
-		visible = false
+		self.__storage.visible = false
 	end
 	
 	region.Show = function(self)
-		visible = true
+		self.__storage.visible = true
 	end
 	
 	region.IsShown = function(self)
-		return visible
+		return self.__storage.visible
 	end
 	
 	region.IsVisible = function(self)
-		return visible
+		return self.__storage.visible
 	end
 	 
 	return region

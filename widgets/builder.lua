@@ -15,7 +15,7 @@ end
 
 builder.createFrame = function()
 	
-	local frame = {}
+	local frame = { __storage = {} }
 
 	setmetatable(frame, builder.frameMeta)
 
