@@ -37,14 +37,20 @@ local fileHelper = {
 			table.insert(files, path)
 		end
 
-		this.addFilesIn = function(path)
+		this.addFilesIn = function(path, filter)
+
+			filter = filter or "*.lua"
 
 			for file in lfs.dir(path) do
 
 				local fullPath = path .. "\\" .. file
 
 				if file ~= "." and file ~= ".." and lfs.attributes(fullPath).mode ~= "directory" then
-					table.insert(files, fullPath)
+
+					if file:find(filter) then
+						table.insert(files, fullPath)
+					end
+					
 				end
 
 			end
