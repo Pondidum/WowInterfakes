@@ -1,3 +1,5 @@
+local ns = ...
+
 local levelMap = {
 	debug = 0,
 	info = 5,
@@ -40,4 +42,4 @@ logger.error = function(...)
 	write("error", ...)
 end
 
-Api.log = logger
+ns.log = logger
