@@ -8,6 +8,7 @@ builder.init = function()
 
 	builder.applyRegion(frameMeta)
 	builder.applyVisibleRegion(frameMeta)
+	builder.applyFrame(frameMeta)
 
 	builder.frameMeta = { __index = frameMeta }
 
