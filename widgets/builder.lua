@@ -1,5 +1,6 @@
 local ns = ...
 
+local templateManager = ns.templateManager
 local builder = {}
 
 builder.init = function()
@@ -14,11 +15,18 @@ builder.init = function()
 
 end
 
-builder.createFrame = function()
+builder.createFrame = function(type, name, parent, template)
 	
 	local frame = { __storage = {} }
 
 	setmetatable(frame, builder.frameMeta)
+
+	frame:SetName(name)
+	frame:SetParent(parent)
+	
+	if template and template ~= "" then
+		templateManager.apply(template, frame)
+	end
 
 	return frame
 
