@@ -5,9 +5,11 @@ project:new({
 	files = project:io(function(io)
 
 		io.addFile("logger.lua")
-		
+
 		io.addFilesIn("core")
 		io.addFilesIn("widgets")
+
+		io.addFile("parsers\\xmlParser.lua")
 		
 	end),
 

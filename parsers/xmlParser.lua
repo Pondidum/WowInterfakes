@@ -1,42 +1,52 @@
-local variableIndex = 0 
-local handlerBase = {
+local ns = ...
 
-	buildName = function(element, parentName)
-		
-		if element.name == nil then
-			return "nil"
+local xmlParser = {}
+
+xmlParser.parse = function(xmlTable)
+
+	local function recurseTree(parent)
+
+		for i, element in ipairs(parent) do 
+			
+			local tag = element:tag()
+			local handler = xmlParser.tags[tag]
+
+			if handler then
+
+				
+			end
+
 		end
 
-		if parentName and parentName:find("$parent") then
-			Api.log.error("buildName", "parent.name", parentName)
-		end
+	end
 
-		local name = element.name:gsub("$parent", parentName or "")
+end
 
-		element.name = name
-		return string.format('"%s"', name)
 
-	end,
 
-	
-	buildVariable = function(element, parentName)
-		
-		local var
 
-		if element.name then
-			var = string.lower(element:tag()) .. element.name:gsub("$parent", parentName or "")
-		else
-			variableIndex = variableIndex + 1
-			var = string.lower(element:tag()) .. variableIndex
-		end
 
-		var = var:gsub("-", "")
 
-		element.variable = var
-		return var
 
-	end,
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 local handlerMeta = { __index = handlerBase }
 
