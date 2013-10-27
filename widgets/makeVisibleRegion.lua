@@ -1,9 +1,8 @@
 local ns = ...
 local builder = ns.builder
 
-builder.applyVisibleRegion = function()
+builder.applyVisibleRegion = function(region)
 	
-	local region = makeRegion()
 	local alpha, visible
  
 	region.GetAlpha = function(self)
