@@ -39,7 +39,7 @@ local fileHelper = {
 
 		this.addFilesIn = function(path, filter)
 
-			filter = filter or "*.lua"
+			filter = filter or "%.lua"
 
 			for file in lfs.dir(path) do
 
