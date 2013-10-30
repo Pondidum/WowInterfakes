@@ -1,39 +1,74 @@
 local ns = ...
 
-local xmlParser = {}
+local tags = {}
 
-xmlParser.parse = function(xmlTable)
+local tagBase = {
+	process = function() end,
+	processChildren = true,
+}
 
-	local function recurseTree(parent)
+local defaultTag = setmetatable({}, { __index = tagBase })
 
-		for i, element in ipairs(parent) do 
-			
-			local tag = element:tag()
-			local handler = xmlParser.tags[tag]
+local tagNotFound = function(t, k) 
+	return defaultTag
+end 
 
-			if handler then
+setmetatable(xmlParser.tags, { __index = tagNotFound })
 
+
+local xmlParser = {
+	parse = function(xmlTable)
+
+		local isVirtual = function(element)
+			return element.virtual == "true"
+		end
+
+		local function recurseTree(parent, chain)
+
+			for i, element in ipairs(parent) do 
 				
+				local virtual = isVirtual(element)
+				local currentChain = chain
+
+				if virtual then
+					currentChain = {}
+				end
+
+				local tag = element:tag()
+				local handler = tags[tag]
+
+				if handler then
+
+					table.insert(currentChain, handler)
+
+					if handler.processChildren then
+						recurseTree(element, currentChain)
+					end
+
+				end
+
+				if virtual then
+					ns.templateManager.addTemplate(element.name, currentChain)
+				end
+
 			end
 
 		end
 
-	end
-
-end
-
+		local handlerChain = {}
+		recurseTree(xmlTable, handlerChain)
 
 
+	end,
 
+	addTag = function(name, definition)
+		tags[name] = definition
+	end,
 
+}
 
-
-
-
-
-
-
-
+ns.parsers = ns.parsers or {}
+ns.parsers.xmlParser = xmlParser
 
 
 
@@ -48,6 +83,17 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+--[[
 local handlerMeta = { __index = handlerBase }
 
 local proxy = function(this) 
@@ -194,3 +240,4 @@ end
 
 Api.parsers.xml = instance
 Api.parsers.add(canHandle, parse)
+]]

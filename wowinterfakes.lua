@@ -1,4 +1,5 @@
 require("project")
+require("luaxml")
 
 project:new({
 
@@ -16,19 +17,12 @@ project:new({
 	run = function(ns)
 		
 		local builder = ns.builder
-		
 		builder.init()
 		
-		local f1 = builder.createFrame()
-		local f2 = builder.createFrame()
+		local xmlFile = xml.load("test.xml")
+		local parser = ns.parsers.xmlParser
 
-		print("f1", f1:GetWidth())
-		print("f2", f2:GetWidth())
-
-		f1:SetWidth(100)
-
-		print("f1", f1:GetWidth())
-		print("f2", f2:GetWidth())
+		parser.parse(xmlFile)
 
 	end,
 
