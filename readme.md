@@ -1,5 +1,5 @@
 What is it?
------------
+===========
 
 WowInterfakes is a library which fakes the entire of the World of Warcraft UI - from a code perspective at least.
 
@@ -13,7 +13,7 @@ This is a work in progress, things on the to-do list are:
 * Data scraper? Wowhead/WowApi for getting spell data, and storing locally?
 
 Usage
-----------
+=====
 
 ````lua
 
@@ -53,3 +53,13 @@ Api.player.login({
 Api.player.cast("Stormstrike", Api.units.target)
 
 ````
+
+Development
+===========
+
+* New branch (see project branch) with work to 
+  * re-write the loading xml api, without using generated lua
+  * use [LuaProject][1] to make file loading slightly saner
+
+
+[1]: https://github.com/Pondidum/LuaProject
