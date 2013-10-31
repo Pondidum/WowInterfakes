@@ -13,7 +13,7 @@ local tagNotFound = function(t, k)
 	return defaultTag
 end 
 
-setmetatable(xmlParser.tags, { __index = tagNotFound })
+setmetatable(tags, { __index = tagNotFound })
 
 
 local xmlParser = {
