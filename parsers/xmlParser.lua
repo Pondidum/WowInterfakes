@@ -75,6 +75,9 @@ local xmlParser = {
 		local handlerChain = {}
 		recurseTree(xmlTable, handlerChain)
 
+		-- for i, decorator in ipairs(handlerChain) do
+		-- 	decorator()
+		-- end
 
 	end,
 
