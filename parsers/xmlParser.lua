@@ -88,7 +88,7 @@ local xmlParser = {
 }
 
 ns.parsers = ns.parsers or {}
-ns.parsers.xmlParser = xmlParser
+ns.parsers.xml = xmlParser
 
 
 
