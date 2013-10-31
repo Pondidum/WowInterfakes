@@ -11,6 +11,7 @@ project:new({
 		io.addFilesIn("widgets")
 
 		io.addFile("parsers\\xmlParser.lua")
+		io.addFilesIn("parsers\\tags\\")
 		
 	end),
 
@@ -20,7 +21,7 @@ project:new({
 		builder.init()
 		
 		local xmlFile = xml.load("wow-ui-source\\framexml\\autoComplete.xml")
-		local parser = ns.parsers.xmlParser
+		local parser = ns.parsers.xml
 
 		parser.parse(xmlFile)
 
