@@ -4,16 +4,19 @@ local templates = {}
 
 local templateManager = {
 
-	addTemplate = function(name, decorator)
-		templates[name] = decorator
+	addTemplate = function(name, decoratorChain)
+		templates[name] = decoratorChain
 	end,
 
 	apply = function(name, target)
 
-		local decorator = templates[name]
+		local decoratorChain = templates[name]
 
-		if decorator then
-			decorator(target)
+		if decoratorChain then
+			
+			for i, decorator in ipairs(decoratorChain) do
+				decorator(target)
+			end
 		end
 
 	end,
