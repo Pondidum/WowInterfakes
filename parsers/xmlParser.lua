@@ -1,43 +1,119 @@
-local variableIndex = 0 
-local handlerBase = {
+local ns = ...
 
-	buildName = function(element, parentName)
-		
-		if element.name == nil then
-			return "nil"
-		end
+local tags = {}
 
-		if parentName and parentName:find("$parent") then
-			Api.log.error("buildName", "parent.name", parentName)
-		end
-
-		local name = element.name:gsub("$parent", parentName or "")
-
-		element.name = name
-		return string.format('"%s"', name)
-
-	end,
-
-	
-	buildVariable = function(element, parentName)
-		
-		local var
-
-		if element.name then
-			var = string.lower(element:tag()) .. element.name:gsub("$parent", parentName or "")
-		else
-			variableIndex = variableIndex + 1
-			var = string.lower(element:tag()) .. variableIndex
-		end
-
-		var = var:gsub("-", "")
-
-		element.variable = var
-		return var
-
-	end,
+local tagBase = {
+	build = function() end,
+	processChildren = true,
 }
 
+local printTag = {
+	build = function(data)
+
+		return function(target)
+			print("Applying", data, "to", target:GetName())
+		end
+
+	end
+}
+
+--local defaultTag = setmetatable({}, { __index = tagBase })
+local defaultTag = setmetatable(printTag, { __index = tagBase })
+
+local tagNotFound = function(t, k) 
+	return defaultTag
+end 
+
+setmetatable(tags, { __index = tagNotFound })
+
+
+local xmlParser = {
+	parse = function(xmlTable)
+
+		local isVirtual = function(element)
+			return element.virtual == "true"
+		end
+
+		local function recurseTree(parent, chain)
+
+			for i, element in ipairs(parent) do 
+				
+				local virtual = isVirtual(element)
+				local currentChain = chain
+
+				if virtual then
+					print("Found virtual,", element.name)
+					currentChain = {}
+				end
+				
+				if not element.tag then
+					print("No tag found on", element)
+				else				
+
+					local tag = element:tag()
+					local handler = tags[tag]
+
+					if handler then
+
+						table.insert(currentChain, handler.build(tag))
+
+						if handler.processChildren then
+							recurseTree(element, currentChain)
+						end
+
+					end
+
+					if virtual then
+						ns.templateManager.addTemplate(element.name, currentChain)
+					end
+
+				end 
+			end
+
+		end
+
+		local handlerChain = {}
+		recurseTree(xmlTable, handlerChain)
+
+		-- for i, decorator in ipairs(handlerChain) do
+		-- 	decorator()
+		-- end
+
+	end,
+
+	addTag = function(name, definition)
+		tags[name] = setmetatable(definition, { __index = tagBase })
+	end,
+
+}
+
+ns.parsers = ns.parsers or {}
+ns.parsers.xml = xmlParser
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--[[
 local handlerMeta = { __index = handlerBase }
 
 local proxy = function(this) 
@@ -184,3 +260,4 @@ end
 
 Api.parsers.xml = instance
 Api.parsers.add(canHandle, parse)
+]]
