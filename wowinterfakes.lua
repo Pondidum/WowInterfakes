@@ -5,7 +5,7 @@ project:new({
 
 	files = project:io(function(io)
 
-		io.addFile("logger.lua")
+		io.addFile("core\\logger.lua")	-- load this before other things!
 
 		io.addFilesIn("core")
 		io.addFilesIn("widgets")
