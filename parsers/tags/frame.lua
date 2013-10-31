@@ -1,63 +1,49 @@
-local customise = function(this)
+local ns = ...
 
-	this.run = function(parent, element)
+local tag = {
+	processChildren = true,
+	build = function(element)
 
-		if element.virtual then
-			
-			Api.log.write("xmlParser", string.format("Adding template '%s'.", element.name))
-			
-			element.virtual = nil
-			Api.templates.add(element.name, element)
-			this.processChildren = false
+		local decorator = function(target)
 
-			return
-			
+			local name = element.name
+			local templates = element.inherits
+			local parent = --?
+
+			CreateFrame("Frame", name, parent, templates)
 		end
 
-		this.buildVariable(element, parent.name)
-		local typeToCreate = element:tag()
+		return decorator
 
-		local templateName = "nil"
+	end,
+}
 
-		if element.inherits then
-			templateName = '"' .. element.inherits .. '"'
-		end
+ns.parsers.xml.addTag("Frame", tag)
 
-		this.builder.append("")
-		this.builder.append('local %s = CreateFrame("%s", %s, UIParent, %s)', element.variable, typeToCreate, this.buildName(element, parent.name), templateName)
+-- Api.parsers.xml.addTag("Button", customise)
+-- Api.parsers.xml.addTag("CheckButton", customise)
+-- Api.parsers.xml.addTag("Cooldown", customise)
+-- Api.parsers.xml.addTag("EditBox", customise)
+-- Api.parsers.xml.addTag("Frame", customise)
+-- Api.parsers.xml.addTag("MessageFrame", customise)
+-- Api.parsers.xml.addTag("MovieFrame", customise)
+-- Api.parsers.xml.addTag("ScrollChild", customise)
+-- Api.parsers.xml.addTag("ScrollFrame", customise)
+-- Api.parsers.xml.addTag("ScrollingMessageFrame", customise)
+-- Api.parsers.xml.addTag("Slider", customise)
+-- Api.parsers.xml.addTag("StatusBar", customise)
 
-		if element.parentKey then
-			this.builder.append("%s.%s = %s", parent.variable, element.parentKey, element.variable)
-		end
+-- Api.parsers.xml.addTag("ArchaeologyDigSiteFrame", customise)
+-- Api.parsers.xml.addTag("GameTooltip", customise)
+-- Api.parsers.xml.addTag("Minimap", customise)
+-- Api.parsers.xml.addTag("ColorSelect", customise)
+-- Api.parsers.xml.addTag("WorldFrame", customise)
 
-	end
+-- Api.parsers.xml.addTag("QuestPOIFrame", customise)
+-- Api.parsers.xml.addTag("ScenarioPOIFrame", customise)
+-- Api.parsers.xml.addTag("SimpleHTML", customise)
 
-end
-
-Api.parsers.xml.addTag("Button", customise)
-Api.parsers.xml.addTag("CheckButton", customise)
-Api.parsers.xml.addTag("Cooldown", customise)
-Api.parsers.xml.addTag("EditBox", customise)
-Api.parsers.xml.addTag("Frame", customise)
-Api.parsers.xml.addTag("MessageFrame", customise)
-Api.parsers.xml.addTag("MovieFrame", customise)
-Api.parsers.xml.addTag("ScrollChild", customise)
-Api.parsers.xml.addTag("ScrollFrame", customise)
-Api.parsers.xml.addTag("ScrollingMessageFrame", customise)
-Api.parsers.xml.addTag("Slider", customise)
-Api.parsers.xml.addTag("StatusBar", customise)
-
-Api.parsers.xml.addTag("ArchaeologyDigSiteFrame", customise)
-Api.parsers.xml.addTag("GameTooltip", customise)
-Api.parsers.xml.addTag("Minimap", customise)
-Api.parsers.xml.addTag("ColorSelect", customise)
-Api.parsers.xml.addTag("WorldFrame", customise)
-
-Api.parsers.xml.addTag("QuestPOIFrame", customise)
-Api.parsers.xml.addTag("ScenarioPOIFrame", customise)
-Api.parsers.xml.addTag("SimpleHTML", customise)
-
-Api.parsers.xml.addTag("Model", customise)
-Api.parsers.xml.addTag("DressUpModel", customise)
-Api.parsers.xml.addTag("PlayerModel", customise)
-Api.parsers.xml.addTag("TabardModel", customise)
+-- Api.parsers.xml.addTag("Model", customise)
+-- Api.parsers.xml.addTag("DressUpModel", customise)
+-- Api.parsers.xml.addTag("PlayerModel", customise)
+-- Api.parsers.xml.addTag("TabardModel", customise)
