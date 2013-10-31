@@ -19,10 +19,12 @@ project:new({
 		local builder = ns.builder
 		builder.init()
 		
-		local xmlFile = xml.load("test.xml")
+		local xmlFile = xml.load("wow-ui-source\\framexml\\autoComplete.xml")
 		local parser = ns.parsers.xmlParser
 
 		parser.parse(xmlFile)
+
+		local frame = ns.builder.createFrame("Frame", "Test", nil, "AutoCompleteEditBoxTemplate")
 
 	end,
 
