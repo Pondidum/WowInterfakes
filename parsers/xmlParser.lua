@@ -3,11 +3,22 @@ local ns = ...
 local tags = {}
 
 local tagBase = {
-	process = function() end,
+	build = function() end,
 	processChildren = true,
 }
 
-local defaultTag = setmetatable({}, { __index = tagBase })
+local printTag = {
+	build = function(data)
+
+		return function(target)
+			print("Applying", data, "to", target:GetName())
+		end
+
+	end
+}
+
+--local defaultTag = setmetatable({}, { __index = tagBase })
+local defaultTag = setmetatable(printTag, { __index = tagBase })
 
 local tagNotFound = function(t, k) 
 	return defaultTag
@@ -31,26 +42,32 @@ local xmlParser = {
 				local currentChain = chain
 
 				if virtual then
+					print("Found virtual,", element.name)
 					currentChain = {}
 				end
+				
+				if not element.tag then
+					print("No tag found on", element)
+				else				
 
-				local tag = element:tag()
-				local handler = tags[tag]
+					local tag = element:tag()
+					local handler = tags[tag]
 
-				if handler then
+					if handler then
 
-					table.insert(currentChain, handler)
+						table.insert(currentChain, handler.build(tag))
 
-					if handler.processChildren then
-						recurseTree(element, currentChain)
+						if handler.processChildren then
+							recurseTree(element, currentChain)
+						end
+
 					end
 
-				end
+					if virtual then
+						ns.templateManager.addTemplate(element.name, currentChain)
+					end
 
-				if virtual then
-					ns.templateManager.addTemplate(element.name, currentChain)
-				end
-
+				end 
 			end
 
 		end
@@ -62,7 +79,7 @@ local xmlParser = {
 	end,
 
 	addTag = function(name, definition)
-		tags[name] = definition
+		tags[name] = setmetatable(definition, { __index = tagBase })
 	end,
 
 }
