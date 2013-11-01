@@ -7,27 +7,8 @@ local tagBase = {
 	processChildren = true,
 }
 
-local printTag = {
-	build = function(element)
-
-		return function(target)
-			local name = "unknown"
-			
-			if target then
-				name = target:GetName()
-			end
-
-			print("Applying", element.name, "to", name)
-		end
-
-	end
-}
-
---local defaultTag = setmetatable({}, { __index = tagBase })
-local defaultTag = setmetatable(printTag, { __index = tagBase })
-
 local tagNotFound = function(t, k) 
-	return defaultTag
+	return t.__default
 end 
 
 setmetatable(tags, { __index = tagNotFound })
