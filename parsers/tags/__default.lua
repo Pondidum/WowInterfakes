@@ -10,7 +10,7 @@ local tag = {
 				name = target:GetName()
 			end
 
-			print("Applying", element.name, "to", name)
+			print("Applying", element:tag(), "to", name)
 		end
 
 	end
