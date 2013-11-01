@@ -8,10 +8,16 @@ local tagBase = {
 }
 
 local printTag = {
-	build = function(data)
+	build = function(element)
 
 		return function(target)
-			print("Applying", data, "to", target:GetName())
+			local name = "unknown"
+			
+			if target then
+				name = target:GetName()
+			end
+
+			print("Applying", element.name, "to", name)
 		end
 
 	end
@@ -55,7 +61,7 @@ local xmlParser = {
 
 					if handler then
 
-						table.insert(currentChain, handler.build(tag))
+						table.insert(currentChain, handler.build(element))
 
 						if handler.processChildren then
 							recurseTree(element, currentChain)
@@ -75,9 +81,10 @@ local xmlParser = {
 		local handlerChain = {}
 		recurseTree(xmlTable, handlerChain)
 
-		-- for i, decorator in ipairs(handlerChain) do
-		-- 	decorator()
-		-- end
+		local target
+		for i, decorator in ipairs(handlerChain) do
+		 	target = decorator(target)
+		end
 
 	end,
 
