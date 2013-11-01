@@ -1,4 +1,5 @@
 local ns = ...
+local builder = ns.builder
 
 local tag = {
 	processChildren = true,
@@ -8,9 +9,10 @@ local tag = {
 
 			local name = element.name
 			local templates = element.inherits
-			local parent = --?
+			local parent = element.parent
 
-			CreateFrame("Frame", name, parent, templates)
+			print("Creating frame", name, "parented to", parent)
+			return builder.createFrame("Frame", name, parent, templates)
 		end
 
 		return decorator
