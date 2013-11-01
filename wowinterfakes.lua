@@ -25,7 +25,7 @@ project:new({
 
 		parser.parse(xmlFile)
 
-		local frame = ns.builder.createFrame("Frame", "Test", nil, "AutoCompleteEditBoxTemplate")
+		--local frame = ns.builder.createFrame("Frame", "Test", nil, "AutoCompleteEditBoxTemplate")
 
 	end,
 
