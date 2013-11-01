@@ -17,3 +17,4 @@ local tag = {
 }
 
 ns.parsers.xml.addTag("__default", tag)
+--ns.parsers.xml.addTag("__default", {})
