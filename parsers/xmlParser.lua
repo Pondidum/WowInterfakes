@@ -3,8 +3,17 @@ local ns = ...
 local tags = {}
 
 local tagBase = {
-	build = function() end,
 	processChildren = true,
+
+	build = function(element) 
+
+		local decorator =  function(target)
+			return target
+		end
+
+		return decorator
+
+	end,
 }
 
 local tagNotFound = function(t, k) 
@@ -29,12 +38,11 @@ local xmlParser = {
 				local currentChain = chain
 
 				if virtual then
-					print("Found virtual,", element.name)
 					currentChain = {}
 				end
 				
 				if not element.tag then
-					print("No tag found on", element)
+					--print("No tag found on", element)
 				else				
 
 					local tag = element:tag()
@@ -63,8 +71,15 @@ local xmlParser = {
 		recurseTree(xmlTable, handlerChain)
 
 		local target
+
 		for i, decorator in ipairs(handlerChain) do
-		 	target = decorator(target)
+		 	
+		 	local result = decorator(target)
+
+		 	if result then
+		 		target = result
+		 	end
+
 		end
 
 	end,
