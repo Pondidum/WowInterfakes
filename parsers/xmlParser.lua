@@ -88,179 +88,65 @@ local xmlParser = {
 		tags[name] = setmetatable(definition, { __index = tagBase })
 	end,
 
-}
+	newValueReader = function(element)
 
-ns.parsers = ns.parsers or {}
-ns.parsers.xml = xmlParser
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---[[
-local handlerMeta = { __index = handlerBase }
-
-local proxy = function(this) 
-	this.run = function(parent, element)
-		element.variable = parent.variable		
-		element.name = parent.name
-	end
-end
-
-local unknown = function(this)
-	this.run = function(parent, element)
-		Api.log.write("xmlParser", "No handler", string.format("tag: '%s'", element:tag()))
-	end
-end
-
-
-
-local luaFromXml = {
-	
-	new = function()
-
-		local handlers = {}
-		setmetatable(handlers, { __index = function(t, k) return unknown end})
-		
-		local this = {}
-
-		this.addTag = function(tag, customise)
-			handlers[tag] = customise
+		if element == nil then
+			return nil
 		end
 
-		this.addProxy = function(tag)
-		 	handlers[tag] = proxy
+		local abs = element.AbsValue
+		local rel = element.RelValue
+
+		local value
+
+		if abs then
+			value = tonumber(abs.val)
+		elseif rel then
+			value = tonumber(rel.val)
 		end
 
-		this.getTag = function(tag)
+		local this = {
+			isAbs = abs ~= nil,
+			isRel = rel ~= nil,
+			value = value
+		}
 
-			local base = { 
-				processChildren = true, 
-				run = function() end
-			}
+		return this
 
-			local handler = setmetatable(base, handlerMeta)
-			local customise = handlers[tag]
+	end,
 
-			customise(handler)
+	newInsetReader = function(element)
 
-			return handler
-
+		if element == nil then
+			return nil
 		end
 
+		local insets
 
-		local recurse
-		recurse = function(builder, parent, extra)
-
-			for i, element in ipairs(parent) do
-
-				if not element.tag then
-					Api.log.warn("xmlParser", string.format("no tag on '%s'", element))
-				else
-
-					local tag = element:tag()
-					local handler = this.getTag(tag)
-
-					handler.builder = builder
-
-					handler.run(parent, element, extra)
-
-					if handler.processChildren then
-						recurse(builder, element, extra)
-					end
-
-				end
-				
-			end
-
+		if element.AbsInset then
+			insets = element.AbsInset	
+		elseif element.RelInset then
+			insets = element.RelInset
 		end
 
-		this.build = function(template, extra)
+		local values = {
+			left = insets.left or 0,
+			right = insets.right or 0,
+			top = insets.top or 0,
+			bottom = insets.bottom or 0,
+		}
 
-			local builder = Api.stringBuilder.new()
-
-			recurse(builder, {template}, extra)
-
-			return builder.toString()
-
-		end
+		local this = {
+			isAbs = element.AbsInset ~= nil,
+			isRel = element.RelInset ~= nil,
+			value = values,
+		}
 
 		return this 
 
 	end,
-	
+
 }
 
-
-local instance = luaFromXml.new()
-
-local canHandle = function(path)
-	return string.sub(path, #path - 2) == "xml"
-end
-
-local parse = function(path, addonName, namespace)
-
-	Api.log.info("xmlParser", "BeginParse", path)
-
-	local xmlFile = xml.load(path)
-	local directory = io.path.getDirectory(path)
-	
-	local extra = { 
-		path = path, 
-		addonName = addonName, 
-		namespace = namespace
-	}
-
-	for i, element in ipairs(xmlFile) do
-
-		local luaText = instance.build(element, extra)
-
-		if luaText ~= "" then
-			
-			Api.log.debug("xmlParser", "Executing Generated Lua", element.name or "")
-
-			local wrapped = "return function()\n\n" .. luaText .. "\n\nend"
-			local loadFunc, errorMessage = loadstring(wrapped)
-
-			if Api.cache then
-				local cache = io.open(Api.root .. "cache\\" .. io.path.getFilename(path) .. ".lua", "w")
-				cache:write(wrapped)
-				cache:close()
-			end
-
-			if loadFunc == nil then
-				Api.log.warn("xmlParser", "Execute", errorMessage)
-			end
-
-			local runFunc = loadFunc()
-			runFunc()
-
-		end
-
-	end
-
-end
-
-
-Api.parsers.xml = instance
-Api.parsers.add(canHandle, parse)
-]]
+ns.parsers = ns.parsers or {}
+ns.parsers.xml = xmlParser
