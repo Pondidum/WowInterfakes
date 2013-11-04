@@ -10,6 +10,7 @@ project:new({
 		io.addFilesIn("core")
 		io.addFilesIn("widgets")
 
+		io.addFile("parsers\\namespace.lua")
 		io.addFile("parsers\\xmlParser.lua")
 		io.addFilesIn("parsers\\tags\\")
 		

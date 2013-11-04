@@ -148,5 +148,4 @@ local xmlParser = {
 
 }
 
-ns.parsers = ns.parsers or {}
 ns.parsers.xml = xmlParser
