@@ -3,11 +3,14 @@ local ns = ...
 local lineParsers = {}
 
 local lineParserBase = {
+	
 	canHandle = function(line)
 		return false
-	end
+	end,
+
 	parse = function(line)
 	end,
+
 }
 
 local lineMeta = { __index = lineParserBase }
@@ -62,3 +65,5 @@ local tocParser = {
 	addLineParser = addLineParser,
 
 }
+
+ns.parsers.toc = tocParser

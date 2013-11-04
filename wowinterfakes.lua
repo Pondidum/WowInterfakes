@@ -11,7 +11,8 @@ project:new({
 		io.addFilesIn("widgets")
 
 		io.addFile("parsers\\namespace.lua")
-		io.addFile("parsers\\xmlParser.lua")
+		io.addFilesIn("parsers")
+		
 		io.addFilesIn("parsers\\tags\\")
 		
 	end),
