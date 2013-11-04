@@ -14,6 +14,7 @@ project:new({
 		io.addFilesIn("parsers")
 
 		io.addFilesIn("parsers\\tags\\")
+		io.addFilesIn("parsers\\toc\\")
 		
 	end),
 
