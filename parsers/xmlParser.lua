@@ -1,7 +1,5 @@
 local ns = ...
 
-local tags = {}
-
 local tagBase = {
 	processChildren = true,
 
@@ -20,8 +18,17 @@ local tagNotFound = function(t, k)
 	return t.__default
 end 
 
-setmetatable(tags, { __index = tagNotFound })
+local notFoundMeta = { __index = tagNotFound }
+local tagBaseMeta = { __index = tagBase }
 
+local tags = setmetatable({}, notFoundMeta)
+
+local addTag = function(name, definition)
+	
+	setmetatable(definition, tagBaseMeta)
+	tags[name] = definition
+	
+end
 
 local xmlParser = {
 	parse = function(xmlTable)
@@ -84,9 +91,7 @@ local xmlParser = {
 
 	end,
 
-	addTag = function(name, definition)
-		tags[name] = setmetatable(definition, { __index = tagBase })
-	end,
+	addTag = addTag,
 
 	newValueReader = function(element)
 
@@ -148,5 +153,4 @@ local xmlParser = {
 
 }
 
-ns.parsers = ns.parsers or {}
 ns.parsers.xml = xmlParser

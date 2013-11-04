@@ -10,8 +10,11 @@ project:new({
 		io.addFilesIn("core")
 		io.addFilesIn("widgets")
 
-		io.addFile("parsers\\xmlParser.lua")
+		io.addFile("parsers\\namespace.lua")
+		io.addFilesIn("parsers")
+
 		io.addFilesIn("parsers\\tags\\")
+		io.addFilesIn("parsers\\toc\\")
 		
 	end),
 
@@ -20,13 +23,15 @@ project:new({
 		local builder = ns.builder
 		builder.init()
 		
-		local xmlFile = xml.load("wow-ui-source\\framexml\\autoComplete.xml")
-		local parser = ns.parsers.xml
+		-- local xmlFile = xml.load("wow-ui-source\\framexml\\autoComplete.xml")
+		-- local parser = ns.parsers.xml
 
-		parser.parse(xmlFile)
+		-- parser.parse(xmlFile)
 
-		--local frame = ns.builder.createFrame("Frame", "Test", nil, "AutoCompleteEditBoxTemplate")
+		local tocFile = "wow-ui-source\\framexml\\framexml.toc"
+		local parser = ns.parsers.toc
 
+		parser.parse(tocFile)
 	end,
 
 })
