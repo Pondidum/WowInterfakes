@@ -3,7 +3,7 @@ local ns = ...
 local parser = {
 	
 	canHandle = function(line)
-		return false -- line:startsWith("##")
+		return line:find("^##") ~= nil
 	end,
 
 	parse = function(line)
