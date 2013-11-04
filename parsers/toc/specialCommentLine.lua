@@ -7,7 +7,7 @@ local parser = {
 	end,
 
 	parse = function(line)
-		print("toc.specialComment", line)
+		--print("toc.specialComment", line)
 	end,
 }
 
