@@ -42,7 +42,7 @@ local tocParser = {
 
 	parse = function(filePath)
 
-		local file = file.open(filepath)
+		local file = io.open(filePath)
 
 		if not file then
 			return
@@ -52,7 +52,7 @@ local tocParser = {
 
 			local parsers = findParsersFor(line)
 
-			for i, parser in iparis(parsers) do
+			for i, parser in ipairs(parsers) do
 				parser.parse(line)
 			end
 
