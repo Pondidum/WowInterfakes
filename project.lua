@@ -1,4 +1,4 @@
-local lfs = require("lfs")
+local VERSION = "0.0.1"
 
 local getFilesToLoad = function(fileEntry)
 	
@@ -30,6 +30,7 @@ local fileHelper = {
 
 	new = function()
 
+		local lfs = require("lfs")
 		local files = {}
 		local this  = {}
 
@@ -80,7 +81,21 @@ local fileHelper = {
 		end
 
 		this.listFiles = function()
-			return files
+			
+			local seen = {}
+			local result = {}
+		
+			for i, path in ipairs(files) do
+				
+				if not seen[path] then
+					table.insert(result, path)
+					seen[path] = true 
+				end
+		
+			end
+			
+			return result 
+			
 		end
 
 		return this 
@@ -100,7 +115,7 @@ project = {
 
 		for i, filename in ipairs(files) do
 			
-			local content = loadfile(filename)
+			local content = assert(loadfile(filename))
 
 			if filename and content then
 				content(ns)
@@ -121,5 +136,11 @@ project = {
 		return helper.listFiles()
 
 	end,
+
+	version = function()
+
+		print("Project.lua, version ".. VERSION)
+
+	end.
 
 }
