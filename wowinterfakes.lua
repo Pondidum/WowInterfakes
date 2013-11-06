@@ -1,5 +1,4 @@
 require("project")
-require("luaxml")
 
 project:new({
 
