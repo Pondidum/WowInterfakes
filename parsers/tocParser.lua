@@ -44,6 +44,8 @@ local tocParser = {
 
 		local file = io.open(filePath)
 
+		local path, filename, extension = filePath:match("(.-)([^\\]-([^%.]+))$")
+
 		if not file then
 			return
 		end
@@ -53,7 +55,7 @@ local tocParser = {
 			local parsers = findParsersFor(line)
 
 			for i, parser in ipairs(parsers) do
-				parser.parse(line)
+				parser.parse(path .. line)
 			end
 
 		end
