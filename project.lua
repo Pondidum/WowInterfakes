@@ -1,4 +1,4 @@
-local VERSION = "0.0.1"
+local VERSION = "0.0.2"
 
 local getFilesToLoad = function(fileEntry)
 	
@@ -141,6 +141,6 @@ project = {
 
 		print("Project.lua, version ".. VERSION)
 
-	end.
+	end,
 
 }
