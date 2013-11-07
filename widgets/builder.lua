@@ -11,6 +11,8 @@ builder.init = function()
 	builder.applyParentedObject(frameMeta)
 	builder.applyRegion(frameMeta)
 	builder.applyVisibleRegion(frameMeta)
+	builder.applyScriptObject(frameMeta)
+
 	builder.applyFrame(frameMeta)
 
 	builder.frameMeta = { __index = frameMeta }
