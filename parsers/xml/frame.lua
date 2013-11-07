@@ -12,7 +12,7 @@ local tag = {
 			local parent = element.parent
 
 			print("Creating frame", name, "parented to", parent)
-			return builder.createFrame("Frame", name, parent, templates)
+			return builder.createFrame(element:tag(), name, parent, templates)
 		end
 
 		return decorator
@@ -22,6 +22,7 @@ local tag = {
 
 ns.parsers.xml.addTag("Frame", tag)
 ns.parsers.xml.addTag("WorldFrame", tag)
+ns.parsers.xml.addTag("GameTooltip", tag)
 
 -- Api.parsers.xml.addTag("Button", customise)
 -- Api.parsers.xml.addTag("CheckButton", customise)
