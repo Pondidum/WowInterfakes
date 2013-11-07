@@ -19,16 +19,19 @@ project:new({
 
 	run = function(ns)
 		
+		ns.log.enabled = true
+
 		local builder = ns.builder
 		builder.init()
 		
-		local file = xml.load("wow-ui-source\\framexml\\Fonts.xml")
-		local parser = ns.parsers.xml
+		-- local file = xml.load("wow-ui-source\\framexml\\WorldFrame.xml")
+		-- local parser = ns.parsers.xml
 
-		-- local file = "wow-ui-source\\framexml\\framexml.toc"
-		-- local parser = ns.parsers.toc
+		local file = "wow-ui-source\\framexml\\framexml.toc"
+		local parser = ns.parsers.toc
 
 		parser.parse(file)
+
 	end,
 
 })
