@@ -16,7 +16,7 @@ local logger = {
 local write = function(level, ...)
 
 	if logger.enabled and levelMap[level] >= logger.level then
-		Api.print(string.format("Api.%s: ", level), ...)
+		print(string.format("Api.%s: ", level), ...)
 	end
 
 end
