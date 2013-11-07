@@ -12,7 +12,7 @@ project:new({
 		io.addFile("parsers\\namespace.lua")
 		io.addFilesIn("parsers")
 
-		io.addFilesIn("parsers\\tags\\")
+		io.addFilesIn("parsers\\xml\\")
 		io.addFilesIn("parsers\\toc\\")
 		
 	end),
@@ -22,15 +22,13 @@ project:new({
 		local builder = ns.builder
 		builder.init()
 		
-		-- local xmlFile = xml.load("wow-ui-source\\framexml\\autoComplete.xml")
-		-- local parser = ns.parsers.xml
+		local file = xml.load("wow-ui-source\\framexml\\Fonts.xml")
+		local parser = ns.parsers.xml
 
-		-- parser.parse(xmlFile)
+		-- local file = "wow-ui-source\\framexml\\framexml.toc"
+		-- local parser = ns.parsers.toc
 
-		local tocFile = "wow-ui-source\\framexml\\framexml.toc"
-		local parser = ns.parsers.toc
-
-		parser.parse(tocFile)
+		parser.parse(file)
 	end,
 
 })
