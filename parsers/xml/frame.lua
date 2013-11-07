@@ -21,6 +21,7 @@ local tag = {
 }
 
 ns.parsers.xml.addTag("Frame", tag)
+ns.parsers.xml.addTag("WorldFrame", tag)
 
 -- Api.parsers.xml.addTag("Button", customise)
 -- Api.parsers.xml.addTag("CheckButton", customise)
