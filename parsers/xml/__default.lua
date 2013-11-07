@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log
 
 local tag = {
 	build = function(element)
@@ -10,7 +11,7 @@ local tag = {
 				name = target:GetName()
 			end
 
-			print("Applying", element:tag(), "to", name)
+			log.debug("tag.__default", string.format("applying %s to %s", element:tag(), name))
 		end
 
 	end

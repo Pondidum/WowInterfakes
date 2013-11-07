@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log
 local builder = ns.builder
 
 local tag = {
@@ -11,7 +12,7 @@ local tag = {
 			local templates = element.inherits
 			local parent = element.parent
 
-			print("Creating frame", name, "parented to", parent)
+			log.debug("tag.frame", string.format("Creating frame %s, parented to %s", name, parent or "nil"))
 			return builder.createFrame(element:tag(), name, parent, templates)
 		end
 

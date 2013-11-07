@@ -11,7 +11,8 @@ local parser = {
 
 	parse = function(line)
 		
-		log.debug("xmlLine", "parsing", line)		
+		log.debug("toc.xmlLine", "parsing", line)
+		
 		local file = xml.load(line)
 		local xmlParser = ns.parsers.xml
 

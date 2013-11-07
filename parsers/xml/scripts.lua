@@ -13,7 +13,6 @@ local tag = {
 				local call = element['function']
 
 				--not sure i can just do it like this, might need _G[call]
-				print(target:GetName(), handler, "=>", call)
 				target:SetScript(handler, call)	
 
 			end
