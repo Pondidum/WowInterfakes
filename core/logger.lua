@@ -7,6 +7,16 @@ local levelMap = {
 	error = 15,
 }
 
+local write = function(self, level, prefix, ...)
+	
+	local log = not self.hasFilters or self.filterPrefix[prefix]
+
+	if self.enabled and levelMap[level] >= self.level and log then
+		print(string.format("%s: %s:", level, prefix), ...)
+	end
+
+end
+
 local logger = {
 	enabled = false,
 	level = levelMap.debug,
@@ -19,15 +29,6 @@ local logger = {
 	end,
 }
 
-local write = function(self, level, prefix, ...)
-	
-	local log = not self.hasFilters or self.filterPrefix[prefix]
-
-	if self.enabled and levelMap[level] >= self.level and log then
-		print(string.format("%s: %s:", level, prefix), ...)
-	end
-
-end
 
 logger.new = function(self, prefix)
 
