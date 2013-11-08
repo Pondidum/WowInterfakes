@@ -9,7 +9,7 @@ local levelMap = {
 
 local write = function(self, level, prefix, ...)
 	
-	local log = not self.hasFilters or self.filterPrefix[prefix]
+	local log = not self.hasFilters or self.filters[prefix]
 
 	if self.enabled and levelMap[level] >= self.level and log then
 		print(string.format("%s: %s:", level, prefix), ...)
@@ -26,7 +26,7 @@ local logger = {
 	setFilters = function(self, filters)
 
 		self.filters = filters
-		self.hasFilters = next(logger.filterPrefix) ~= nil
+		self.hasFilters = next(filters) ~= nil
 			
 	end,
 

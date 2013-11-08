@@ -20,6 +20,9 @@ project:new({
 	run = function(ns)
 		
 		ns.log.enabled = true
+		-- ns.log:setFilters({
+		-- 	["toc.xmlLine"] = true,
+		-- })
 
 		local builder = ns.builder
 		builder.init()
