@@ -29,30 +29,12 @@ local write = function(level, prefix, ...)
 
 end
 
-local base = {
-	debug = function(...)
-		write("debug", ...)
-	end,
-
-	info = function(...)
-		write("info", ...)
-	end,
-
-	warn = function(...)
-		write("warn", ...)
-	end,
-
-	error = function(...)
-		write("error", ...)
-	end,
-}
-
 logger.new = function(self, prefix)
 
 	local wrapAndCall = function(t, k) 
 
 		return function(...)
-			base[k](prefix, ...)
+			write(k, prefix, ...)
 		end
 
 	end
