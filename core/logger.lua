@@ -26,7 +26,7 @@ local logger = {
 	setFilters = function(self, filters)
 
 		self.filters = filters
-		self.hasFilters = next(logger.filters) ~= nil
+		self.hasFilters = next(filters) ~= nil
 			
 	end,
 
