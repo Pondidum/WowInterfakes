@@ -1,6 +1,6 @@
 local ns = ...
 local builder = ns.builder
-local log = ns.log.new("tag.frame")
+local log = ns.log:new("tag.frame")
 
 local tag = {
 	processChildren = true,
