@@ -8,7 +8,7 @@ local tag = {
 			local name = "unknown"
 			
 			if target then
-				name = target:GetName()
+				name = target:GetName() or "nil"
 			end
 
 			log.debug(string.format("applying %s to %s", element:tag(), name))
