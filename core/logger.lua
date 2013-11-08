@@ -19,7 +19,7 @@ local logger = {
 	end,
 }
 
-local write = function(level, prefix, ...)
+local write = function(self, level, prefix, ...)
 	
 	local log = not logger.hasFilters or logger.filterPrefix[prefix]
 
@@ -34,7 +34,7 @@ logger.new = function(self, prefix)
 	local wrapAndCall = function(t, k) 
 
 		return function(...)
-			write(k, prefix, ...)
+			write(self, k, prefix, ...)
 		end
 
 	end
