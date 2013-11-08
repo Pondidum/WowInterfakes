@@ -21,25 +21,44 @@ local write = function(level, ...)
 
 end
 
+local base = {
 
-logger.write = function(...)
-	write("debug", ...)
+	write = function(...)
+		write("debug", ...)
+	end,
+
+	debug = function(...)
+		write("debug", ...)
+	end,
+
+	info = function(...)
+		write("info", ...)
+	end,
+
+	warn = function(...)
+		write("warn", ...)
+	end,
+
+	error = function(...)
+		write("error", ...)
+	end,
+
+}
+
+
+logger.new = function(prefix)
+
+	local wrapAndCall = function(t, k) 
+
+		return function(...)
+			base[k](prefix, ...)
+		end
+
+	end
+
+	return setmetatable({}, { __index = wrapAndCall })
+
 end
 
-logger.debug = function(...)
-	write("debug", ...)
-end
-
-logger.info = function(...)
-	write("info", ...)
-end
-
-logger.warn = function(...)
-	write("warn", ...)
-end
-
-logger.error = function(...)
-	write("error", ...)
-end
-
+setmetatable(logger, { __index = base })
 ns.log = logger
