@@ -11,23 +11,25 @@ local logger = {
 	enabled = false,
 	level = levelMap.debug,
 	levels = levelMap,
-	filterPrefix = {},
+	setFilters = function(self, filters)
+
+		self.filters = filters
+		self.hasFilters = next(logger.filterPrefix) ~= nil
+			
+	end,
 }
 
 local write = function(level, prefix, ...)
+	
+	local log = not logger.hasFilters or logger.filterPrefix[prefix]
 
-	if logger.enabled and levelMap[level] >= logger.level then
+	if logger.enabled and levelMap[level] >= logger.level and log then
 		print(string.format("%s: %s:", level, prefix), ...)
 	end
 
 end
 
 local base = {
-
-	write = function(...)
-		write("debug", ...)
-	end,
-
 	debug = function(...)
 		write("debug", ...)
 	end,
@@ -43,11 +45,9 @@ local base = {
 	error = function(...)
 		write("error", ...)
 	end,
-
 }
 
-
-logger.new = function(prefix)
+logger.new = function(self, prefix)
 
 	local wrapAndCall = function(t, k) 
 
