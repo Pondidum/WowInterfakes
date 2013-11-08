@@ -18,30 +18,32 @@ local write = function(self, level, prefix, ...)
 end
 
 local logger = {
+
 	enabled = false,
 	level = levelMap.debug,
 	levels = levelMap,
+
 	setFilters = function(self, filters)
 
 		self.filters = filters
 		self.hasFilters = next(logger.filterPrefix) ~= nil
 			
 	end,
-}
 
+	new = function(self, prefix)
 
-logger.new = function(self, prefix)
+		local wrapAndCall = function(t, k) 
 
-	local wrapAndCall = function(t, k) 
+			return function(...)
+				write(self, k, prefix, ...)
+			end
 
-		return function(...)
-			write(self, k, prefix, ...)
 		end
 
+		return setmetatable({}, { __index = wrapAndCall })
+
 	end
-
-	return setmetatable({}, { __index = wrapAndCall })
-
-end
+	
+}
 
 ns.log = logger
