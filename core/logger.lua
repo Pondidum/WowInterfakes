@@ -21,9 +21,9 @@ local logger = {
 
 local write = function(self, level, prefix, ...)
 	
-	local log = not logger.hasFilters or logger.filterPrefix[prefix]
+	local log = not self.hasFilters or self.filterPrefix[prefix]
 
-	if logger.enabled and levelMap[level] >= logger.level and log then
+	if self.enabled and levelMap[level] >= self.level and log then
 		print(string.format("%s: %s:", level, prefix), ...)
 	end
 
