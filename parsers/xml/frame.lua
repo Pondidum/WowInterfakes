@@ -12,7 +12,7 @@ local tag = {
 			local templates = element.inherits
 			local parent = element.parent
 
-			log.debug(string.format("Creating frame %s, parented to %s", name, parent or "nil"))
+			log.debug(string.format("Creating frame %s, parented to %s", name or "nil", parent or "nil"))
 			return builder.createFrame(element:tag(), name, parent, templates)
 		end
 
@@ -25,3 +25,4 @@ ns.parsers.xml.addTag("Frame", tag)
 ns.parsers.xml.addTag("WorldFrame", tag)
 ns.parsers.xml.addTag("GameTooltip", tag)
 ns.parsers.xml.addTag("Button", tag)
+ns.parsers.xml.addTag("MessageFrame", tag)
