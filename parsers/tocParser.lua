@@ -24,17 +24,15 @@ end
 
 local findParsersFor = function(line)
 	
-	local matches = {}
-
 	for i,v in ipairs(lineParsers) do
 		
 		if v.canHandle(line) then
-			table.insert(matches, v)
+			return v
 		end
 
 	end
 
-	return matches
+	return nil
 
 end
 
@@ -52,12 +50,12 @@ local tocParser = {
 
 		for line in file:lines() do
 
-			local parsers = findParsersFor(line)
+			local parser = findParsersFor(line)
 
-			for i, parser in ipairs(parsers) do
+			if parser then
 				parser.parse(path .. line)
 			end
-
+			
 		end
 
 		file:close()
