@@ -11,12 +11,13 @@ local logger = {
 	enabled = false,
 	level = levelMap.debug,
 	levels = levelMap,
+	filterPrefix = {},
 }
 
-local write = function(level, ...)
+local write = function(level, prefix, ...)
 
 	if logger.enabled and levelMap[level] >= logger.level then
-		print(string.format("%s: ", level), ...)
+		print(string.format("%s: %s:", level, prefix), ...)
 	end
 
 end
@@ -60,5 +61,4 @@ logger.new = function(prefix)
 
 end
 
-setmetatable(logger, { __index = base })
 ns.log = logger
