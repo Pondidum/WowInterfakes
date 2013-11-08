@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log.new("tag.__default")
+local log = ns.log:new("tag.__default")
 
 local tag = {
 	build = function(element)

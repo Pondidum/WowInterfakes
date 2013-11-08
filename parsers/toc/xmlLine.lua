@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log.new("toc.xmlLine")
+local log = ns.log:new("toc.xmlLine")
 
 require("luaxml")
 

@@ -7,58 +7,43 @@ local levelMap = {
 	error = 15,
 }
 
+local write = function(self, level, prefix, ...)
+	
+	local log = not self.hasFilters or self.filterPrefix[prefix]
+
+	if self.enabled and levelMap[level] >= self.level and log then
+		print(string.format("%s: %s:", level, prefix), ...)
+	end
+
+end
+
 local logger = {
+
 	enabled = false,
 	level = levelMap.debug,
 	levels = levelMap,
-}
 
-local write = function(level, ...)
+	setFilters = function(self, filters)
 
-	if logger.enabled and levelMap[level] >= logger.level then
-		print(string.format("%s: ", level), ...)
-	end
-
-end
-
-local base = {
-
-	write = function(...)
-		write("debug", ...)
+		self.filters = filters
+		self.hasFilters = next(logger.filterPrefix) ~= nil
+			
 	end,
 
-	debug = function(...)
-		write("debug", ...)
-	end,
+	new = function(self, prefix)
 
-	info = function(...)
-		write("info", ...)
-	end,
+		local wrapAndCall = function(t, k) 
 
-	warn = function(...)
-		write("warn", ...)
-	end,
+			return function(...)
+				write(self, k, prefix, ...)
+			end
 
-	error = function(...)
-		write("error", ...)
-	end,
-
-}
-
-
-logger.new = function(prefix)
-
-	local wrapAndCall = function(t, k) 
-
-		return function(...)
-			base[k](prefix, ...)
 		end
 
+		return setmetatable({}, { __index = wrapAndCall })
+
 	end
+	
+}
 
-	return setmetatable({}, { __index = wrapAndCall })
-
-end
-
-setmetatable(logger, { __index = base })
 ns.log = logger
