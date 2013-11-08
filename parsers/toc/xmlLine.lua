@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log
+local log = ns.log.new("toc.xmlLine")
 
 require("luaxml")
 
@@ -11,7 +11,7 @@ local parser = {
 
 	parse = function(line)
 		
-		log.debug("toc.xmlLine", "parsing", line)
+		log.debug("parsing", line)
 		
 		local file = xml.load(line)
 		local xmlParser = ns.parsers.xml
