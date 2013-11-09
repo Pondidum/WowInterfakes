@@ -15,6 +15,7 @@ project:new({
 		io.addFilesIn("parsers\\toc\\")
 		
 		io.addFile("api\\fillLocalizedClassList.lua")
+		io.addFile("api\\bit.lua")
 	end),
 
 	run = function(ns)
