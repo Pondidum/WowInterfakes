@@ -18,6 +18,7 @@ project:new({
 
 		io.addFile("api\\fillLocalizedClassList.lua")
 		io.addFile("api\\registerStaticConstants.lua")
+		io.addFile("api\\createFrame.lua")
 	end),
 
 	run = function(ns)
