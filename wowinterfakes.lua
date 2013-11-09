@@ -14,8 +14,10 @@ project:new({
 		io.addFilesIn("parsers\\xml\\")
 		io.addFilesIn("parsers\\toc\\")
 		
-		io.addFile("api\\fillLocalizedClassList.lua")
 		io.addFile("api\\bit.lua")
+
+		io.addFile("api\\fillLocalizedClassList.lua")
+		io.addFile("api\\registerStaticConstants.lua")
 	end),
 
 	run = function(ns)
