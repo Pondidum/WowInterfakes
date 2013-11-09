@@ -11,10 +11,10 @@ project:new({
 
 		io.addFile("parsers\\namespace.lua")
 		io.addFilesIn("parsers")
-
 		io.addFilesIn("parsers\\xml\\")
 		io.addFilesIn("parsers\\toc\\")
 		
+		io.addFile("api\\fillLocalizedClassList.lua")
 	end),
 
 	run = function(ns)

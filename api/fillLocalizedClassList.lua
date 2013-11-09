@@ -1,4 +1,4 @@
-
+local ns = ...
 local classMap = {}
 
 classMap["DEATHKNIGHT"] = { male = "Death Knight", 	female = "Death Knight" }
@@ -27,4 +27,4 @@ local fillList = function(table, female)
 		
 end
 
-Api.export("FillLocalizedClassList", fillList)
+ns.api.export("FillLocalizedClassList", fillList)
