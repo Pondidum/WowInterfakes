@@ -1,5 +1,7 @@
+local ns = ...
+
 local unitSex = function()
 	return 2 --Male
 end
 
-Api.export("UnitSex", unitSex)
+ns.api.export("UnitSex", unitSex)

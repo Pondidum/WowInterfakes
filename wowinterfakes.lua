@@ -24,6 +24,7 @@ project:new({
 		io.addFile("api\\securecall.lua")
 		io.addFile("api\\issecure.lua")
 		io.addFile("api\\unitRace.lua")
+		io.addFile("api\\unitSex.lua")
 
 	end),
 
