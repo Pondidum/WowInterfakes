@@ -22,11 +22,11 @@ local addLineParser = function(parser)
 	
 end
 
-local findParsersFor = function(line)
+local findParsersFor = function(file, line)
 	
 	for i,v in ipairs(lineParsers) do
 		
-		if v.canHandle(line) then
+		if v.canHandle(file, line) then
 			return v
 		end
 
@@ -50,10 +50,10 @@ local tocParser = {
 
 		for line in file:lines() do
 
-			local parser = findParsersFor(line)
+			local parser = findParsersFor(path, line)
 
 			if parser then
-				parser.parse(path .. line)
+				parser.parse(path, line)
 			end
 			
 		end

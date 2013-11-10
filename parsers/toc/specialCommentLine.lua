@@ -2,11 +2,11 @@ local ns = ...
 
 local parser = {
 	
-	canHandle = function(line)
-		return line:find("^##") ~= nil
+	canHandle = function(root, path)
+		return path:find("^##") ~= nil
 	end,
 
-	parse = function(line)
+	parse = function(root, path)
 		--print("toc.specialComment", line)
 	end,
 }

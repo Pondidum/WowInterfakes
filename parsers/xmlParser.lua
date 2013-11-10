@@ -31,7 +31,7 @@ local addTag = function(name, definition)
 end
 
 local xmlParser = {
-	parse = function(xmlTable)
+	parse = function(root, xmlTable)
 
 		local isVirtual = function(element)
 			return element.virtual == "true"
@@ -74,7 +74,10 @@ local xmlParser = {
 
 		end
 
-		local file = {}
+		local file = { 
+			root = root 
+		}
+		
 		local handlerChain = {}
 		recurseTree(file, xmlTable, handlerChain)
 

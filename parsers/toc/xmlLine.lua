@@ -5,18 +5,18 @@ require("luaxml")
 
 local parser = {
 	
-	canHandle = function(line)
-		return line:find(".xml$") ~= nil
+	canHandle = function(root, path)
+		return path:find(".xml$") ~= nil
 	end,
 
-	parse = function(line)
+	parse = function(root, path)
 		
-		log.debug("parsing", line)
+		log.debug("parsing", root .. path)
 		
-		local file = xml.load(line)
+		local file = xml.load(root .. path)
 		local xmlParser = ns.parsers.xml
 
-		xmlParser.parse(file)
+		xmlParser.parse(root, file)
 
 	end,
 }
