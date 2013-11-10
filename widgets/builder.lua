@@ -4,7 +4,9 @@ local templateManager = ns.templateManager
 local builder = {}
 
 builder.init = function()
-	
+		
+	builder.metas = {}
+
 	local frameMeta = {}
 
 	builder.applyUIObject(frameMeta)
@@ -12,10 +14,20 @@ builder.init = function()
 	builder.applyRegion(frameMeta)
 	builder.applyVisibleRegion(frameMeta)
 	builder.applyScriptObject(frameMeta)
-
 	builder.applyFrame(frameMeta)
 
-	builder.frameMeta = { __index = frameMeta }
+	builder.metas.frame = { __index = frameMeta }
+
+
+	local textureMeta = {}
+	builder.applyUIObject(textureMeta)
+	builder.applyParentedObject(textureMeta)
+	builder.applyRegion(textureMeta)
+	builder.applyVisibleRegion(textureMeta)
+	builder.applyLayeredRegion(textureMeta)
+	builder.applyTexture(textureMeta)
+
+	builder.metas.texture = { __index = textureMeta }
 
 end
 
@@ -23,7 +35,7 @@ builder.createFrame = function(type, name, parent, template)
 	
 	local frame = { __storage = {} }
 
-	setmetatable(frame, builder.frameMeta)
+	setmetatable(frame, builder.metas.frame)
 
 	frame.__storage.name = name 	--no publicly accessable SetName method()
 	frame:SetParent(parent)
