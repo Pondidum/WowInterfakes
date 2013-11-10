@@ -12,4 +12,8 @@ builder.applyFrame = function(region)
 		eventRegistry.register(self, event)
 	end
 
+	region.CreateTexture = function(self, name, layer, inherits, sublevel)
+		return builder.createTexture(self, name, layer, inherits, sublevel)
+	end
+
 end

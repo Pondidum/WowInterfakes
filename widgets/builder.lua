@@ -48,4 +48,22 @@ builder.createFrame = function(type, name, parent, template)
 
 end
 
+builder.createTexture = function(prent, name, layer, inherits, sublevel)
+	
+	local texture = { __storage = {} }
+
+	setmetatable(texture, builder.metas.texture)
+
+	texture.__storage.name = name 	--no publicly accessable SetName method()
+	texture:SetParent(parent)
+	texture:SetDrawLayer(layer, sublevel)
+
+	if inherits and inherits ~= "" then
+		-- dunno yet, maybe just templateManager
+	end
+
+	return texture
+
+end
+
 ns.builder = builder
