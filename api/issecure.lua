@@ -1,5 +1,7 @@
+local ns = ...
+
 local isSecure = function()
 	return true
 end
 
-Api.export("issecure", isSecure)
+ns.api.export("issecure", isSecure)
