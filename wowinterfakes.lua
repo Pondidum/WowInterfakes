@@ -20,6 +20,7 @@ project:new({
 		io.addFile("api\\registerStaticConstants.lua")
 		io.addFile("api\\createFrame.lua")
 		io.addFile("api\\getItemQualityColor.lua")
+		io.addFile("api\\getInventorySlotInfo.lua")
 
 	end),
 

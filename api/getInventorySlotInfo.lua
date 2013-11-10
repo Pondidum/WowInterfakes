@@ -1,3 +1,5 @@
+local ns = ...
+
 local slots = {}
 
 slots["AmmoSlot"]          = { id = "INVSLOT_AMMO",     texture = "" }	
@@ -37,6 +39,6 @@ local getInventorySlotInfo = function(slotName)
 
 end
 
-Api.export("GetInventorySlotInfo", getInventorySlotInfo)
+ns.api.export("GetInventorySlotInfo", getInventorySlotInfo)
 
 
