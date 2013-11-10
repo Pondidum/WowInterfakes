@@ -23,6 +23,7 @@ project:new({
 		io.addFile("api\\getInventorySlotInfo.lua")
 		io.addFile("api\\securecall.lua")
 		io.addFile("api\\issecure.lua")
+		io.addFile("api\\unitRace.lua")
 
 	end),
 
