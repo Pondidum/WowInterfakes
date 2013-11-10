@@ -4,7 +4,7 @@ local log = ns.log:new("tag.frame")
 
 local tag = {
 	processChildren = true,
-	build = function(element)
+	build = function(file, element)
 
 		local decorator = function(target)
 

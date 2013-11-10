@@ -3,7 +3,7 @@ local ns = ...
 local tag = {
 	processChildren = false,
 
-	build = function(element)
+	build = function(file, element)
 
 		local decorator = function(target)
 

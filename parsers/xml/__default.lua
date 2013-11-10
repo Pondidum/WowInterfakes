@@ -2,7 +2,7 @@ local ns = ...
 local log = ns.log:new("tag.__default")
 
 local tag = {
-	build = function(element)
+	build = function(file, element)
 
 		return function(target)
 			local name = "unknown"

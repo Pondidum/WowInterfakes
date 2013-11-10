@@ -3,7 +3,7 @@ local ns = ...
 local tagBase = {
 	processChildren = true,
 
-	build = function(element) 
+	build = function(file, element) 
 
 		local decorator =  function(target)
 			return target
@@ -37,7 +37,7 @@ local xmlParser = {
 			return element.virtual == "true"
 		end
 
-		local function recurseTree(parent, chain)
+		local function recurseTree(file, parent, chain)
 
 			for i, element in ipairs(parent) do 
 				
@@ -57,10 +57,10 @@ local xmlParser = {
 
 					if handler then
 
-						table.insert(currentChain, handler.build(element))
+						table.insert(currentChain, handler.build(file, element))
 
 						if handler.processChildren then
-							recurseTree(element, currentChain)
+							recurseTree(file, element, currentChain)
 						end
 
 					end
@@ -74,8 +74,9 @@ local xmlParser = {
 
 		end
 
+		local file = {}
 		local handlerChain = {}
-		recurseTree(xmlTable, handlerChain)
+		recurseTree(file, xmlTable, handlerChain)
 
 		local target
 
