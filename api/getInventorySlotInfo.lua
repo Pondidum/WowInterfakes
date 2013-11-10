@@ -40,5 +40,3 @@ local getInventorySlotInfo = function(slotName)
 end
 
 ns.api.export("GetInventorySlotInfo", getInventorySlotInfo)
-
-

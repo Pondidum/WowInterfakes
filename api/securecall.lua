@@ -1,5 +1,7 @@
+local ns = ...
+
 local securecall = function(target, ...)
 	return target(...)
 end
 
-Api.export("securecall", securecall)
+ns.api.export("securecall", securecall)

@@ -21,6 +21,7 @@ project:new({
 		io.addFile("api\\createFrame.lua")
 		io.addFile("api\\getItemQualityColor.lua")
 		io.addFile("api\\getInventorySlotInfo.lua")
+		io.addFile("api\\securecall.lua")
 
 	end),
 
