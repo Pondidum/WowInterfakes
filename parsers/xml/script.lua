@@ -6,12 +6,25 @@ local tag = {
 
 	build = function(file, element)
 
+		local root = file.root
+
 		local decorator = function(target)
 
-			local file = element.file
+			local path = element.file
 			
-			log.debug("running file", file)
+			if path then
 
+				local file = assert(loadfile(root .. path))
+
+				if file then
+					
+					log.debug("running file", root, path)
+
+					file()
+
+				end
+
+			end
 
 		end	
 
