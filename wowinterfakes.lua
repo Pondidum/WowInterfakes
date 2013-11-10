@@ -19,6 +19,8 @@ project:new({
 		io.addFile("api\\fillLocalizedClassList.lua")
 		io.addFile("api\\registerStaticConstants.lua")
 		io.addFile("api\\createFrame.lua")
+		io.addFile("api\\getItemQualityColor.lua")
+
 	end),
 
 	run = function(ns)
