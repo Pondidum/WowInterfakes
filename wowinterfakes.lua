@@ -13,19 +13,7 @@ project:new({
 		io.addFilesIn("parsers")
 		io.addFilesIn("parsers\\xml\\")
 		io.addFilesIn("parsers\\toc\\")
-		
-		io.addFile("api\\bit.lua")
-
-		io.addFile("api\\aliases.lua")
-		io.addFile("api\\fillLocalizedClassList.lua")
-		io.addFile("api\\registerStaticConstants.lua")
-		io.addFile("api\\createFrame.lua")
-		io.addFile("api\\getItemQualityColor.lua")
-		io.addFile("api\\getInventorySlotInfo.lua")
-		io.addFile("api\\securecall.lua")
-		io.addFile("api\\issecure.lua")
-		io.addFile("api\\unitRace.lua")
-		io.addFile("api\\unitSex.lua")
+		io.addFilesIn("api\\")
 
 	end),
 
