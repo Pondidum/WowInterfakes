@@ -1,4 +1,5 @@
 local ns = ...
+local print = print -- incase something re-assigns print (*cough* restrictedInfrastructure.lua *cough*)
 
 local levelMap = {
 	debug = 0,
