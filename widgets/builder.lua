@@ -44,6 +44,10 @@ builder.createFrame = function(type, name, parent, template)
 		templateManager.apply(template, frame)
 	end
 
+	if name then
+		_G[name] = frame
+	end
+	
 	return frame
 
 end
