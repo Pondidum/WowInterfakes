@@ -1,6 +1,25 @@
 local ns = ...
+local log = ns.log:new("builder")
 
 local templateManager = ns.templateManager
+
+local buildName = function(parent, name)
+	
+	if not name then 
+		return nil
+	end
+
+	local parentName = ""
+
+	if parent and parent.GetName then
+		parentName = parent:GetName()
+	end
+
+	return name:gsub("$parent", parentName)
+	
+end
+
+
 local builder = {}
 
 builder.init = function()
@@ -31,23 +50,25 @@ builder.init = function()
 
 end
 
+
 builder.createFrame = function(type, name, parent, template)
 	
-	local frame = { __storage = {} }
+	local realName = buildName(parent, name)
 
+	local frame = { __storage = {} }
 	setmetatable(frame, builder.metas.frame)
 
-	frame.__storage.name = name 	--no publicly accessable SetName method()
+	frame.__storage.name = realName 	--no publicly accessable SetName method()
 	frame:SetParent(parent)
 
 	if template and template ~= "" then
 		templateManager.apply(template, frame)
 	end
 
-	if name then
-		_G[name] = frame
+	if realName then
+		_G[realName] = frame
 	end
-	
+
 	return frame
 
 end
