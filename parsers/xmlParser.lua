@@ -41,6 +41,8 @@ local xmlParser = {
 
 			for i, element in ipairs(parent) do 
 				
+				element.parentElement = parent
+
 				local virtual = isVirtual(element)
 				local currentChain = chain
 
