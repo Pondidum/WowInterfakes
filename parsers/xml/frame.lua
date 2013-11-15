@@ -10,9 +10,23 @@ local tag = {
 
 			local name = element.name
 			local templates = element.inherits
+
 			local parent = element.parent
+			local current = element.parentElement
+
+			while parent == nil and current ~= nil do
+
+				if current.name then
+					parent = current.name
+					break
+				end
+
+				current = current.parentElement
+
+			end
 
 			log.debug(string.format("Creating frame %s, parented to %s", name or "nil", parent or "nil"))
+
 			return builder.createFrame(element:tag(), name, parent, templates)
 		end
 
