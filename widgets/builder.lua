@@ -69,6 +69,8 @@ builder.createFrame = function(type, name, parent, template)
 		_G[realName] = frame
 	end
 
+	log.debug(string.format("Creating %s called %s, parented to %s, with templates %s", type, name or "nil", parent or "nil", template or "nil"))
+
 	return frame
 
 end
