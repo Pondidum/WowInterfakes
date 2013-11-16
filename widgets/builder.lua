@@ -51,8 +51,12 @@ builder.init = function()
 end
 
 
-builder.createFrame = function(type, name, parent, template)
+builder.createFrame = function(frameType, name, parent, template)
 	
+	if parent ~= nil and type(parent) == "string" then
+		parent = _G[parent]
+	end
+
 	local realName = buildName(parent, name)
 
 	local frame = { __storage = {} }
@@ -69,7 +73,7 @@ builder.createFrame = function(type, name, parent, template)
 		_G[realName] = frame
 	end
 
-	log.debug(string.format("Creating %s called %s, parented to %s, with templates %s", type, name or "nil", parent or "nil", template or "nil"))
+	log.debug(string.format("Creating %s called %s, parented to %s, with templates %s", frameType, realName or "nil", tostring(parent or "nil"), template or "nil"))
 
 	return frame
 
