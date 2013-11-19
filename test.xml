@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">	
+	
+	<Frame name="OptionsFrameTemplate" toplevel="true" parent="UIParent" virtual="true">
+		<Frames>
+			<Frame name="$parentCategoryFrame" inherits="OptionsFrameListTemplate">
+			</Frame>
+		</Frames>
+	</Frame>
+
+	<Frame name="VideoOptionsFrame" inherits="OptionsFrameTemplate">
+		
+	</Frame>
+
+</Ui>

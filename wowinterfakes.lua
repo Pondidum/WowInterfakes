@@ -27,13 +27,13 @@ project:new({
 		local builder = ns.builder
 		builder.init()
 		
-		-- local file = xml.load("wow-ui-source\\framexml\\WorldFrame.xml")
-		-- local parser = ns.parsers.xml
+		local parser = ns.parsers.xml
+		parser.parse("", xml.load("test.xml"))
 
-		local file = "wow-ui-source\\framexml\\framexml.toc"
-		local parser = ns.parsers.toc
+		-- local file = "wow-ui-source\\framexml\\framexml.toc"
+		-- local parser = ns.parsers.toc
 
-		parser.parse(file)
+		-- parser.parse(file)
 
 	end,
 
