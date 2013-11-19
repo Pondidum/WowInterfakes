@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log.new("api")
+local log = ns.log:new("api")
 
 local api = {
 	
