@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log:new("xmlParser")
 
 local tagBase = {
 	processChildren = true,
@@ -80,9 +81,13 @@ local xmlParser = {
 			root = root 
 		}
 		
+		log.debug("building chain")
+
 		local handlerChain = {}
 		recurseTree(file, xmlTable, handlerChain)
 
+		log.debug("executing chain")
+		
 		local target
 
 		for i, decorator in ipairs(handlerChain) do
