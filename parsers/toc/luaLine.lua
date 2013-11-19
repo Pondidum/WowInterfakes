@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log.new("toc.luaLine")
+local log = ns.log:new("toc.luaLine")
 
 local parser = {
 	
