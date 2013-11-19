@@ -59,6 +59,13 @@ builder.createFrame = function(frameType, name, parent, template)
 
 	local realName = buildName(parent, name)
 
+	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s", 
+							frameType, 
+							realName or "nil", 
+							name or "nil", 
+							tostring(parent or "nil"), 
+							template or "nil"))
+
 	local frame = { __storage = {} }
 	setmetatable(frame, builder.metas.frame)
 
@@ -73,7 +80,7 @@ builder.createFrame = function(frameType, name, parent, template)
 		_G[realName] = frame
 	end
 
-	log.debug(string.format("Creating %s called %s, parented to %s, with templates %s", frameType, realName or "nil", tostring(parent or "nil"), template or "nil"))
+	
 
 	return frame
 
