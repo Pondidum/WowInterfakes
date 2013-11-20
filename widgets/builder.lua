@@ -2,6 +2,7 @@ local ns = ...
 local log = ns.log:new("builder")
 
 local templateManager = ns.templateManager
+local frameRegistry = ns.frameRegistry
 
 local buildName = function(parent, name)
 	
@@ -76,11 +77,7 @@ builder.createFrame = function(frameType, name, parent, template)
 		templateManager.apply(template, frame)
 	end
 
-	if realName then
-		_G[realName] = frame
-	end
-
-	
+	frameRegistry.register(realName, frame)
 
 	return frame
 
