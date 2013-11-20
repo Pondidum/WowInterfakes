@@ -33,6 +33,9 @@ local logger = {
 
 	new = function(self, prefix)
 
+		assert(type(self) ~= "string")
+		assert(prefix ~= nil)
+		
 		local wrapAndCall = function(t, k) 
 
 			return function(...)
