@@ -55,7 +55,7 @@ end
 builder.createFrame = function(frameType, name, parent, template)
 	
 	if parent ~= nil and type(parent) == "string" then
-		parent = _G[parent]
+		parent = frameRegistry.get(parent)
 	end
 
 	local realName = buildName(parent, name)
