@@ -20,6 +20,16 @@ local frameRegistry = {
 
 	end,
 
+	get = function(name)
+
+		if name == nil or name == "" then
+			return
+		end
+
+		return frameStore[name]
+
+	end,
+
 }
 
 ns.frameRegistry = frameRegistry
