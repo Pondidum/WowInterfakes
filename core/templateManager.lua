@@ -17,7 +17,9 @@ local templateManager = {
 
 		if decoratorChain then
 			
-			for i, decorator in ipairs(decoratorChain) do
+			for i = 1, #decoratorChain do
+
+				local decorator = decoratorChain[i]
 				decorator(target)
 			end
 
