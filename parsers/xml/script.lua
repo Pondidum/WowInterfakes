@@ -10,7 +10,7 @@ local tag = {
 
 		local decorator = function(target)
 
-			local path = element.file
+			local path = element.attributes.file
 			
 			if path then
 
