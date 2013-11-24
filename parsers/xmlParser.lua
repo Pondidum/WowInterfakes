@@ -35,12 +35,12 @@ local xmlParser = {
 	parse = function(root, xmlTable)
 
 		local isVirtual = function(element)
-			return element.virtual == "true"
+			return element.attributes.virtual == "true"
 		end
 
 		local function recurseTree(file, parent, chain)
 
-			for i, element in ipairs(parent) do 
+			for i, element in ipairs(parent.elements) do 
 				
 				element.parentElement = parent
 
@@ -55,7 +55,7 @@ local xmlParser = {
 					--print("No tag found on", element)
 				else				
 
-					local tag = element:tag()
+					local tag = element.tag
 					local handler = tags[tag]
 
 					if handler then
@@ -69,7 +69,7 @@ local xmlParser = {
 					end
 
 					if virtual then
-						ns.templateManager.addTemplate(element.name, currentChain)
+						ns.templateManager.addTemplate(element.attributes.name, currentChain)
 					end
 
 				end 

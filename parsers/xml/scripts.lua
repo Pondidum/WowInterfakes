@@ -9,7 +9,7 @@ local tag = {
 
 			for i, child in pairs(element) do
 				
-				local handler = element:tag()
+				local handler = element.tag
 				local call = element['function']
 
 				--not sure i can just do it like this, might need _G[call]

@@ -7,24 +7,24 @@ local tag = {
 
 		local decorator = function(target)
 
-			local name = element.name
-			local templates = element.inherits
+			local name = element.attributes.name
+			local templates = element.attributes.inherits
 
-			local parent = element.parent
-			local current = element.parentElement
+			local parent = element.attributes.parent
+			local current = element.parent
 
 			while parent == nil and current ~= nil do
 
-				if current.name then
-					parent = current.name
+				if current.attributes.name then
+					parent = current.attributes.name
 					break
 				end
 
-				current = current.parentElement
+				current = current.parent
 
 			end
 
-			return builder.createFrame(element:tag(), name, parent, templates)
+			return builder.createFrame(element.tag, name, parent, templates)
 		end
 
 		return decorator

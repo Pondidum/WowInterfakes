@@ -11,7 +11,7 @@ local tag = {
 				name = target:GetName() or "nil"
 			end
 
-			log.debug(string.format("applying %s to %s", element:tag(), name))
+			log.debug(string.format("applying %s to %s", element.tag, name))
 		end
 
 	end
