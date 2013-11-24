@@ -31,8 +31,12 @@ project:new({
 		local store = {}
 		ns.frameRegistry.setStore(store)
 
+		local converter = ns.xmlConverter
+		local sanitised = converter.parse(xml.load("test.xml"))
+
+
 		local parser = ns.parsers.xml
-		parser.parse("", xml.load("test.xml"))
+		parser.parse("", sanitised)
 
 		print("--------------------------------")
 		print("tables:")
