@@ -33,5 +33,7 @@ local function parse(parent, xmlElement)
 end
 
 ns.xmlConverter = {
-	parse = parse
+	parse = function(xmlTable)
+		return parse (nil, xmlTable)
+	end
 }
