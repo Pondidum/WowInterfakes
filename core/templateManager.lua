@@ -17,7 +17,7 @@ local templateManager = {
 
 		if handlerChain then
 			
-			for i = 1, #handlerChain do
+			for i = 2, #handlerChain do
 
 				local handler = handlerChain[i]
 
