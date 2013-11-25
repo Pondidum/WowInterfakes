@@ -21,10 +21,15 @@ local templateManager = {
 
 				local handler = handlerChain[i]
 
-				local decorator = handler.build(handler.file, handler.element)
+				local element = handler.element
+				local file = handler.file 
+
+				element.attributes.parent = target:GetName()
+				
+				local decorator = handler.build(file, element)
 
 				decorator(target)
-				
+
 			end
 
 		else
