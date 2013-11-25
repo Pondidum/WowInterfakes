@@ -40,9 +40,7 @@ local xmlParser = {
 
 		local function recurseTree(file, parent, chain)
 
-			for i, element in ipairs(parent.elements) do 
-				
-				element.parentElement = parent
+			for i, element in ipairs(parent.elements) do
 
 				local virtual = isVirtual(element)
 				local currentChain = chain
