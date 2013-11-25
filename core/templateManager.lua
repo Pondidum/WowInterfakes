@@ -5,22 +5,26 @@ local templates = {}
 
 local templateManager = {
 
-	addTemplate = function(name, decoratorChain)
+	addTemplate = function(name, handlerChain)
 
 		log.debug("registering template", name)
-		templates[name] = decoratorChain
+		templates[name] = handlerChain
 	end,
 
 	apply = function(name, target)
 
-		local decoratorChain = templates[name]
+		local handlerChain = templates[name]
 
-		if decoratorChain then
+		if handlerChain then
 			
-			for i = 1, #decoratorChain do
+			for i = 1, #handlerChain do
 
-				local decorator = decoratorChain[i]
+				local handler = handlerChain[i]
+
+				local decorator = handler.build(handler.file, handler.element)
+
 				decorator(target)
+				
 			end
 
 		else

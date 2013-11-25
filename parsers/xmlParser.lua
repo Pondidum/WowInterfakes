@@ -60,7 +60,11 @@ local xmlParser = {
 
 					if handler then
 
-						table.insert(currentChain, handler.build(file, element))
+						table.insert(currentChain, { 
+							file = file,
+							element = element,
+							build = handler.build,
+						})
 
 						if handler.processChildren then
 							recurseTree(file, element, currentChain)
@@ -90,8 +94,9 @@ local xmlParser = {
 		
 		local target
 
-		for i, decorator in ipairs(handlerChain) do
+		for i, handler in ipairs(handlerChain) do
 		 	
+		 	local decorator = handler.build(handler.file, handler.element)
 		 	local result = decorator(target)
 
 		 	if result then
