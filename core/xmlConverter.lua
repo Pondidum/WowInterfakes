@@ -1,6 +1,5 @@
 local ns = ...
-
-require("luaxml")
+local log = ns.log:new("xmlConverter")
 
 local function parse(parent, xmlElement)
 
