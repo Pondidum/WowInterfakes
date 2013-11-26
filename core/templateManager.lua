@@ -8,7 +8,10 @@ local templateManager = {
 	addTemplate = function(name, handlerChain)
 
 		log.debug("registering template", name)
+		
+		table.remove(handlerChain, 1) --i know this is slow, but hey.
 		templates[name] = handlerChain
+
 	end,
 
 	apply = function(name, target)
@@ -16,16 +19,18 @@ local templateManager = {
 		local handlerChain = templates[name]
 
 		if handlerChain then
-			
-			for i = 2, #handlerChain do
+
+			local first = handlerChain[1]
+
+			first.element.parent.attributes.name = target:GetName()
+
+			for i = 1, #handlerChain do
 
 				local handler = handlerChain[i]
 
 				local element = handler.element
 				local file = handler.file 
 
-				element.attributes.parent = target:GetName()
-				
 				local decorator = handler.build(file, element)
 
 				decorator(target)
