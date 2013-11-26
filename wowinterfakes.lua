@@ -31,22 +31,10 @@ project:new({
 		local store = {}
 		ns.frameRegistry.setStore(store)
 
-		local converter = ns.xmlConverter
-		local sanitised = converter.parse(xml.load("test.xml"))
+		local file = "wow-ui-source\\framexml\\framexml.toc"
+		local parser = ns.parsers.toc
 
-
-		local parser = ns.parsers.xml
-		parser.parse("", sanitised)
-
-		print("--------------------------------")
-		print("tables:")
-		for k,v in pairs(store) do
-			print(k,v)
-		end
-		-- local file = "wow-ui-source\\framexml\\framexml.toc"
-		-- local parser = ns.parsers.toc
-
-		-- parser.parse(file)
+		parser.parse(file)
 
 	end,
 
