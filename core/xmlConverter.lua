@@ -8,23 +8,32 @@ local function parse(parent, xmlElement)
 		elements = {},
 		tag = "",
 		parent = nil,
+		value = nil,
 	}
 
-	this.tag = xmlElement:tag()
 	this.parent = parent
 
-	for key, value in pairs(xmlElement) do
+	if xmlElement.tag then
 
-		if type(key) == "number" then
+		this.tag = xmlElement:tag()
 
-			if tonumber(key) > 0 then
-				table.insert(this.elements, parse(this, value))
+		for key, value in pairs(xmlElement) do
+
+			if type(key) == "number" then
+
+				if tonumber(key) > 0 then
+					table.insert(this.elements, parse(this, value))
+				end
+
+			else
+				this.attributes[key] = value
 			end
 
-		else
-			this.attributes[key] = value
 		end
 
+	else
+		 this.tag = "CDATA"
+		 this.value = xmlElement
 	end
 
 	return this
