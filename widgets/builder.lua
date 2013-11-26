@@ -70,6 +70,8 @@ builder.createFrame = function(frameType, name, parent, template)
 	local frame = { __storage = {} }
 	setmetatable(frame, builder.metas.frame)
 
+	frameRegistry.register(realName, frame)
+
 	frame.__storage.name = realName 	--no publicly accessable SetName method()
 	frame:SetParent(parent)
 
@@ -77,7 +79,6 @@ builder.createFrame = function(frameType, name, parent, template)
 		templateManager.apply(template, frame)
 	end
 
-	frameRegistry.register(realName, frame)
 
 	return frame
 
