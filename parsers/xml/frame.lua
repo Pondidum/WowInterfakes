@@ -11,16 +11,16 @@ local tag = {
 			local templates = element.attributes.inherits
 
 			local parent = element.attributes.parent
-			local current = element.parent
+			local parentElement = element.parent
 
-			while parent == nil and current ~= nil do
+			while parent == nil and parentElement ~= nil do
 
-				if current.attributes.name then
-					parent = current.attributes.name
+				if parentElement.attributes.name then
+					parent = parentElement.attributes.name
 					break
 				end
 
-				current = current.parent
+				parentElement = parentElement.parent
 
 			end
 
