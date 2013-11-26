@@ -14,9 +14,11 @@ local parser = {
 		log.debug("parsing", root .. path)
 		
 		local file = xml.load(root .. path)
-		local xmlParser = ns.parsers.xml
 
-		xmlParser.parse(root, file)
+		local xmlParser = ns.parsers.xml
+		local sanitised = ns.xmlConverter.parse(file)
+
+		xmlParser.parse(root, sanitised)
 
 	end,
 }
