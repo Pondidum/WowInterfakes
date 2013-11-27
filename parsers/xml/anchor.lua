@@ -21,11 +21,13 @@ local tag = {
 
 		local decorator = function(target)
 
-			local point = element.point or ""
-			local x = fixValue(element.x) or 0
-			local y = fixValue(element.y) or 0
+			local point = element.attributes.point or ""
+			local relativeFrame = element.attributes.relativeTo or ""
+			local relativePoint = element.attributes.relativePoint or  ""
+			local x = fixValue(element.attributes.x) or 0
+			local y = fixValue(element.attributes.y) or 0
 
-			target:SetPoint(point, x, y)
+			target:SetPoint(point, relativeFrame, relativePoint, x, y)
 
 		end
 
