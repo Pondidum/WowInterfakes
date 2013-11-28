@@ -9,11 +9,12 @@ local tag = {
 		local decorator = function(target)
 
 			local x, y = 0, 0
-			local abs = element[1]
+			
+			local sub = element.elements.AbsDimension or element.elements.RelDimension or {}
 
-			if abs then
-				x = abs.x
-				y = abs.y
+			if sub and sub.attributes then
+				x = sub.attributes.x
+				y = sub.attributes.y
 			else
 				x = element.attributes.x
 				y = element.attributes.y
