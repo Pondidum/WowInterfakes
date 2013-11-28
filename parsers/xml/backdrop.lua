@@ -9,14 +9,14 @@ local tag = {
 
 		local decorator = function(target)
 
-			local bgFile = element.bgFile
-			local edgeFile = element.edgeFile
-			local tile = element.tile
+			local bgFile = element.attributes.bgFile
+			local edgeFile = element.attributes.edgeFile
+			local tile = element.attributes.tile
 			
-			local edgeSize = parser.newValueReader(element.EdgeSize)
-			local tileSize = parser.newValueReader(element.TileSize)
+			local edgeSize = parser.newValueReader(element.elements.EdgeSize)
+			local tileSize = parser.newValueReader(element.elements.TileSize)
 
-			local insets = parser.newInsetReader(element.BackgroundInsets)
+			local insets = parser.newInsetReader(element.elements.BackgroundInsets)
 
 			local backdrop = {}
 
