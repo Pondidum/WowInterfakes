@@ -15,8 +15,8 @@ local tag = {
 				x = abs.x
 				y = abs.y
 			else
-				x = element.x
-				y = element.y
+				x = element.attributes.x
+				y = element.attributes.y
 			end
 
 			target:SetSize(x, y)
