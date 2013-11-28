@@ -9,7 +9,6 @@ local templateManager = {
 
 		log.debug("registering template", name)
 		
-		table.remove(handlerChain, 1) --i know this is slow, but hey.
 		templates[name] = handlerChain
 
 	end,

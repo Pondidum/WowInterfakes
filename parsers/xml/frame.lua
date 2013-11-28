@@ -7,24 +7,40 @@ local tag = {
 
 		local decorator = function(target)
 
-			local name = element.attributes.name
-			local templates = element.attributes.inherits
+			local isVirtual = element.attributes.virtual == "true"
 
-			local parent = element.attributes.parent
-			local parentElement = element.parent
+			local frame
 
-			while parent == nil and parentElement ~= nil do
+			if isVirtual then
+				frame = target
+			else
+				local name = element.attributes.name
+				local templates = element.attributes.inherits
 
-				if parentElement.attributes.name then
-					parent = parentElement.attributes.name
-					break
+				local parent = element.attributes.parent
+				local parentElement = element.parent
+
+				while parent == nil and parentElement ~= nil do
+
+					if parentElement.attributes.name then
+						parent = parentElement.attributes.name
+						break
+					end
+
+					parentElement = parentElement.parent
+
 				end
 
-				parentElement = parentElement.parent
-
+				frame = builder.createFrame(element.tag, name, parent, templates)
 			end
 
-			return builder.createFrame(element.tag, name, parent, templates)
+			-- process other attribs etc
+			--
+			--
+			
+			return frame
+
+
 		end
 
 		return decorator
