@@ -113,15 +113,15 @@ local xmlParser = {
 			return nil
 		end
 
-		local abs = element.AbsValue
-		local rel = element.RelValue
+		local abs = element.elements.AbsValue
+		local rel = element.elements.RelValue
 
 		local value
 
 		if abs then
-			value = tonumber(abs.val)
+			value = tonumber(abs.attributes.val)
 		elseif rel then
-			value = tonumber(rel.val)
+			value = tonumber(rel.attributes.val)
 		end
 
 		local this = {
@@ -143,21 +143,21 @@ local xmlParser = {
 		local insets
 
 		if element.AbsInset then
-			insets = element.AbsInset	
+			insets = element.elements.AbsInset	
 		elseif element.RelInset then
-			insets = element.RelInset
+			insets = element.elements.RelInset
 		end
 
 		local values = {
-			left = insets.left or 0,
-			right = insets.right or 0,
-			top = insets.top or 0,
-			bottom = insets.bottom or 0,
+			left = insets.attributes.left or 0,
+			right = insets.attributes.right or 0,
+			top = insets.attributes.top or 0,
+			bottom = insets.attributes.bottom or 0,
 		}
 
 		local this = {
-			isAbs = element.AbsInset ~= nil,
-			isRel = element.RelInset ~= nil,
+			isAbs = element.elements.AbsInset ~= nil,
+			isRel = element.elements.RelInset ~= nil,
 			value = values,
 		}
 
