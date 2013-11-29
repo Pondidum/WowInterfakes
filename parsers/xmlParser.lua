@@ -2,6 +2,7 @@ local ns = ...
 local log = ns.log:new("xmlParser")
 
 local tagBase = {
+	postProcess = false,
 	processChildren = true,
 
 	build = function(file, element) 
@@ -40,6 +41,8 @@ local xmlParser = {
 
 		local function recurseTree(file, parent, chain)
 
+			local postChain = {}
+
 			for i, element in ipairs(parent.elements) do
 
 				local virtual = isVirtual(element)
@@ -58,15 +61,23 @@ local xmlParser = {
 
 					if handler then
 
-						table.insert(currentChain, { 
+						local decoratorData = { 
 							file = file,
 							element = element,
 							build = handler.build,
-						})
+						}
 
-						if handler.processChildren then
-							recurseTree(file, element, currentChain)
+						if handler.postProcess then
+							table.insert(postChain, decoratorData)
+						else
+							table.insert(currentChain, decoratorData)
+						
+							if handler.processChildren then
+								recurseTree(file, element, currentChain)
+							end
+
 						end
+
 
 					end
 
@@ -75,6 +86,10 @@ local xmlParser = {
 					end
 
 				end 
+			end
+
+			for i, decorator in ipairs(postChain) do
+				table.insert(chain, decorator)
 			end
 
 		end

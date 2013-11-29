@@ -2,6 +2,7 @@ local ns = ...
 local log = ns.log:new("tags.script")
 
 local tag = {
+	postProcess = true,
 	processChildren = false,
 
 	build = function(file, element)
