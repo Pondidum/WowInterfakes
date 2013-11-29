@@ -21,7 +21,7 @@ local templateManager = {
 
 			local first = handlerChain[1]
 
-			first.element.parent.attributes.name = target:GetName()
+			first.element.attributes.name = target:GetName()
 
 			for i = 1, #handlerChain do
 
