@@ -26,11 +26,7 @@ project:new({
 
 		local builder = ns.builder
 		builder.init()
-		
-		-- instead of writing frames to _G, write them here
-		local store = {}
-		ns.frameRegistry.setStore(store)
-
+				
 		local file = "wow-ui-source\\framexml\\framexml.toc"
 		local parser = ns.parsers.toc
 
