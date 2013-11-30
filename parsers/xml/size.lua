@@ -4,30 +4,23 @@ local tag = {
 
 	processChildren = false,
 	
-	build = function(file, element)
+	build = function(file, element, target)
 
-		local decorator = function(target)
+		local x, y = 0, 0
+		
+		local sub = element.elements.AbsDimension or element.elements.RelDimension or {}
 
-			local x, y = 0, 0
-			
-			local sub = element.elements.AbsDimension or element.elements.RelDimension or {}
-
-			if sub and sub.attributes then
-				x = sub.attributes.x
-				y = sub.attributes.y
-			else
-				x = element.attributes.x
-				y = element.attributes.y
-			end
-
-			target:SetSize(x, y)
-
+		if sub and sub.attributes then
+			x = sub.attributes.x
+			y = sub.attributes.y
+		else
+			x = element.attributes.x
+			y = element.attributes.y
 		end
 
-		return decorator
+		target:SetSize(x, y)
 
-	end,
-
+	end
 }
 
 ns.parsers.xml.addTag("Size", tag)

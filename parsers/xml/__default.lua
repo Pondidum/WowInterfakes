@@ -2,18 +2,14 @@ local ns = ...
 local log = ns.log:new("tag.__default")
 
 local tag = {
-	build = function(file, element)
-
-		return function(target)
-			local name = "unknown"
-			
-			if target then
-				name = target:GetName() or "nil"
-			end
-
-			log.debug(string.format("applying %s to %s", element.tag, name))
+	build = function(file, element, target)
+		local name = "unknown"
+		
+		if target then
+			name = target:GetName() or "nil"
 		end
 
+		log.debug(string.format("applying %s to %s", element.tag, name))
 	end
 }
 

@@ -17,24 +17,17 @@ local tag = {
 
 	processChildren = false,
 	
-	build = function(file, element)
+	build = function(file, element, target)
 
-		local decorator = function(target)
+		local point = element.attributes.point or ""
+		local relativeFrame = element.attributes.relativeTo or ""
+		local relativePoint = element.attributes.relativePoint or  ""
+		local x = fixValue(element.attributes.x) or 0
+		local y = fixValue(element.attributes.y) or 0
 
-			local point = element.attributes.point or ""
-			local relativeFrame = element.attributes.relativeTo or ""
-			local relativePoint = element.attributes.relativePoint or  ""
-			local x = fixValue(element.attributes.x) or 0
-			local y = fixValue(element.attributes.y) or 0
-
-			target:SetPoint(point, relativeFrame, relativePoint, x, y)
-
-		end
-
-		return decorator
+		target:SetPoint(point, relativeFrame, relativePoint, x, y)
 
 	end,
-
 }
 
 ns.parsers.xml.addTag("Anchor", tag)

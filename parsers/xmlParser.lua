@@ -5,7 +5,7 @@ local tagBase = {
 	postProcess = false,
 	processChildren = true,
 
-	build = function(file, element, target) )
+	build = function(file, element, target)
 		return target
 	end,
 }
