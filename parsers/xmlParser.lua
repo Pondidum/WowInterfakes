@@ -1,32 +1,18 @@
 local ns = ...
 local log = ns.log:new("xmlParser")
 
-local tagBase = {
-	postProcess = false,
-	processChildren = true,
-
-	build = function(file, element, target)
-		return target
-	end,
-}
-
 local tagNotFound = function(t, k) 
 	return t.__default
 end 
 
-local notFoundMeta = { __index = tagNotFound }
-local tagBaseMeta = { __index = tagBase }
-
-local tags = setmetatable({}, notFoundMeta)
-
-local addTag = function(name, definition)
-	
-	setmetatable(definition, tagBaseMeta)
-	tags[name] = definition
-	
-end
+local tags = setmetatable({}, { __index = tagNotFound })
 
 local xmlParser = {
+
+	addTag = function(name, tag)
+		tags[name] = tag
+	end,
+
 	parse = function(root, xmlTable)
 
 		local isVirtual = function(element)
@@ -58,7 +44,9 @@ local xmlParser = {
 						local decoratorData = { 
 							file = file,
 							element = element,
-							build = handler.build,
+							build = function(...) 
+								return handler:build(...) 
+							end,
 						}
 
 						if handler.postProcess then
@@ -110,66 +98,6 @@ local xmlParser = {
 		 	end
 
 		end
-
-	end,
-
-	addTag = addTag,
-
-	newValueReader = function(element)
-
-		if element == nil then
-			return nil
-		end
-
-		local abs = element.elements.AbsValue
-		local rel = element.elements.RelValue
-
-		local value
-
-		if abs then
-			value = tonumber(abs.attributes.val)
-		elseif rel then
-			value = tonumber(rel.attributes.val)
-		end
-
-		local this = {
-			isAbs = abs ~= nil,
-			isRel = rel ~= nil,
-			value = value
-		}
-
-		return this
-
-	end,
-
-	newInsetReader = function(element)
-
-		if element == nil then
-			return nil
-		end
-
-		local insets
-
-		if element.AbsInset then
-			insets = element.elements.AbsInset	
-		elseif element.RelInset then
-			insets = element.elements.RelInset
-		end
-
-		local values = {
-			left = insets.attributes.left or 0,
-			right = insets.attributes.right or 0,
-			top = insets.attributes.top or 0,
-			bottom = insets.attributes.bottom or 0,
-		}
-
-		local this = {
-			isAbs = element.elements.AbsInset ~= nil,
-			isRel = element.elements.RelInset ~= nil,
-			value = values,
-		}
-
-		return this 
 
 	end,
 

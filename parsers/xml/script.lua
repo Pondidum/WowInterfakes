@@ -1,11 +1,11 @@
 local ns = ...
 local log = ns.log:new("tags.script")
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
 	postProcess = true,
 	processChildren = false,
 
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		local path = element.attributes.file
 		
@@ -25,6 +25,6 @@ local tag = {
 		end
 
 	end
-}
+})
 
 ns.parsers.xml.addTag("Script", tag)
