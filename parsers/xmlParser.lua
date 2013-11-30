@@ -44,7 +44,7 @@ local xmlParser = {
 						local decoratorData = { 
 							file = file,
 							element = element,
-							build = function(self, ...) 
+							build = function(...) 
 								return handler:build(...) 
 							end,
 						}
@@ -91,7 +91,7 @@ local xmlParser = {
 
 		for i, handler in ipairs(handlerChain) do
 		 	
-		 	local result = handler:build(handler.file, handler.element, target)
+		 	local result = handler.build(handler.file, handler.element, target)
 
 		 	if result then
 		 		target = result
