@@ -1,8 +1,7 @@
 local ns = ...
 
-local parser = ns.parsers.xml
+local tag = ns.parsers.xmlTag:new({
 
-local tag = {
 	processChildren = false,
 
 	build = function(self, file, element, target)
@@ -43,6 +42,6 @@ local tag = {
 		target:SetBackdrop(backdrop)
 
 	end
-}
+})
 
-parser.addTag("Backdrop", tag)
+ns.parsers.xml.addTag("Backdrop", tag)

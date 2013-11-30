@@ -1,7 +1,7 @@
 local ns = ...
 local log = ns.log:new("tags.script")
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
 	postProcess = true,
 	processChildren = false,
 
@@ -25,6 +25,6 @@ local tag = {
 		end
 
 	end
-}
+})
 
 ns.parsers.xml.addTag("Script", tag)

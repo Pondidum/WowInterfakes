@@ -1,7 +1,8 @@
 local ns = ...
 local builder = ns.builder
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
+
 	processChildren = true,
 	build = function(self, file, element, target)
 
@@ -39,7 +40,7 @@ local tag = {
 		return frame
 
 	end,
-}
+})
 
 ns.parsers.xml.addTag("Frame", tag)
 ns.parsers.xml.addTag("WorldFrame", tag)

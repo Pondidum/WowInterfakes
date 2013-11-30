@@ -1,6 +1,6 @@
 local ns = ...
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
 	processChildren = false,
 
 	build = function(self, file, element, target)
@@ -16,6 +16,6 @@ local tag = {
 		end
 
 	end	
-}
+})
 
 ns.parsers.xml.addTag("Scripts", tag)

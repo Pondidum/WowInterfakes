@@ -13,7 +13,7 @@ local fixValue = function(value)
 	return value:gsub("%a", "")
 end
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
 
 	processChildren = false,
 	
@@ -28,6 +28,6 @@ local tag = {
 		target:SetPoint(point, relativeFrame, relativePoint, x, y)
 
 	end,
-}
+})
 
 ns.parsers.xml.addTag("Anchor", tag)

@@ -1,6 +1,6 @@
 local ns = ...
 
-local tag = {
+local tag = ns.parsers.xmlTag:new({
 
 	processChildren = false,
 	
@@ -21,6 +21,6 @@ local tag = {
 		target:SetSize(x, y)
 
 	end
-}
+})
 
 ns.parsers.xml.addTag("Size", tag)
