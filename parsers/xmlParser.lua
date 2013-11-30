@@ -5,14 +5,8 @@ local tagBase = {
 	postProcess = false,
 	processChildren = true,
 
-	build = function(file, element) 
-
-		local decorator =  function(target)
-			return target
-		end
-
-		return decorator
-
+	build = function(file, element, target) )
+		return target
 	end,
 }
 
@@ -109,8 +103,7 @@ local xmlParser = {
 
 		for i, handler in ipairs(handlerChain) do
 		 	
-		 	local decorator = handler.build(handler.file, handler.element)
-		 	local result = decorator(target)
+		 	local result = handler.build(handler.file, handler.element, target)
 
 		 	if result then
 		 		target = result
