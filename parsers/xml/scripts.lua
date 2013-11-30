@@ -3,7 +3,7 @@ local ns = ...
 local tag = {
 	processChildren = false,
 
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		for i, child in pairs(element) do
 			

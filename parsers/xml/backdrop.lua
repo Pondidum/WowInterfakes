@@ -5,16 +5,16 @@ local parser = ns.parsers.xml
 local tag = {
 	processChildren = false,
 
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		local bgFile = element.attributes.bgFile
 		local edgeFile = element.attributes.edgeFile
 		local tile = element.attributes.tile
 		
-		local edgeSize = parser.newValueReader(element.elements.EdgeSize)
-		local tileSize = parser.newValueReader(element.elements.TileSize)
+		local edgeSize = self:parseValue(element.elements.EdgeSize)
+		local tileSize = self:parseValue(element.elements.TileSize)
 
-		local insets = parser.newInsetReader(element.elements.BackgroundInsets)
+		local insets = self:parseInset(element.elements.BackgroundInsets)
 
 		local backdrop = {}
 

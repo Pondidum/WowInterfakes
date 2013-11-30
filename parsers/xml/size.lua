@@ -4,7 +4,7 @@ local tag = {
 
 	processChildren = false,
 	
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		local x, y = 0, 0
 		

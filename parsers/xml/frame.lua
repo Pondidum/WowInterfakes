@@ -3,7 +3,7 @@ local builder = ns.builder
 
 local tag = {
 	processChildren = true,
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		local isVirtual = element.attributes.virtual == "true"
 

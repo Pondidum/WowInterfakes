@@ -17,7 +17,7 @@ local tag = {
 
 	processChildren = false,
 	
-	build = function(file, element, target)
+	build = function(self, file, element, target)
 
 		local point = element.attributes.point or ""
 		local relativeFrame = element.attributes.relativeTo or ""
