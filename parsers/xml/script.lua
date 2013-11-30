@@ -5,33 +5,26 @@ local tag = {
 	postProcess = true,
 	processChildren = false,
 
-	build = function(file, element)
+	build = function(file, element, target)
 
-		local root = file.root
+		local path = element.attributes.file
+		
+		if path then
 
-		local decorator = function(target)
+			local root = file.root
+			local file = assert(loadfile(root .. path))
 
-			local path = element.attributes.file
-			
-			if path then
+			if file then
+				
+				log.debug("running file", root, path)
 
-				local file = assert(loadfile(root .. path))
-
-				if file then
-					
-					log.debug("running file", root, path)
-
-					file()
-
-				end
+				file()
 
 			end
 
-		end	
+		end
 
-		return decorator
-
-	end,
+	end
 }
 
 ns.parsers.xml.addTag("Script", tag)

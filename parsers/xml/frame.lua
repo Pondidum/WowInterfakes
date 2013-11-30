@@ -3,47 +3,40 @@ local builder = ns.builder
 
 local tag = {
 	processChildren = true,
-	build = function(file, element)
+	build = function(file, element, target)
 
-		local decorator = function(target)
+		local isVirtual = element.attributes.virtual == "true"
 
-			local isVirtual = element.attributes.virtual == "true"
+		local frame
 
-			local frame
+		if isVirtual then
+			frame = target
+		else
+			local name = element.attributes.name
+			local templates = element.attributes.inherits
 
-			if isVirtual then
-				frame = target
-			else
-				local name = element.attributes.name
-				local templates = element.attributes.inherits
+			local parent = element.attributes.parent
+			local parentElement = element.parent
 
-				local parent = element.attributes.parent
-				local parentElement = element.parent
+			while parent == nil and parentElement ~= nil do
 
-				while parent == nil and parentElement ~= nil do
-
-					if parentElement.attributes.name then
-						parent = parentElement.attributes.name
-						break
-					end
-
-					parentElement = parentElement.parent
-
+				if parentElement.attributes.name then
+					parent = parentElement.attributes.name
+					break
 				end
 
-				frame = builder.createFrame(element.tag, name, parent, templates)
+				parentElement = parentElement.parent
+
 			end
 
-			-- process other attribs etc
-			--
-			--
-			
-			return frame
-
-
+			frame = builder.createFrame(element.tag, name, parent, templates)
 		end
 
-		return decorator
+		-- process other attribs etc
+		--
+		--
+		
+		return frame
 
 	end,
 }

@@ -30,9 +30,7 @@ local templateManager = {
 				local element = handler.element
 				local file = handler.file 
 
-				local decorator = handler.build(file, element)
-
-				decorator(target)
+				handler.build(file, element, target)
 
 			end
 
