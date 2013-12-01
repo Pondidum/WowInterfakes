@@ -20,17 +20,12 @@ project:new({
 	run = function(ns)
 		
 		ns.log.enabled = true
-		-- ns.log:setFilters({
-		-- 	["toc.xmlLine"] = true,
-		-- })
 
-		local builder = ns.builder
-		builder.init()
+		ns.builder.init()
 				
-		local file = "wow-ui-source\\framexml\\framexml.toc"
 		local parser = ns.parsers.toc
 
-		parser.parse(file)
+		parser.parse("wow-ui-source\\framexml\\framexml.toc")
 
 	end,
 
