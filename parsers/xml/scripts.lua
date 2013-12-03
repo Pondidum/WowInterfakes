@@ -1,17 +1,23 @@
 local ns = ...
+local log = ns.log:new("tag.scripts")
 
 local tag = ns.parsers.xmlTag:new({
 	processChildren = false,
 
 	build = function(self, file, element, target)
 
-		for i, child in pairs(element) do
+		for i, child in pairs(element.elements) do
 			
-			local handler = element.tag
-			local call = element.attributes['function']
+			local scriptType = child.tag
+			
+			if #child.elements > 0 then
 
-			--not sure i can just do it like this, might need _G[call]
-			target:SetScript(handler, call)	
+				local contents = child.elements[1].value
+				local func = loadstring(contents)
+
+				target:SetScript(scriptType, func)	
+
+			end			
 
 		end
 
