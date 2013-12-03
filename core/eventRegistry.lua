@@ -29,11 +29,11 @@ local eventRegistry = {
 
 		local targets = eventMap[event]
 
+		log.debug("firing event", event, "on", (eventCounts[event] or 0) .." frames")
+
 		if not targets then
 			return
 		end
-
-		log.debug("firing event", event, "on", eventCounts[event] .." frames")
 
 		for target, _ in pairs(targets) do
 			
