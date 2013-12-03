@@ -2,6 +2,7 @@ local ns = ...
 local log = ns.log:new("eventRegistry")
 
 local eventMap = {}
+local eventCounts = {}
 
 local eventRegistry = {
 
@@ -9,9 +10,16 @@ local eventRegistry = {
 
 		log.debug("registering event", event, "on", target:GetName())
 		
-		eventMap[event] = eventMap[event] or {}
+		if not eventMap[event] then
+			eventMap[event] = {}
+			eventCounts[event] = 0
+		end
 
 		local targets = eventMap[event]
+
+		if not targets[target] then
+			eventCounts[event] = eventCounts[event] + 1
+		end
 
 		targets[target] = true
 
@@ -24,6 +32,8 @@ local eventRegistry = {
 		if not targets then
 			return
 		end
+
+		log.debug("firing event", event, "on", eventCounts[event] .." frames")
 
 		for target, _ in pairs(targets) do
 			
