@@ -37,7 +37,7 @@ local eventRegistry = {
 
 		for target, _ in pairs(targets) do
 			
-			local scriptHandler = target:GetScript(event)
+			local scriptHandler = target:GetScript("OnEvent")
 
 			if scriptHandler then
 
