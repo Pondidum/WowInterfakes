@@ -13,6 +13,10 @@ local xmlParser = {
 		tags[name] = tag
 	end,
 
+	getTag = function(name)
+		return tags[name]
+	end,
+
 	parse = function(root, xmlTable)
 
 		local isVirtual = function(element)
@@ -20,8 +24,6 @@ local xmlParser = {
 		end
 
 		local function recurseTree(file, parent, chain)
-
-			local postChain = {}
 
 			for i, element in ipairs(parent.elements) do
 
@@ -49,17 +51,11 @@ local xmlParser = {
 							end,
 						}
 
-						if handler.postProcess then
-							table.insert(postChain, decoratorData)
-						else
-							table.insert(currentChain, decoratorData)
-						
-							if handler.processChildren then
-								recurseTree(file, element, currentChain)
-							end
-
+						table.insert(currentChain, decoratorData)
+					
+						if handler.processChildren then
+							recurseTree(file, element, currentChain)
 						end
-
 
 					end
 
@@ -68,10 +64,6 @@ local xmlParser = {
 					end
 
 				end 
-			end
-
-			for i, decorator in ipairs(postChain) do
-				table.insert(chain, decorator)
 			end
 
 		end

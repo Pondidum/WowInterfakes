@@ -2,7 +2,6 @@ local ns = ...
 local log = ns.log:new("tags.script")
 
 local tag = ns.parsers.xmlTag:new({
-	postProcess = true,
 	processChildren = false,
 
 	build = function(self, file, element, target)

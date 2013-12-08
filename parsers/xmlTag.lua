@@ -8,7 +8,6 @@ local xmlTag = {
 
 	end,
 
-	postProcess = false,
 	processChildren = true,
 
 	build = function(self, file, element, target)
