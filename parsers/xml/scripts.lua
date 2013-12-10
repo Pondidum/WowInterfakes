@@ -10,7 +10,13 @@ local tag = ns.parsers.xmlTag:new({
 			
 			local scriptType = child.tag
 			
-			if #child.elements > 0 then
+			local value = child.attributes["function"]
+
+			if value then
+
+				target:SetScript(scriptType, _G[value])
+
+			elseif #child.elements > 0 then
 
 				local contents = child.elements[1].value
 				local func = loadstring(contents)
