@@ -13,6 +13,18 @@ local function parse(parent, xmlElement)
 
 	this.parent = parent
 
+	this.get = function(tag)
+
+		for i, element in ipairs(this.elements) do
+
+			if element.tag == tag then
+				return element
+			end
+
+		end
+
+	end
+
 	if xmlElement.tag then
 
 		this.tag = xmlElement:tag()
