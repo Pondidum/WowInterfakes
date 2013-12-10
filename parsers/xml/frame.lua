@@ -31,6 +31,25 @@ local tag = ns.parsers.xmlTag:new({
 			end
 
 			frame = builder.createFrame(element.tag, name, parent, templates)
+
+			local scriptTag = element.get("Scripts")
+
+			if scriptTag then
+
+				local onLoadTag = scriptTag.get("OnLoad")
+
+				if onLoadTag then
+
+					local scripts = ns.parsers.xml.getTag("Scripts")
+
+					scripts:build(file, scriptTag, frame)
+
+					frame:GetScript("OnLoad")()
+
+				end
+
+			end
+
 		end
 
 		-- process other attribs etc
