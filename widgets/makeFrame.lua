@@ -16,4 +16,8 @@ builder.applyFrame = function(region)
 		return builder.createTexture(self, name, layer, inherits, sublevel)
 	end
 
+	region.IgnoreDepth = function(self, enabled)
+		self.__storage.ingoreDepth = enabled
+	end
+	
 end
