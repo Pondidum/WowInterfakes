@@ -1,6 +1,23 @@
 local ns = ...
 local log = ns.log:new("tag.scripts")
 
+
+local scriptParameters = {
+	OnLoad = "local self = ...",
+}
+
+local wrapScript = function(type, contents)
+	
+	local prefix = scriptParameters[type]
+
+	if not prefix then
+		return contents
+	end
+
+	return prefix .. "\n" .. contents
+
+end
+
 local tag = ns.parsers.xmlTag:new({
 	processChildren = false,
 
@@ -10,20 +27,25 @@ local tag = ns.parsers.xmlTag:new({
 			
 			local scriptType = child.tag
 			
-			local value = child.attributes["function"]
+			local functionValue = child.attributes["function"]
+			local contents
 
-			if value then
+			if functionValue then
 
-				target:SetScript(scriptType, _G[value])
+				 contents = functionValue
 
 			elseif #child.elements > 0 then
 
-				local contents = child.elements[1].value
-				local func = loadstring(contents)
+				local value = child.elements[1].value
 
-				target:SetScript(scriptType, func)	
+				contents = value
 
 			end			
+
+			local wrapped = wrapScript(scriptType, contents)
+			local compiled = loadstring(wrapped)
+
+			target:SetScript(scriptType, compiled)
 
 		end
 
