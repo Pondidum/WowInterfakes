@@ -44,7 +44,9 @@ local tag = ns.parsers.xmlTag:new({
 
 					scripts:build(file, scriptTag, frame)
 
-					frame:GetScript("OnLoad")()
+					local script = frame:GetScript("OnLoad")
+
+					script(frame)
 
 				end
 
