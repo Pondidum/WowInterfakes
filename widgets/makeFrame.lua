@@ -8,6 +8,14 @@ builder.applyFrame = function(frame)
 		self.__storage.backdrop = backdrop
 	end
 
+	frame.SetBackdropBorderColor = function(self, red, green, blue, alpha)
+		self.__storage.backdropBorderColor = { red = red, green = green, blue = blue, alpha = alpha }
+	end
+
+	frame.SetBackdropColor = function(self, red, green, blue, alpha)
+		self.__storage.backdropColor = { red = red, green = green, blue = blue, alpha = alpha }
+	end
+
 	frame.RegisterEvent = function(self, event)
 		eventRegistry.register(self, event)
 	end
