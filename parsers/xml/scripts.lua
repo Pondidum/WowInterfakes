@@ -32,20 +32,23 @@ local tag = ns.parsers.xmlTag:new({
 
 			if functionValue then
 
-				 contents = functionValue
+				 contents = functionValue .. "(...)"
 
 			elseif #child.elements > 0 then
 
 				local value = child.elements[1].value
 
-				contents = value
+				contents = wrapScript(scriptType, value)
 
 			end			
 
-			local wrapped = wrapScript(scriptType, contents)
-			local compiled = loadstring(wrapped)
+			local compiled, errorMessage = loadstring(contents)
 
-			target:SetScript(scriptType, compiled)
+			if not compiled then
+				log.warn("Error parsing script tag:", scriptType, errorMessage)
+			else
+				target:SetScript(scriptType, compiled)
+			end
 
 		end
 
