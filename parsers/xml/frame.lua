@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log:new("tags.frame")
 local builder = ns.builder
 
 local tag = ns.parsers.xmlTag:new({
@@ -35,19 +36,16 @@ local tag = ns.parsers.xmlTag:new({
 			local scriptTag = element.get("Scripts")
 
 			if scriptTag then
+			
+				local scripts = ns.parsers.xml.getTag("Scripts")
 
-				local onLoadTag = scriptTag.get("OnLoad")
+				scripts:build(file, scriptTag, frame)
 
-				if onLoadTag then
+				local script = frame:GetScript("OnLoad")
 
-					local scripts = ns.parsers.xml.getTag("Scripts")
-
-					scripts:build(file, scriptTag, frame)
-
-					local script = frame:GetScript("OnLoad")
-
+				if script then
+					log.debug("Running OnLoad Script on", frame:GetName())
 					script(frame)
-
 				end
 
 			end
