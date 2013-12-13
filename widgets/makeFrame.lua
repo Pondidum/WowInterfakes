@@ -24,6 +24,10 @@ builder.applyFrame = function(frame)
 		return builder.createTexture(self, name, layer, inherits, sublevel)
 	end
 
+	frame.CreateFontString = function(self, name, layer, inherits)
+		return builder.createFontString(self, name, layer, inherits)
+	end
+
 	frame.IgnoreDepth = function(self, enabled)
 		self.__storage.ingoreDepth = enabled
 	end
