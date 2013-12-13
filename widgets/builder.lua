@@ -49,6 +49,18 @@ builder.init = function()
 
 	builder.metas.texture = { __index = textureMeta }
 
+	local fontMeta = {}
+
+	builder.applyUIObject(fontMeta)
+	builder.applyParentedObject(fontMeta)
+	builder.applyRegion(fontMeta)
+	builder.applyVisibleRegion(fontMeta)
+	builder.applyLayeredRegion(fontMeta)
+	builder.applyFontInstance(fontMeta)
+	builder.applyFontString(fontMeta)
+
+	builder.metas.font = { __index = fontMeta }
+
 end
 
 
@@ -99,6 +111,26 @@ builder.createTexture = function(prent, name, layer, inherits, sublevel)
 	end
 
 	return texture
+
+end
+
+builder.createFontString = function(parent, name, layer, inherits)
+
+	if parent ~= nil and type(parent) == "string" then
+		parent = frameRegistry.get(parent)
+	end
+
+	local realName = buildName(parent, name)
+
+	local font = { __storage = {} }
+
+	setmetatable(font, builder.metas.font)
+
+	frameRegistry.register(realName, font)
+
+	font.__storage.name = name
+
+	return font
 
 end
 
