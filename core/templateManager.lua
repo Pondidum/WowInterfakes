@@ -18,7 +18,7 @@ templateManager.apply = function(name, target)
 
 	if handlerChain then
 
-		log.debug("applying", name .. "to" .. target:GetName())
+		log.debug("applying", name .. " to " .. target:GetName())
 
 		local first = handlerChain[1]
 
@@ -32,6 +32,12 @@ templateManager.apply = function(name, target)
 			local file = handler.file 
 
 			handler.build(file, element, target)
+
+			local nextTemplate = element.attributes.inherits 
+
+			if nextTemplate ~= nil and nextTemplate ~= "" then
+				templateManager.apply(nextTemplate, target)
+			end
 
 		end
 
