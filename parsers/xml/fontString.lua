@@ -6,6 +6,7 @@ local tag = ns.parsers.xmlTag:new({
 
 
 		local name = element.attributes.name
+		local layer = nil
 		local templates = element.attributes.inherits
 
 
