@@ -97,10 +97,24 @@ builder.createFrame = function(frameType, name, parent, template)
 end
 
 builder.createTexture = function(prent, name, layer, inherits, sublevel)
-	
-	local texture = { __storage = {} }
 
+	if parent ~= nil and type(parent) == "string" then
+		parent = frameRegistry.get(parent)
+	end
+
+	local realName = buildName(parent, name)
+
+	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s", 
+							"Texture", 
+							realName or "nil", 
+							name or "nil", 
+							tostring(parent or "nil"), 
+							template or "nil"))
+
+	local texture = { __storage = {} }
 	setmetatable(texture, builder.metas.texture)
+
+	frameRegistry.register(realName, texture)
 
 	texture.__storage.name = name 	--no publicly accessable SetName method()
 	texture:SetParent(parent)
