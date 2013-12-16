@@ -96,7 +96,7 @@ builder.createFrame = function(frameType, name, parent, template)
 
 end
 
-builder.createTexture = function(prent, name, layer, inherits, sublevel)
+builder.createTexture = function(parent, name, layer, inherits, sublevel)
 
 	if parent ~= nil and type(parent) == "string" then
 		parent = frameRegistry.get(parent)
