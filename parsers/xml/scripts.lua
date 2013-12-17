@@ -24,9 +24,9 @@ local tag = ns.parsers.xmlTag:new({
 	build = function(self, file, element, target)
 
 		for i, child in pairs(element.elements) do
-			
+
 			local scriptType = child.tag
-			
+
 			local functionValue = child.attributes["function"]
 			local contents
 
@@ -40,7 +40,7 @@ local tag = ns.parsers.xmlTag:new({
 
 				contents = wrapScript(scriptType, value)
 
-			end			
+			end
 
 			local compiled, errorMessage = loadstring(contents)
 
@@ -52,7 +52,14 @@ local tag = ns.parsers.xmlTag:new({
 
 		end
 
-	end	
+		local script = target:GetScript("OnLoad")
+
+		if script then
+			log.debug("Running OnLoad Script on", target:GetName())
+			script(target)
+		end
+
+	end
 })
 
 ns.parsers.xml.addTag("Scripts", tag)
