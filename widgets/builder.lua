@@ -61,6 +61,15 @@ builder.init = function()
 
 	builder.metas.font = { __index = fontMeta }
 
+	local animationGroupMeta = {}
+
+	builder.applyUIObject(animationGroupMeta)
+	builder.applyParentedObject(animationGroupMeta)
+	builder.applyScriptObject(animationGroupMeta)
+	builder.applyAnimationGroup(animationGroupMeta)
+
+	builder.metas.animationGroup = animationGroupMeta
+	
 end
 
 
@@ -147,5 +156,26 @@ builder.createFontString = function(parent, name, layer, inherits)
 	return font
 
 end
+
+builder.createAnimationGroup = function(parent, name, inherits)
+
+	if parent ~= nil and type(parent) == "string" then
+		parent = frameRegistry.get(parent)
+	end
+
+	local realName = buildName(parent, name)
+
+	local group = { __storage = {} }
+
+	setmetatable(group, builder.metas.animationGroup)
+
+	frameRegistry.register(realName, group)
+
+	group.__storage.name = name
+
+	return group
+
+end
+
 
 ns.builder = builder

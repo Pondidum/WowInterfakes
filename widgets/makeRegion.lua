@@ -48,5 +48,9 @@ builder.applyRegion = function(region)
 	region.SetParent = function(self, target)
 		self.__storage.parent = target
 	end
+
+	region.CreateAnimationGroup = function(self, name, inherits)
+		return builder.createAnimationGroup(self, name, inherits)
+	end
  
 end
