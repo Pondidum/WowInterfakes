@@ -1,23 +1,16 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">	
 
-	<Frame name="OptionsFrameTemplate" toplevel="true" parent="UIParent" virtual="true">
+	<Frame name="ParentFrame">
 		<Frames>
-			<Frame name="$parentCategoryFrame">
+			<Frame name="ChildFrame">
+				<Scripts>
+					<OnLoad>print("child", self:GetName())</OnLoad>
+				</Scripts>
 			</Frame>
 		</Frames>
+		<Scripts>
+			<OnLoad>print("parent", self:GetName())</OnLoad>
+		</Scripts>
 	</Frame>
-
-	<Frame name="VideoOptionsFrame" inherits="OptionsFrameTemplate">
-		
-	</Frame>
-
-<!-- 
-	<Frame name="OptionsFrameTop" toplevel="true" parent="UIParent">
-		<Frames>
-			<Frame name="$parentChild">
-			</Frame>
-		</Frames>
-	</Frame>
--->
 
 </Ui>
