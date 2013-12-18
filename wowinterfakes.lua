@@ -23,7 +23,7 @@ project:new({
 		
 		ns.log.enabled = true
 		ns.log:setFilters({
-			["eventRegistry"] = true,
+			--["eventRegistry"] = true,
 		})
 
 		ns.builder.init()
