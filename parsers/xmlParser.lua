@@ -9,11 +9,10 @@ local decoratorData = {
 
 	end,
 
+	stepOut = false,
 	file = file,
 	element = element,
-	build = function()
-		return function() end
-	end,
+	build = function() end,
 }
 
 local tagNotFound = function(t, k) 
@@ -69,7 +68,11 @@ local xmlParser = {
 						table.insert(currentChain, data)
 					
 						if handler.processChildren and #element.elements > 0 then
+
 							recurseTree(file, element, currentChain)
+
+							table.insert(currentChain, decoratorData:new({ stepOut = true }))
+
 						end
 
 					end
@@ -94,14 +97,16 @@ local xmlParser = {
 
 		log.debug("executing chain")
 		
-		local target
+		local target = ns.stack.new()
 
 		for i, handler in ipairs(handlerChain) do
 		 	
-		 	local result = handler.build(handler.file, handler.element, target)
+		 	local result = handler.build(handler.file, handler.element, target.tip())
 
 		 	if result then
-		 		target = result
+		 		target.push(result)
+	 		elseif handler.stepOut then
+		 	 	target.pop()		
 		 	end
 
 		end
