@@ -13,7 +13,7 @@ local stack = {
 		end
 
 		this.pop = function()
-			return table.remove(#storage)
+			return table.remove(storage, #storage)
 		end
 
 		this.tip = function()
