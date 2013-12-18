@@ -2,7 +2,7 @@ require("project")
 
 local print = print 
 
-project:new({
+local wowinterfakes = project:new({
 
 	files = project:io(function(io)
 
@@ -43,3 +43,5 @@ project:new({
 	end,
 
 })
+
+wowinterfakes.run()

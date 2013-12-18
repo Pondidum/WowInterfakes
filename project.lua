@@ -1,4 +1,4 @@
-local VERSION = "0.0.2"
+local VERSION = "0.0.3"
 
 local getFilesToLoad = function(fileEntry)
 	
@@ -123,7 +123,13 @@ project = {
 
 		end
 
-		run(ns)
+		return {
+			run = function()
+				run(ns)
+			end,
+		}
+			
+		
 
 	end,
 
