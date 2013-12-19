@@ -24,6 +24,8 @@ templateManager.apply = function(name, target)
 
 		first.element.attributes.name = target:GetName()
 
+		local stack = ns.stack.new()
+
 		for i = 1, #handlerChain do
 
 			local handler = handlerChain[i]
@@ -31,12 +33,18 @@ templateManager.apply = function(name, target)
 			local element = handler.element
 			local file = handler.file 
 
-			handler.build(file, element, target)
+			local result = handler.build(file, element, stack.tip())
 
 			local nextTemplate = element.attributes.inherits 
 
 			if nextTemplate ~= nil and nextTemplate ~= "" then
-				templateManager.apply(nextTemplate, target)
+				templateManager.apply(nextTemplate, stack.tip())
+			end
+
+			if result then
+				stack.push(result)
+			elseif handler.stepOut then
+				stack.pop()
 			end
 
 		end
