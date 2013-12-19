@@ -4,6 +4,7 @@ local builder = ns.builder
 
 local tag = ns.parsers.xmlTag:new({
 
+	createsElement = true,
 	processChildren = true,
 	build = function(self, file, element, target)
 

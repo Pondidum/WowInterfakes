@@ -39,7 +39,13 @@ local wowinterfakes = project:new({
 		ns.eventRegistry.raise("PLAYER_ENTERING_WORLD")
 
 		
+		-- local file = xml.load("test.xml")
+		-- local content = ns.xmlConverter.parse(file)
 
+		-- local parser = ns.parsers.xml
+
+		-- parser.parse("", content)
+		
 	end,
 
 })

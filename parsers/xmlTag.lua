@@ -4,10 +4,11 @@ local xmlTag = {
 
 	new = function(self, definition)
 
-		return setmetatable(definition, { __index = self })
+		return setmetatable(definition or {}, { __index = self })
 
 	end,
 
+	createsElement = false,
 	processChildren = true,
 
 	build = function(self, file, element, target)

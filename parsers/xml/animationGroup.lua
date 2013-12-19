@@ -1,7 +1,7 @@
 local ns = ...
 
 local tag = ns.parsers.xmlTag:new({
-
+	
 	processChildren = true,
 	build = function(self, file, element, target)
 

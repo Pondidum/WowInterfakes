@@ -1,24 +1,38 @@
 local ns = ...
 local log = ns.log:new("xmlConverter")
 
+local element = {
+	
+	new = function(self)
+
+		local this = {
+			attributes = {},
+			elements = {},
+			tag = "",
+			parent = nil,
+			value = nil,
+
+			get = function() end
+		}
+
+		return this 
+
+	end,
+}
+
+
 local function parse(parent, xmlElement)
 
-	local this = {
-		attributes = {},
-		elements = {},
-		tag = "",
-		parent = nil,
-		value = nil,
-	}
+	local this = element.new()
 
 	this.parent = parent
 
 	this.get = function(tag)
 
-		for i, element in ipairs(this.elements) do
+		for i, e in ipairs(this.elements) do
 
-			if element.tag == tag then
-				return element
+			if e.tag == tag then
+				return e
 			end
 
 		end
@@ -55,5 +69,7 @@ end
 ns.xmlConverter = {
 	parse = function(xmlTable)
 		return parse (nil, xmlTable)
-	end
+	end,
+
+	newElement = element.new
 }

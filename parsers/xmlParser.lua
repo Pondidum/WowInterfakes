@@ -1,6 +1,20 @@
 local ns = ...
 local log = ns.log:new("xmlParser")
 
+local decoratorData = {
+
+	new = function(self, config)
+
+		return setmetatable(config, { __index = self })
+
+	end,
+
+	stepOut = false,
+	file = {},
+	element = ns.xmlConverter.newElement(),
+	build = function() end,
+}
+
 local tagNotFound = function(t, k) 
 	return t.__default
 end 
@@ -35,7 +49,7 @@ local xmlParser = {
 				end
 				
 				if not element.tag then
-					--print("No tag found on", element)
+					log.warn("No Tag on", element)
 				else				
 
 					local tag = element.tag
@@ -43,18 +57,22 @@ local xmlParser = {
 
 					if handler then
 
-						local decoratorData = { 
+						local data = decoratorData:new({
 							file = file,
 							element = element,
 							build = function(...) 
 								return handler:build(...) 
 							end,
-						}
+						})
 
-						table.insert(currentChain, decoratorData)
+						table.insert(currentChain, data)
 					
-						if handler.processChildren then
+						if handler.processChildren and #element.elements > 0 then
 							recurseTree(file, element, currentChain)
+						end
+
+						if handler.createsElement then
+							table.insert(currentChain, decoratorData:new({ stepOut = true }))
 						end
 
 					end
@@ -79,15 +97,17 @@ local xmlParser = {
 
 		log.debug("executing chain")
 		
-		local target
+		local target = ns.stack.new()
 
 		for i, handler in ipairs(handlerChain) do
-		 	
-		 	local result = handler.build(handler.file, handler.element, target)
 
-		 	if result then
-		 		target = result
-		 	end
+			local result = handler.build(handler.file, handler.element, target.tip())
+
+			if result then
+				target.push(result)
+			elseif handler.stepOut then
+				target.pop()		
+			end
 
 		end
 
