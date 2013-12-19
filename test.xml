@@ -1,9 +1,22 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">	
 
-	<Frame name="ParentFrameTemplate" virtual="true">
+	<Frame name="Template" virtual="true">
+		<Frames>
+			<Frame name="$parentChild1">
+				<Scripts>
+					<OnLoad>print("#######c1", self:GetName())</OnLoad>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentChild2">
+				<Scripts>
+					<OnLoad>print("#######c2", self:GetName())</OnLoad>
+				</Scripts>
+			</Frame>
+		</Frames>
 	</Frame>
 
-	<Frame name="ChildFrame" inherits="ParentFrameTemplate">
+	<Frame name="Instance" inherits="Template">
+
 	</Frame>
 
 </Ui>
