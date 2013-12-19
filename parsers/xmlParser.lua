@@ -68,11 +68,11 @@ local xmlParser = {
 						table.insert(currentChain, data)
 					
 						if handler.processChildren and #element.elements > 0 then
-
 							recurseTree(file, element, currentChain)
+						end
 
+						if handler.createsElement then
 							table.insert(currentChain, decoratorData:new({ stepOut = true }))
-
 						end
 
 					end
