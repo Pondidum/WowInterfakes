@@ -10,8 +10,8 @@ local decoratorData = {
 	end,
 
 	stepOut = false,
-	file = file,
-	element = element,
+	file = {},
+	element = ns.xmlConverter.newElement(),
 	build = function() end,
 }
 
