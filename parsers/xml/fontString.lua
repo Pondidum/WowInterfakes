@@ -2,6 +2,8 @@ local ns = ...
 
 local tag = ns.parsers.xmlTag:new({
 
+	createsElement = true,
+
 	build = function(self, file, element, target)
 
 		local name = element.attributes.name
@@ -15,6 +17,8 @@ local tag = ns.parsers.xmlTag:new({
 		if key then
 			target[key] = font
 		end
+
+		return font
 
 	end,
 
