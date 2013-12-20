@@ -9,7 +9,7 @@ local tag = ns.parsers.xmlTag:new({
 
 		local x, y = 0, 0
 		
-		local sub = element.elements.AbsDimension or element.elements.RelDimension or {}
+		local sub = element.get("AbsDimension") or element.get("RelDimension") or {}
 
 		if sub and sub.attributes then
 			x = sub.attributes.x
