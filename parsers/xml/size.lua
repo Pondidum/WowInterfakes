@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log:new("size")
 
 local tag = ns.parsers.xmlTag:new({
 
@@ -17,6 +18,13 @@ local tag = ns.parsers.xmlTag:new({
 			x = element.attributes.x
 			y = element.attributes.y
 		end
+
+		log.debug(string.format("%s.width=%d, %s.height=%d",
+								target:GetName(),
+								x or 0,
+								target:GetName(),
+								y or 0
+								))
 
 		target:SetSize(x, y)
 
