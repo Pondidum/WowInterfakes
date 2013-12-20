@@ -113,8 +113,7 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 
 	local realName = buildName(parent, name)
 
-	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s", 
-							"Texture", 
+	log.debug(string.format("Creating Texture called %s (%s), parented to %s, with templates %s",
 							realName or "nil", 
 							name or "nil", 
 							tostring(parent or "nil"), 
