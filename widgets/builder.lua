@@ -144,6 +144,12 @@ builder.createFontString = function(parent, name, layer, inherits)
 
 	local realName = buildName(parent, name)
 
+	log.debug(string.format("Creating FontString called %s (%s), parented to %s, with templates %s",
+							realName or "nil",
+							name or "nil",
+							tostring(parent or "nil"),
+							template or "nil"))
+
 	local font = { __storage = {} }
 
 	setmetatable(font, builder.metas.font)
