@@ -9,26 +9,46 @@ local levelMap = {
 }
 
 local write = function(self, level, prefix, ...)
-	
-	local log = not self.hasFilters or self.filters[prefix]
 
-	if self.enabled and levelMap[level] >= self.level and log then
-		print(string.format("%s: %s:", level, prefix), ...)
+	if not self.enabled then
+		return
 	end
+
+	for i, filter in ipairs(self.filters) do
+
+		if not filter(self, level, prefix, ...) then
+			return
+		end
+
+	end
+
+	print(string.format("%s: %s:", level, prefix), ...)
 
 end
 
 local logger = {
 
 	enabled = false,
-	level = levelMap.debug,
-	levels = levelMap,
+	filters = {},
 
-	setFilters = function(self, filters)
+	addFilter = function(self, filter)
 
-		self.filters = filters
-		self.hasFilters = next(filters) ~= nil
-			
+		if filter == nil then
+			return
+		end
+
+		assert(type(filter) == "function")
+
+		table.insert(self.filters, filter)
+
+	end,
+
+	addFilters = function(self, ...)
+
+		for i, filter in ipairs(...) do
+			self.addFilter(self, filter)
+		end
+
 	end,
 
 	new = function(self, prefix)
