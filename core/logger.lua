@@ -33,8 +33,8 @@ local logger = {
 
 	new = function(self, prefix)
 
-		assert(type(self) ~= "string")
-		assert(prefix ~= nil)
+		assert(type(self) == "table", "you must call :new('<name>').")
+		assert(prefix ~= nil, "name must not be nil.")
 		
 		local wrapAndCall = function(t, k) 
 
