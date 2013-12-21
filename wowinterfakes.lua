@@ -21,10 +21,12 @@ local wowinterfakes = project:new({
 
 	run = function(ns)
 		
-		ns.log.enabled = true
-		ns.log:setFilters({
-			--["eventRegistry"] = true,
-		})
+		ns.log.config.enabled = true
+		ns.log.config.level = "debug"
+		-- ns.log.config:addFilters(
+		-- 	ns.log.filterFactory.new("whitelist", {})
+		-- 	ns.log.filterFactory.new("blacklist", {"tags.__default"})
+		-- )
 
 		ns.builder.init()
 				
