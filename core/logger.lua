@@ -1,22 +1,15 @@
 local ns = ...
 local print = print -- incase something re-assigns print (*cough* restrictedInfrastructure.lua *cough*)
 
-local levelMap = {
-	debug = 0,
-	info = 5,
-	warn = 10,
-	error = 15,
-}
+local write = function(config, level, prefix, ...)
 
-local write = function(self, level, prefix, ...)
-
-	if not self.enabled then
+	if not config.enabled then
 		return
 	end
 
-	for i, filter in ipairs(self.filters) do
+	for i, filter in ipairs(config.filters) do
 
-		if not filter(self, level, prefix, ...) then
+		if not filter(config, level, prefix, ...) then
 			return
 		end
 
@@ -26,30 +19,54 @@ local write = function(self, level, prefix, ...)
 
 end
 
-local logger = {
+local filterBuilders = {}
 
-	enabled = false,
-	filters = {},
+local logFactory = {
 
-	addFilter = function(self, filter)
+	config = {
 
-		if filter == nil then
-			return
-		end
+		filters = {},
+		level = "debug",
 
-		assert(type(filter) == "function")
+		addFilter = function(self, filter)
+			table.insert(self.filters, filter)
+		end,
 
-		table.insert(self.filters, filter)
+		addFilters = function(self, ...)
 
-	end,
+			for i, filter in ipairs({...}) do
+				self:addFilter(filter)
+			end
+		end,
 
-	addFilters = function(self, ...)
+	},
 
-		for i, filter in ipairs(...) do
-			self.addFilter(self, filter)
-		end
+	filterFactory = {
 
-	end,
+		register = function(name, filterBuilder)
+
+			assert(name ~= nil, "filter names must not be nil.")
+			assert(type(filterBuilder) == "function", "filter builders must be functions.")
+
+			filterBuilders[string.lower(name)] = filterBuilder
+
+		end,
+
+		new = function(name, args)
+
+			assert(name ~= nil, "you must specifiy a builder name")
+
+			local builder = filterBuilders[string.lower(name)]
+
+			assert(builder, "No builder found called " .. name)
+
+			local filter = builder(args)
+
+			return filter
+
+		end,
+
+	},
 
 	new = function(self, prefix)
 
@@ -59,15 +76,64 @@ local logger = {
 		local wrapAndCall = function(t, k) 
 
 			return function(...)
-				write(self, k, prefix, ...)
+				write(self.config, k, prefix, ...)
 			end
 
 		end
 
 		return setmetatable({}, { __index = wrapAndCall })
 
-	end
-	
+	end,
 }
 
-ns.log = logger
+--setup some defaults:
+
+logFactory.filterFactory.register("level", function(args)
+
+	local levels = {
+		debug = 0,
+		info = 5,
+		warn = 10,
+		error = 15,
+	}
+
+	local filter = function(config, level, prefix, ...)
+		return levels[level] >= levels[config.level]
+	end
+
+	return filter
+
+end)
+
+logFactory.filterFactory.register("whitelist", function(args)
+
+	local list = {}
+
+	for i,v in ipairs(args) do
+		list[v] = true
+	end
+
+	return function(config, level, prefix, ...)
+		return list[prefix]
+	end
+
+end)
+
+logFactory.filterFactory.register("blacklist", function(args)
+
+	local list = {}
+
+	for i,v in ipairs(args) do
+		list[v] = true
+	end
+
+	return function(config, level, prefix, ...)
+		return not list[prefix]
+	end
+
+end)
+
+
+logFactory.config:addFilter(logFactory.filterFactory.new("level"))
+
+ns.log = logFactory
