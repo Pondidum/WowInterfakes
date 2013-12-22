@@ -1,4 +1,5 @@
 local ns = ...
+local log = ns.log:new("anchors")
 
 local fixValue = function(value)
 	
@@ -20,6 +21,9 @@ local tag = ns.parsers.xmlTag:new({
 	build = function(self, file, element, target)
 
 		local point = element.attributes.point or ""
+
+		log.debug(string.format("applying anchor %s to %s", point, target:GetName()))
+
 		local relativeFrame = element.attributes.relativeTo or ""
 		local relativePoint = element.attributes.relativePoint or  ""
 		local x = fixValue(element.attributes.x) or 0
