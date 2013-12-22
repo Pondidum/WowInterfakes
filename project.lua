@@ -1,4 +1,4 @@
-local VERSION = "0.0.3"
+local VERSION = "0.1.0"
 
 local getFilesToLoad = function(fileEntry)
 	
@@ -104,7 +104,7 @@ local fileHelper = {
 }
 
 
-project = {
+local project = {
 	
 	new = function(self, config)
 
@@ -128,8 +128,6 @@ project = {
 				run(ns)
 			end,
 		}
-			
-		
 
 	end,
 
@@ -150,3 +148,5 @@ project = {
 	end,
 
 }
+
+return project

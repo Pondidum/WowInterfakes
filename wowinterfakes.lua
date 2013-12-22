@@ -1,4 +1,4 @@
-require("project")
+local project = require("project")
 
 local print = print 
 
