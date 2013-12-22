@@ -25,6 +25,7 @@ templateManager.apply = function(name, target)
 		first.element.attributes.name = target:GetName()
 
 		local stack = ns.stack.new()
+		stack.push(target)
 
 		for i = 1, #handlerChain do
 
