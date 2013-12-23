@@ -170,6 +170,12 @@ builder.createAnimationGroup = function(parent, name, inherits)
 
 	local realName = buildName(parent, name)
 
+	log.debug(string.format("Creating AnimationGroup called %s (%s), parented to %s, with templates %s",
+							realName or "nil",
+							name or "nil",
+							tostring(parent or "nil"),
+							template or "nil"))
+
 	local group = { __storage = {} }
 
 	setmetatable(group, builder.metas.animationGroup)
