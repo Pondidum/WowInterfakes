@@ -32,8 +32,12 @@ builder.applyFrame = function(frame)
 		self.__storage.ingoreDepth = enabled
 	end
 	
-	frame.GetFrameLevel = function(self, enabled)
+	frame.GetFrameLevel = function(self)
 		return self.__storage.frameLevel or 1
+	end
+
+	frame.SetFrameLevel = function(self, value)
+		self.__storage.frameLevel = value
 	end
 
 end
