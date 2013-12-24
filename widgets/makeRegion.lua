@@ -43,6 +43,22 @@ builder.applyRegion = function(region)
 		self:SetPoint("BOTTOMRIGHT", otherRegion, "BOTTOMRIGHT", 0, 0)
 	end
 
+	region.GetNumPoints = function(self)
+
+		if self.__storage.points == nil then
+			return 0
+		end
+
+		local count = 0
+
+		for k,v in pairs(self.__storage.points) do
+			count = count + 1
+		end
+
+		return count
+
+	end
+
 	region.SetParent = function(self, target)
 		self.__storage.parent = target
 	end
