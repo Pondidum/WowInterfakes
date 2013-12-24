@@ -8,7 +8,7 @@ local decoratorData = {
 		return setmetatable(config, { __index = self })
 
 	end,
-
+	tag = "",
 	stepOut = false,
 	file = {},
 	element = ns.xmlConverter.newElement(),
@@ -58,6 +58,7 @@ local xmlParser = {
 					if handler then
 
 						local data = decoratorData:new({
+							tag = tag,
 							file = file,
 							element = element,
 							build = function(...) 
