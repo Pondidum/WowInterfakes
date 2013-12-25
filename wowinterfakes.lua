@@ -52,4 +52,4 @@ local wowinterfakes = project:new({
 
 })
 
-wowinterfakes.run()
+return wowinterfakes
