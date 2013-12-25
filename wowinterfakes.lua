@@ -21,35 +21,29 @@ local wowinterfakes = project:new({
 
 	run = function(ns)
 
-		ns.log.config.enabled = true
-		ns.log.config.level = "debug"
-		-- ns.log.config:addFilters(
-		-- 	ns.log.filterFactory.new("whitelist", {})
-		-- 	ns.log.filterFactory.new("blacklist", {"tags.__default"})
-		-- )
+		local this = {
 
-		ns.builder.init()
+			log = ns.log,
 
-		local parser = ns.parsers.toc
-		parser.parse("wow-ui-source\\framexml\\framexml.toc")
+			init = function()
+				ns.builder.init()
+			end,
 
-		setprinthandler(print)
+			loadFrameXml = function(path)
 
-		ns.eventRegistry.raise("ADDON_LOADED")
-		ns.eventRegistry.raise("SPELLS_CHANGED")
-		ns.eventRegistry.raise("PLAYER_LOGIN")
-		ns.eventRegistry.raise("PLAYER_ENTERING_WORLD")
+				local parser = ns.parsers.toc
+				parser.parse(path or "wow-ui-source\\framexml\\framexml.toc")
 
+			end,
 
-		-- local file = xml.load("test.xml")
-		-- local content = ns.xmlConverter.parse(file)
+			framework = ns,
 
-		-- local parser = ns.parsers.xml
+		}
 
-		-- parser.parse("", content)
+		return this
 
 	end,
 
 })
 
-wowinterfakes.run()
+return wowinterfakes

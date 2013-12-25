@@ -1,3 +1,7 @@
 #!/bin/bash
 
-lua.exe wowinterfakes.lua
+if [[ "$1" == 'tests' ]]; then
+	lua.exe wowinterfakes.tests.lua;
+else
+	lua.exe run.lua;
+fi

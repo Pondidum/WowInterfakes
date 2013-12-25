@@ -1,7 +1,7 @@
-local VERSION = "0.1.0"
+local VERSION = "0.1.2"
 
 local getFilesToLoad = function(fileEntry)
-	
+
 	if fileEntry == nil then
 		return {}
 	end
@@ -17,13 +17,13 @@ end
 local indexOf = function(table, value)
 
 	for i,v in ipairs(table) do
-		
+
 		if v == value then
 			return i
 		end
 
 	end
-	
+
 end
 
 local fileHelper = {
@@ -51,7 +51,7 @@ local fileHelper = {
 					if file:find(filter) then
 						table.insert(files, fullPath)
 					end
-					
+
 				end
 
 			end
@@ -67,7 +67,7 @@ local fileHelper = {
 			local toRemove = {}
 
 			for i, path in ipairs(files) do
-				
+
 				if path:find(expression) then
 					table.insert(toRemove, path)
 				end
@@ -81,31 +81,31 @@ local fileHelper = {
 		end
 
 		this.listFiles = function()
-			
+
 			local seen = {}
 			local result = {}
-		
+
 			for i, path in ipairs(files) do
-				
+
 				if not seen[path] then
 					table.insert(result, path)
-					seen[path] = true 
+					seen[path] = true
 				end
-		
+
 			end
-			
-			return result 
-			
+
+			return result
+
 		end
 
-		return this 
+		return this
 
 	end,
 }
 
 
 local project = {
-	
+
 	new = function(self, config)
 
 		local files = getFilesToLoad(config.files)
@@ -114,7 +114,7 @@ local project = {
 		local ns = {}
 
 		for i, filename in ipairs(files) do
-			
+
 			local content = assert(loadfile(filename))
 
 			if filename and content then
@@ -125,8 +125,8 @@ local project = {
 
 		return {
 			run = function()
-				run(ns)
-			end,
+				return run(ns)
+			end
 		}
 
 	end,
