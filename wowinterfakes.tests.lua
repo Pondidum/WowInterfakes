@@ -1,11 +1,12 @@
 local project = require("project")
+local print = print
 
 local testProject = project:new({
 
 	files = project:io(function(io)
 
-		--io.addFile("tests\\init.lua")
-		io.addFilesIn("tests\\")
+		io.addFile("tests\\init.lua")
+		io.addFilesIn("tests")
 
 	end),
 
@@ -18,11 +19,17 @@ local testProject = project:new({
 
 		wow.init()
 
-		local file = xml.load("test.xml")
-		local content = wow.framework.xmlConverter.parse(file)
-		local parser = wow.framework.parsers.xml
+		ns.wow = wow.framework
 
-		parser.parse("", content)
+		print("running tests:")
+		ns.tests.run()
+
+		ns.tests.print()
+		-- local file = xml.load("test.xml")
+		-- local content = wow.framework.xmlConverter.parse(file)
+		-- local parser = wow.framework.parsers.xml
+
+		-- parser.parse("", content)
 	end,
 
 })
