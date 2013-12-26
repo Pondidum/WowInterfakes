@@ -1,4 +1,4 @@
-local VERSION = "0.0.2"
+local VERSION = "0.0.3"
 
 local testRunner = {}
 
@@ -42,7 +42,11 @@ testRunner.runSet = function(set)
 	for k,v in pairs(set) do
 
 		if k ~= "before" and k ~= "after" then
-			result[k] = testRunner.run(before, v, after)
+
+			local s, e = testRunner.run(before, v, after)
+
+			result[k] = { success = s, message = e }
+
 		end
 
 	end
@@ -83,12 +87,32 @@ local testEngine = {
 
 		this.print = function()
 
+			local fails = {}
+
+			print("Tests run:")
+
 			for name, setResults in pairs(results) do
-				print(name .. ":")
+				print("  ", name .. ":")
 
 				for testName, result in pairs(setResults) do
-					print("  ", testName, result)
+					print("    ", testName, result.success and "passed" or "failed" )
+
+					if not result.success then
+						fails[testName] = result
+					end
+
 				end
+
+			end
+
+			if next(fails) then
+
+				print("Details")
+
+				for testName, result in pairs(fails) do
+					print("    ", testName, result.message)
+				end
+
 			end
 
 		end
