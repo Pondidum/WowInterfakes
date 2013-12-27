@@ -1,4 +1,4 @@
-local VERSION = "0.0.3"
+local VERSION = "0.0.4"
 
 local testRunner = {}
 
@@ -11,20 +11,31 @@ testRunner.run = function(before, test, after)
 	local action = function()
 
 		if before then
-			before()
+			local beforeSuccess, beforeError = pcall(before)
+
+			if not beforeSuccess then
+				return beforeSuccess, beforeError
+			end
+
 		end
 
-		local success, e = pcall(test)
+		local actionSuccess, actionError = pcall(test)
 
 		if after then
-			after()
+
+			local afterSuccess, afterError = pcall(after)
+
+			if not afterSuccess and actionSuccess then
+				return afterSuccess, afterError
+			end
+
 		end
 
-		return success, e
+		return actionSuccess, actionError
 
 	end
 
-	local s, e = pcall(action)
+	local s, e = action()
 
 	setfenv(1, old)
 
@@ -57,11 +68,15 @@ end
 
 local testEngine = {
 
+	should = should,
+
 	new = function()
 
 		local this = {}
 		local sets = {}
 		local results = {}
+
+		this.should = should
 
 		this.add = function(name, set)
 
@@ -92,10 +107,10 @@ local testEngine = {
 			print("Tests run:")
 
 			for name, setResults in pairs(results) do
-				print("  ", name .. ":")
+				print("	", name .. ":")
 
 				for testName, result in pairs(setResults) do
-					print("    ", testName, result.success and "passed" or "failed" )
+					print("		", testName, result.success and "passed" or "failed" )
 
 					if not result.success then
 						fails[testName] = result
@@ -110,7 +125,7 @@ local testEngine = {
 				print("Details")
 
 				for testName, result in pairs(fails) do
-					print("    ", testName, result.message)
+					print("		", testName, result.message)
 				end
 
 			end
@@ -126,6 +141,10 @@ local testEngine = {
 		print("Lunatic.lua, version ".. VERSION)
 
 	end,
+
+	__private = {
+		runner = testRunner,
+	},
 
 }
 

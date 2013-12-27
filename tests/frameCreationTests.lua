@@ -1,4 +1,5 @@
 local ns = ...
+local should = ns.should
 
 local store = {}
 
@@ -11,14 +12,16 @@ ns.tests.add("frame creation tests", {
 
 	when_loading_a_non_templated_frame = function()
 
-		print("test")
-		local framework = ns.wow.framework
-		local content = xml.load('<Frame name="test"></Frame>')
+		local framework = ns.wow
+		local content = '<Frame name="test"></Frame>'
 
 		local sanitised = framework.xmlConverter.parse(content)
 		local parser = framework.parsers.xml
 
 		parser.parse("", sanitised)
+
+		should.haveKey("test", store)
+		should.haveCount(1, store)
 
 	end,
 
