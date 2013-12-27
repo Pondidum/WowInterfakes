@@ -1,4 +1,4 @@
-local project = require("project")
+local project = loadfile("lib\\project.lua")()
 
 local print = print
 

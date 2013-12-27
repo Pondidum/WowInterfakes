@@ -1,5 +1,4 @@
-local project = require("project")
-local print = print
+local project = loadfile("lib\\project.lua")()
 
 local testProject = project:new({
 
