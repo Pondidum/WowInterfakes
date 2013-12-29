@@ -122,4 +122,34 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_loading_a_frame_with_a_template_with_a_sub_template_all_with_children = function()
+
+		parseXml([[
+			<Frame name="TestSubTemplate" virtual="true">
+				<Frames>
+					<Frame name="$parentSubTemplateChild"></Frame>
+				</Frames>
+			</Frame>
+
+			<Frame name="TestTemplate" virtual="true" inherits="TestSubTemplate">
+				<Frames>
+					<Frame name="$parentTemplateChild"></Frame>
+				</Frames>
+			</Frame>
+
+			<Frame name="Test" inherits="TestTemplate">
+				<Frames>
+					<Frame name="$parentChild"></Frame>
+				</Frames>
+			</Frame>
+		]])
+
+		should.haveKey("Test", store)
+		should.haveKey("TestChild", store)
+		should.haveKey("TestTemplateChild", store)
+		should.haveKey("TestSubTemplateChild", store)
+		should.haveCount(4, store)
+
+	end,
+
 })
