@@ -13,7 +13,7 @@ ns.tests.add("frame creation tests", {
 	when_loading_a_non_templated_frame = function()
 
 		local framework = ns.wow
-		local content = '<Frame name="test"></Frame>'
+		local content = xml.eval('<Ui><Frame name="test"></Frame></Ui>')
 
 		local sanitised = framework.xmlConverter.parse(content)
 		local parser = framework.parsers.xml
