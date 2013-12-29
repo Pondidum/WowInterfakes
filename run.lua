@@ -1,4 +1,4 @@
-local project = require("wowinterfakes")
+local project = loadfile("wowinterfakes.lua")()
 local wow = project.run()
 
 wow.log.config.enabled = true

@@ -6,16 +6,16 @@ local wowinterfakes = project:new({
 
 	files = project:io(function(io)
 
-		io.addFile("core\\logger.lua")	-- load this before other things!
+		io.addFile("src\\core\\logger.lua")	-- load this before other things!
 
-		io.addFilesIn("core")
-		io.addFilesIn("widgets")
+		io.addFilesIn("src\\core")
+		io.addFilesIn("src\\widgets")
 
-		io.addFile("parsers\\namespace.lua")
-		io.addFilesIn("parsers")
-		io.addFilesIn("parsers\\xml\\")
-		io.addFilesIn("parsers\\toc\\")
-		io.addFilesIn("api\\")
+		io.addFile("src\\parsers\\namespace.lua")
+		io.addFilesIn("src\\parsers")
+		io.addFilesIn("src\\parsers\\xml")
+		io.addFilesIn("src\\parsers\\toc")
+		io.addFilesIn("src\\api")
 
 	end),
 
