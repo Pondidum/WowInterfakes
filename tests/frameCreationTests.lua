@@ -46,4 +46,80 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_loading_a_frame_with_no_children_and_a_blank_template = function()
+
+		parseXml([[
+			<Frame name="TestTemplate" virtual="true">
+			</Frame>
+
+			<Frame name="Test" inherits="TestTemplate">
+			</Frame>
+		]])
+
+		should.haveKey("Test", store)
+		should.haveCount(1, store)
+
+	end,
+
+	when_loading_a_frame_with_a_child_and_a_blank_template = function()
+
+		parseXml([[
+			<Frame name="TestTemplate" virtual="true">
+			</Frame>
+
+			<Frame name="Test" inherits="TestTemplate">
+				<Frames>
+					<Frame name="$parentChild"></Frame>
+				</Frames>
+			</Frame>
+		]])
+
+		should.haveKey("Test", store)
+		should.haveKey("TestChild", store)
+		should.haveCount(2, store)
+
+	end,
+
+	when_loading_a_frame_with_no_children_and_a_template_with_a_child = function()
+
+		parseXml([[
+			<Frame name="TestTemplate" virtual="true">
+				<Frames>
+					<Frame name="$parentTemplateChild"></Frame>
+				</Frames>
+			</Frame>
+
+			<Frame name="Test" inherits="TestTemplate">
+			</Frame>
+		]])
+
+		should.haveKey("Test", store)
+		should.haveKey("TestTemplateChild", store)
+		should.haveCount(2, store)
+
+	end,
+
+	when_loading_a_frame_with_a_child_and_a_template_with_a_child = function()
+
+		parseXml([[
+			<Frame name="TestTemplate" virtual="true">
+				<Frames>
+					<Frame name="$parentTemplateChild"></Frame>
+				</Frames>
+			</Frame>
+
+			<Frame name="Test" inherits="TestTemplate">
+				<Frames>
+					<Frame name="$parentChild"></Frame>
+				</Frames>
+			</Frame>
+		]])
+
+		should.haveKey("Test", store)
+		should.haveKey("TestChild", store)
+		should.haveKey("TestTemplateChild", store)
+		should.haveCount(3, store)
+
+	end,
+
 })
