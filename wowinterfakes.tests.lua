@@ -13,17 +13,16 @@ local testProject = project:new({
 
 		local wow = require("wowinterfakes").run()
 
-		wow.log.config.enabled = true
+		wow.log.config.enabled = false
 		wow.log.config.level = "debug"
 
 		wow.init()
 
 		ns.wow = wow.framework
 
-		print("running tests:")
 		ns.tests.run()
-
 		ns.tests.print()
+
 		-- local file = xml.load("test.xml")
 		-- local content = wow.framework.xmlConverter.parse(file)
 		-- local parser = wow.framework.parsers.xml
