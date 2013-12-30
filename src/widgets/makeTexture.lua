@@ -60,4 +60,8 @@ builder.applyTexture = function(texture)
 
 	end
 
+	texture.SetRotation = function(self, radians)
+		self.__storage.rotation = radians
+	end
+
 end
