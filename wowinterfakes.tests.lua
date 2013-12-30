@@ -23,11 +23,6 @@ local testProject = project:new({
 		ns.tests.run()
 		ns.tests.print()
 
-		-- local file = xml.load("test.xml")
-		-- local content = wow.framework.xmlConverter.parse(file)
-		-- local parser = wow.framework.parsers.xml
-
-		-- parser.parse("", content)
 	end,
 
 })
