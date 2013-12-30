@@ -38,6 +38,17 @@ builder.init = function()
 
 	builder.metas.frame = { __index = frameMeta }
 
+	local buttonMeta = {}
+
+	builder.applyUIObject(buttonMeta)
+	builder.applyParentedObject(buttonMeta)
+	builder.applyRegion(buttonMeta)
+	builder.applyVisibleRegion(buttonMeta)
+	builder.applyScriptObject(buttonMeta)
+	builder.applyFrame(buttonMeta)
+	builder.applyButton(buttonMeta)
+
+	builder.metas.button = { __index = buttonMeta }
 
 	local textureMeta = {}
 	builder.applyUIObject(textureMeta)
@@ -88,8 +99,9 @@ builder.createFrame = function(frameType, name, parent, template)
 							tostring(parent or "nil"), 
 							template or "nil"))
 
+	local meta = builder.metas[string.lower(frameType)] or builder.metas.frame
 	local frame = { __storage = {} }
-	setmetatable(frame, builder.metas.frame)
+	setmetatable(frame, meta)
 
 	frameRegistry.register(realName, frame)
 
