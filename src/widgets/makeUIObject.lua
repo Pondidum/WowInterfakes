@@ -7,4 +7,8 @@ builder.applyUIObject = function(region)
 		return self.__storage.name
 	end
 
+	region.GetObjectType = function(self)
+		return self.__storage.type
+	end
+
 end
