@@ -37,8 +37,9 @@ templateManager.apply = function(name, target)
 			local result = handler.build(file, element, stack.tip())
 
 			local nextTemplate = element.attributes.inherits 
+			local isVirtual = element.attributes.virtual == "true"
 
-			if nextTemplate ~= nil and nextTemplate ~= "" then
+			if nextTemplate ~= nil and nextTemplate ~= "" and isVirtual then
 				templateManager.apply(nextTemplate, stack.tip())
 			end
 
