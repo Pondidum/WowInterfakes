@@ -1,8 +1,8 @@
 local ns = ...
 local builder = ns.builder
 
-builder.applyTexture = function(texture) 
-	
+builder.applyTexture = function(texture)
+
 	texture.SetTexture = function(self, textureOrRed, green, blue, alpha)
 
 		if type(textureOrRed) == "string" then
@@ -17,11 +17,20 @@ builder.applyTexture = function(texture)
 
 		if URx == nil or URy == nil or LRx == nil or LRy then
 
+			local l = leftOrULx
+			local r = rightOrULy
+			local t = topOrLLx
+			local b = bottomOrLLy
+
 			self.__storage.texCoord = {
-				left = leftOrULx,
-				right = rightOrULy,
-				top = topOrLLx,
-				bottom = bottomOrLLy,
+				ULx = l,
+				ULy = t,
+				LLx = l,
+				LLy = b,
+				URx = r,
+				URy = t,
+				LRx = r,
+				LRy = b,
 			}
 
 		else
@@ -37,6 +46,16 @@ builder.applyTexture = function(texture)
 				LRy = LRy,
 			}
 
+		end
+
+	end
+
+	texture.GetTexCoord = function(self)
+
+		local c = self.__storage.texCoord
+
+		if c then
+			return c.ULx, c.ULy, c.LLx, c.LLy, c.URx, c.URy, c.LRx, c.LRy
 		end
 
 	end
