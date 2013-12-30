@@ -1,7 +1,7 @@
 local ns = ...
 
 local tag = ns.parsers.xmlTag:new({
-	
+
 	build = function(self, file, element, target)
 
 
@@ -10,7 +10,13 @@ local tag = ns.parsers.xmlTag:new({
 		local templates = element.attributes.inherits
 		local sublevel = nil
 
-		target:CreateTexture(name, layer, templates, sublevel)
+		local texture = target:CreateTexture(name, layer, templates, sublevel)
+
+		local key = element.attributes.parentKey
+
+		if key then
+			target[key] = texture
+		end
 
 	end,
 
