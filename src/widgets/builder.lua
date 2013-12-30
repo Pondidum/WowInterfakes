@@ -106,6 +106,7 @@ builder.createFrame = function(frameType, name, parent, template)
 	frameRegistry.register(realName, frame)
 
 	frame.__storage.name = realName 	--no publicly accessable SetName method()
+	frame.__storage.type = frameType
 	frame:SetParent(parent)
 
 	if template and template ~= "" then
@@ -137,6 +138,7 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 	frameRegistry.register(realName, texture)
 
 	texture.__storage.name = name 	--no publicly accessable SetName method()
+	texture.__storage.type = "texture"
 	texture:SetParent(parent)
 	texture:SetDrawLayer(layer, sublevel)
 
@@ -169,6 +171,7 @@ builder.createFontString = function(parent, name, layer, inherits)
 	frameRegistry.register(realName, font)
 
 	font.__storage.name = name
+	font.__storage.type = "fontstring"
 
 	return font
 
@@ -195,6 +198,7 @@ builder.createAnimationGroup = function(parent, name, inherits)
 	frameRegistry.register(realName, group)
 
 	group.__storage.name = name
+	group.__storage.type = "animationgroup"
 
 	return group
 
