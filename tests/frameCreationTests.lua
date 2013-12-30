@@ -152,4 +152,42 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_loading_a_frame_with_a_child_and_the_child_has_a_template = function()
+
+		local content = xml.eval([[
+			<Ui>
+
+				<Button name="UIDropDownMenuButtonTemplate" virtual="true">
+					<Scripts>
+						<OnLoad>
+							local x = 1
+						</OnLoad>
+					</Scripts>
+				</Button>
+
+				<Button name="UIDropDownListTemplate" virtual="true">
+					<Frames>
+						<Button name="$parentButton1" inherits="UIDropDownMenuButtonTemplate" />
+					</Frames>
+				</Button>
+
+
+				<Button name="DropDownList1" inherits="UIDropDownListTemplate">
+				</Button>
+
+			</Ui>
+		]])
+
+		local sanitised = ns.wow.xmlConverter.parse(content)
+		local parser = ns.wow.parsers.xml
+
+		parser.parse("", sanitised)
+
+		should.haveKey("DropDownList1", store)
+		should.haveKey("DropDownList1Button1", store)
+		should.notBeNil(store["DropDownList1Button1"]:GetScript("OnLoad"))
+		should.beNil(store["DropDownList1"]:GetScript("OnLoad"))
+		should.haveCount(2, store)
+
+	end,
 })
