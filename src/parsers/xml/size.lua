@@ -20,9 +20,9 @@ local tag = ns.parsers.xmlTag:new({
 		end
 
 		log.debug(string.format("%s.width=%d, %s.height=%d",
-								target:GetName(),
+								tostring(target:GetName()),
 								x or 0,
-								target:GetName(),
+								tostring(target:GetName()),
 								y or 0
 								))
 
