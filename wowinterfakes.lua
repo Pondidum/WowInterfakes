@@ -29,7 +29,7 @@ local wowinterfakes = project:new({
 			log = ns.log,
 
 			init = function()
-				ns.builder.init()
+				ns.widgetMetaBuilder.init()
 			end,
 
 			loadFrameXml = function(path)
