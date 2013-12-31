@@ -26,8 +26,10 @@ local builder = {
 
 	init = function()
 
+		metas = {}
+
 		for name, builder in pairs(typeBuilders) do
-			
+
 			local target = {}
 
 			recurseTypes(builder, target)
@@ -40,6 +42,14 @@ local builder = {
 
 	get = function(type)
 		return metas[type]
+	end,
+
+	listBuilders = function()
+		return typeBuilders
+	end,
+
+	listMetas = function()
+		return metas
 	end,
 
 }
