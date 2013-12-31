@@ -39,7 +39,7 @@ builder.createFrame = function(frameType, name, parent, template)
 							tostring(parent or "nil"),
 							template or "nil"))
 
-	local meta = metaStore.get(string.lower(frameType)) or metaStore.get("frame")
+	local meta = metaStore.get(frameType) or metaStore.get("frame")
 	local frame = { __storage = {} }
 	setmetatable(frame, meta)
 

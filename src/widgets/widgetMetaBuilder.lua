@@ -34,14 +34,14 @@ local builder = {
 
 			recurseTypes(builder, target)
 
-			metas[name] = { __index = target }
+			metas[string.lower(name)] = { __index = target }
 
 		end
 
 	end,
 
 	get = function(type)
-		return metas[type]
+		return metas[string.lower(type)]
 	end,
 
 	listBuilders = function()
