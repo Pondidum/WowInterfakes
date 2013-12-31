@@ -32,7 +32,7 @@ local builder = {
 
 			recurseTypes(builder, target)
 
-			metas[name] = target
+			metas[name] = { __index = target }
 
 		end
 
