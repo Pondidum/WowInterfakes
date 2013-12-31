@@ -3,10 +3,11 @@ local log = ns.log:new("builder")
 
 local templateManager = ns.templateManager
 local frameRegistry = ns.frameRegistry
+local metaStore = ns.widgetMetaBuilder
 
 local buildName = function(parent, name)
-	
-	if not name then 
+
+	if not name then
 		return nil
 	end
 
@@ -17,89 +18,28 @@ local buildName = function(parent, name)
 	end
 
 	return name:gsub("$parent", parentName)
-	
+
 end
 
 
 local builder = {}
 
-builder.init = function()
-		
-	builder.metas = {}
-
-	local frameMeta = {}
-
-	builder.applyUIObject(frameMeta)
-	builder.applyParentedObject(frameMeta)
-	builder.applyRegion(frameMeta)
-	builder.applyVisibleRegion(frameMeta)
-	builder.applyScriptObject(frameMeta)
-	builder.applyFrame(frameMeta)
-
-	builder.metas.frame = { __index = frameMeta }
-
-	local buttonMeta = {}
-
-	builder.applyUIObject(buttonMeta)
-	builder.applyParentedObject(buttonMeta)
-	builder.applyRegion(buttonMeta)
-	builder.applyVisibleRegion(buttonMeta)
-	builder.applyScriptObject(buttonMeta)
-	builder.applyFrame(buttonMeta)
-	builder.applyButton(buttonMeta)
-
-	builder.metas.button = { __index = buttonMeta }
-
-	local textureMeta = {}
-	builder.applyUIObject(textureMeta)
-	builder.applyParentedObject(textureMeta)
-	builder.applyRegion(textureMeta)
-	builder.applyVisibleRegion(textureMeta)
-	builder.applyLayeredRegion(textureMeta)
-	builder.applyTexture(textureMeta)
-
-	builder.metas.texture = { __index = textureMeta }
-
-	local fontMeta = {}
-
-	builder.applyUIObject(fontMeta)
-	builder.applyParentedObject(fontMeta)
-	builder.applyRegion(fontMeta)
-	builder.applyVisibleRegion(fontMeta)
-	builder.applyLayeredRegion(fontMeta)
-	builder.applyFontInstance(fontMeta)
-	builder.applyFontString(fontMeta)
-
-	builder.metas.font = { __index = fontMeta }
-
-	local animationGroupMeta = {}
-
-	builder.applyUIObject(animationGroupMeta)
-	builder.applyParentedObject(animationGroupMeta)
-	builder.applyScriptObject(animationGroupMeta)
-	builder.applyAnimationGroup(animationGroupMeta)
-
-	builder.metas.animationGroup = animationGroupMeta
-	
-end
-
-
 builder.createFrame = function(frameType, name, parent, template)
-	
+
 	if parent ~= nil and type(parent) == "string" then
 		parent = frameRegistry.get(parent)
 	end
 
 	local realName = buildName(parent, name)
 
-	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s", 
-							frameType, 
-							realName or "nil", 
-							name or "nil", 
-							tostring(parent or "nil"), 
+	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s",
+							frameType,
+							realName or "nil",
+							name or "nil",
+							tostring(parent or "nil"),
 							template or "nil"))
 
-	local meta = builder.metas[string.lower(frameType)] or builder.metas.frame
+	local meta = metaStore.get(frameType) or metaStore.get("frame")
 	local frame = { __storage = {} }
 	setmetatable(frame, meta)
 
@@ -127,13 +67,13 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 	local realName = buildName(parent, name)
 
 	log.debug(string.format("Creating Texture called %s (%s), parented to %s, with templates %s",
-							realName or "nil", 
-							name or "nil", 
-							tostring(parent or "nil"), 
+							realName or "nil",
+							name or "nil",
+							tostring(parent or "nil"),
 							template or "nil"))
 
 	local texture = { __storage = {} }
-	setmetatable(texture, builder.metas.texture)
+	setmetatable(texture, metaStore.get("texture"))
 
 	frameRegistry.register(realName, texture)
 
@@ -166,7 +106,7 @@ builder.createFontString = function(parent, name, layer, inherits)
 
 	local font = { __storage = {} }
 
-	setmetatable(font, builder.metas.font)
+	setmetatable(font, metaStore.get("fontstring"))
 
 	frameRegistry.register(realName, font)
 
@@ -193,7 +133,7 @@ builder.createAnimationGroup = function(parent, name, inherits)
 
 	local group = { __storage = {} }
 
-	setmetatable(group, builder.metas.animationGroup)
+	setmetatable(group, metaStore.get("animationGroup"))
 
 	frameRegistry.register(realName, group)
 
@@ -203,6 +143,5 @@ builder.createAnimationGroup = function(parent, name, inherits)
 	return group
 
 end
-
 
 ns.builder = builder

@@ -9,6 +9,9 @@ local wowinterfakes = project:new({
 		io.addFile("src\\core\\logger.lua")	-- load this before other things!
 
 		io.addFilesIn("src\\core")
+
+		io.addFile("src\\widgets\\widgetMetaBuilder.lua")
+		io.addFile("src\\widgets\\builder.lua")
 		io.addFilesIn("src\\widgets")
 
 		io.addFile("src\\parsers\\namespace.lua")
@@ -26,7 +29,7 @@ local wowinterfakes = project:new({
 			log = ns.log,
 
 			init = function()
-				ns.builder.init()
+				ns.widgetMetaBuilder.init()
 			end,
 
 			loadFrameXml = function(path)
