@@ -106,7 +106,7 @@ builder.createFontString = function(parent, name, layer, inherits)
 
 	local font = { __storage = {} }
 
-	setmetatable(font, metaStore.get("font"))
+	setmetatable(font, metaStore.get("fontstring"))
 
 	frameRegistry.register(realName, font)
 
