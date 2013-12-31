@@ -1,26 +1,30 @@
 local ns = ...
 local builder = ns.builder
 
-builder.applyLayeredRegion = function(region) 
-	
-	region.GetDrawLayer = function(self)
-		return self.__storage.layer, self.__storage.subLayer
-	end
+ns.widgetMetaBuilder.addType({
+	name = "LayeredRegion",
+	extends = { "VisibleRegion" },
+	build = function(target)
 
-	region.SetDrawLayer = function(self, layer, subLayer)
-		self.__storage.layer = layer
-		self.__storage.subLayer = subLayer
-	end
+		target.GetDrawLayer = function(self)
+			return self.__storage.layer, self.__storage.subLayer
+		end
 
-	region.SetVertexColor = function(self, red, green, blue, alpha)
-		
-		self.__storage.vertexColor = { 
-			red = red, 
-			green = green, 
-			blue = blue, 
-			alpha = alpha, 
-		}
+		target.SetDrawLayer = function(self, layer, subLayer)
+			self.__storage.layer = layer
+			self.__storage.subLayer = subLayer
+		end
 
-	end
+		target.SetVertexColor = function(self, red, green, blue, alpha)
 
-end
+			self.__storage.vertexColor = {
+				red = red,
+				green = green,
+				blue = blue,
+				alpha = alpha,
+			}
+
+		end
+
+	end,
+})
