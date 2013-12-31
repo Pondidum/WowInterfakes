@@ -3,7 +3,7 @@ local builder = ns.builder
 
 ns.widgetMetaBuilder.addType({
 	name = "FontString",
-	extends = { "FontInstance" "LayeredRegion" },
+	extends = { "FontInstance", "LayeredRegion" },
 	build = function(target)
 
 		target.SetText = function(self, text)
