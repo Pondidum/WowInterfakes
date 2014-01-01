@@ -43,5 +43,9 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.frameLevel = value
 		end
 
+		target.EnableMouse = function(self, value)
+			self.__storage.enableMouse = value
+		end
+
 	end,
 })
