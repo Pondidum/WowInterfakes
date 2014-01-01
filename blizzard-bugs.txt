@@ -1,5 +1,5 @@
 
-InterfaceOptionsPanels.xml : Ln 707 : floating text
-QuestLogFrame.xml : Ln 425 : value of "y"
-HelpFrame.xml : Ln 1323	: value of "y"
-ModelFrames.xml: Ln 17 : virtual=true on texture
+1.	InterfaceOptionsPanels.xml : Ln 707 : floating text
+2.	QuestLogFrame.xml : Ln 425 : value of "y"
+3.	HelpFrame.xml : Ln 1323	: value of "y"
+4.	ModelFrames.xml: Ln 17 : virtual=true on texture

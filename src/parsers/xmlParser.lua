@@ -34,7 +34,8 @@ local xmlParser = {
 	parse = function(root, xmlTable)
 
 		local isVirtual = function(element)
-			return element.attributes.virtual == "true"
+			--check name doesnt contain $parent due to blizzard bug #4
+			return element.attributes.virtual == "true" and not element.attributes.name:find("$parent")
 		end
 
 		local function recurseTree(file, parent, chain)
