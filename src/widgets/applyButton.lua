@@ -11,6 +11,10 @@ ns.widgetMetaBuilder.addType({
 			return self.__storage.isEnabled
 		end
 
+		target.Disable = function(self)
+			self.__storage.isEnabled = false
+		end
+
 		target.RegisterForClicks = function(self, ...)
 
 			local allowed  = {}
