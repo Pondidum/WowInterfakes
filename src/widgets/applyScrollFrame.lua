@@ -10,7 +10,7 @@ ns.widgetMetaBuilder.addType({
 	end,
 	initInstance = function(target)
 
-		local bar = builder.createFrame("ScrollBar", target:GetName() .. "ScrollBar", target)
+		local bar = builder.createFrame("Slider", target:GetName() .. "ScrollBar", target)
 		local down = builder.createFrame("Button", target:GetName() .. "ScrollBarScrollDownButton", target)
 		local up = builder.createFrame("Button", target:GetName() .. "ScrollBarScrollUpButton", target)
 	end,
