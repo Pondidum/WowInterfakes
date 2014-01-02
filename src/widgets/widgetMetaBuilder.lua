@@ -18,10 +18,23 @@ local function recurseTypes(builder, target)
 
 end
 
+local baseConfig = {
+	name = "",
+	extends = { },
+	build = function(target)
+	end,
+	initInstance = function(target)
+	end,
+}
+
 local builder = {
 
 	addType = function(config)
+
+		setmetatable(config, { __index = baseConfig })
+
 		typeBuilders[config.name] = config
+
 	end,
 
 	init = function()
