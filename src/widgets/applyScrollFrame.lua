@@ -1,11 +1,13 @@
 local ns = ...
-local builder = ns.builder
-local eventRegistry = ns.eventRegistry
+local log = ns.log:new("apply.scrollFrame")
 
 ns.widgetMetaBuilder.addType({
 	name = "ScrollFrame",
 	extends = { "Frame" },
 	build = function(target)
+
+	end,
+	initInstance = function(target)
 
 	end,
 })
