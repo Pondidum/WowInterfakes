@@ -49,6 +49,9 @@ builder.createFrame = function(frameType, name, parent, template)
 	frame.__storage.type = frameType
 	frame:SetParent(parent)
 
+	local init = metaStore.getInitialiser(frameType) or metaStore.getInitialiser("frame")
+	init(frame)
+
 	if template and template ~= "" then
 		templateManager.apply(template, frame)
 	end

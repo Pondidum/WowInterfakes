@@ -3,6 +3,7 @@ local log = ns.log:new("widgetMetaBuilder")
 
 local typeBuilders = {}
 local metas = {}
+local initialisers = {}
 
 local function recurseTypes(builder, target)
 
@@ -40,14 +41,17 @@ local builder = {
 	init = function()
 
 		metas = {}
+		initialisers = {}
 
 		for name, builder in pairs(typeBuilders) do
 
 			local target = {}
+			local name = string.lower(name)
 
 			recurseTypes(builder, target)
 
-			metas[string.lower(name)] = { __index = target }
+			metas[name] = { __index = target }
+			initialisers[name] = builder.initInstance
 
 		end
 
@@ -55,6 +59,10 @@ local builder = {
 
 	get = function(type)
 		return metas[string.lower(type)]
+	end,
+
+	getInitialiser = function(type)
+		return initialisers[string.lower(type)]
 	end,
 
 	listBuilders = function()
