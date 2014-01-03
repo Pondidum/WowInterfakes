@@ -39,12 +39,17 @@ ns.widgetMetaBuilder.addType({
 			return self.__storage.textFontString
 		end
 
+		target.GetHighlightTexture = function(self)
+			return self.__storage.highlightTexture
+		end
+
 	end,
 
 	initInstance = function(target)
 		target:Enable()
 
 		target.__storage.textFontString = builder.createFontString(target)
+		target.__storage.highlightTexture = builder.createTexture(target)
 
 	end,
 })
