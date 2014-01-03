@@ -36,17 +36,15 @@ ns.widgetMetaBuilder.addType({
 		end
 
 		target.GetFontString = function(self)
-
-			--might need to put this in a constructor later
-			self.__storage.textFontString = self.__storage.textFontString or builder.createFontString(self)
-
 			return self.__storage.textFontString
-
 		end
 
 	end,
 
 	initInstance = function(target)
 		target:Enable()
+
+		target.__storage.textFontString = builder.createFontString(target)
+
 	end,
 })
