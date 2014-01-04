@@ -190,4 +190,27 @@ ns.tests.add("frame creation tests", {
 		should.haveCount(2, store)
 
 	end,
+
+	when_creating_a_frame_scripts_should_be_parsed_last = function()
+
+		function OptionsListButton_OnLoad (self)
+			self.text = store["ScriptTestFrameText"];
+		end
+
+		parseXml([[
+			<Button name="ScriptTestFrame">
+				<Scripts>
+					<OnLoad>
+						OptionsListButton_OnLoad(self);
+					</OnLoad>
+				</Scripts>
+				<ButtonText name="$parentText" justifyH="LEFT" />
+			</Button>
+		]])
+
+		should.haveKey("ScriptTestFrame", store)
+		should.haveKey("ScriptTestFrameText", store)
+		should.notBeNil(store["ScriptTestFrame"].text)
+
+	end,
 })
