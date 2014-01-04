@@ -20,6 +20,33 @@ local element = {
 	end,
 }
 
+local function indexOf(elements, tag)
+
+	for i, e in ipairs(elements) do
+
+		if e.tag == tag then
+			return i
+		end
+
+	end
+
+end
+
+local function sortElements(elements)
+	-- this function to make sure Scripts elements are the last in a block
+
+	local index = indexOf(elements, "Scripts")
+
+	if not index then
+		return
+	end
+
+	local tag = table.remove(elements, index)
+
+	table.insert(elements, tag)
+
+end
+
 
 local function parse(parent, xmlElement)
 
@@ -54,6 +81,9 @@ local function parse(parent, xmlElement)
 			else
 				this.attributes[key] = value
 			end
+
+			-- hack? maybe.
+			sortElements(this.elements)
 
 		end
 
