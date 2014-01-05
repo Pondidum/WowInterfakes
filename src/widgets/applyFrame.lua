@@ -23,6 +23,10 @@ ns.widgetMetaBuilder.addType({
 			eventRegistry.register(self, event)
 		end
 
+		target.IsEventRegistered = function(self, event)
+			return eventRegistry.isRegistered(self, event)
+		end
+
 		target.CreateTexture = function(self, name, layer, inherits, sublevel)
 			return builder.createTexture(self, name, layer, inherits, sublevel)
 		end
