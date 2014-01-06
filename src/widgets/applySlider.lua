@@ -14,5 +14,17 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.value = value
 		end
 
+		target.IsEnabled = function(self)
+			return self.__storage.isEnabled
+		end
+
+		target.Enable = function(self)
+			self.__storage.isEnabled = true
+		end
+
+		target.Disable = function(self)
+			self.__storage.isEnabled = false
+		end
+
 	end,
 })
