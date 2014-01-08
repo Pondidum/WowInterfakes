@@ -6,6 +6,8 @@ local cvars = {
 	["waterDetail"] = 1,
 	["rippleDetail"] = 1,
 	["reflectionMode"] = 3,
+	["useUiScale"] = 0,
+	["sunshafts"] = 0,
 }
 
 local getCVar = function(name)
