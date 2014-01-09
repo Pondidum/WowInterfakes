@@ -22,5 +22,9 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.spacing = spacing
 		end
 
+		target.SetFontObject = function(self, nameOrObject)
+			self.__storage.parentFont = nameOrObject
+		end
+
 	end,
 })
