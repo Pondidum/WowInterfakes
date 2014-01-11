@@ -8,6 +8,7 @@ local cvars = {
 	["reflectionMode"] = 3,
 	["useUiScale"] = 0,
 	["sunshafts"] = 0,
+	["locale"] = "enGB",
 }
 
 local getCVar = function(name)
