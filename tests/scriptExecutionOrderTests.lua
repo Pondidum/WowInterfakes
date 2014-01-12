@@ -76,7 +76,7 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
-		should.beFalse(templateRan, "The template script didn't run, it should have.")
+		should.beTrue(templateRan, "The template script didn't run, it should have.")
 
 	end,
 
@@ -120,6 +120,28 @@ ns.tests.add("script execution order tests", {
 		]])
 
 		should.beTrue(instanceRan, "The instance script didn't run, it should have.")
+
+	end,
+
+	create_frame_should_run_template_onload = function()
+
+		local templateRan = false
+
+		function TemplateExec(self)
+			templateRan = true
+		end
+
+		parseXml([[
+			<Frame name="ScriptInheritanceTemplate" virtual="true">
+				<Scripts>
+					<OnLoad function="TemplateExec">
+				</Scripts>
+			</Frame>
+		]])
+
+		local f = CreateFrame("Frame", "ScriptInheritanceInstance", nil, "ScriptInheritanceTemplate")
+
+		should.beTrue(templateRan, "The template script didn't run, it should have.")
 
 	end,
 
