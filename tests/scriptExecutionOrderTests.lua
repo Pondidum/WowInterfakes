@@ -21,7 +21,7 @@ ns.tests.add("script execution order tests", {
 		ns.wow.frameRegistry.setStore(store)
 	end,
 
-	when_creating_a_frame_onload_scripts_should_override_base_onload = function()
+	template_with_onload_child_with_onload = function()
 
 		local instanceRan = false
 		local templateRan = false
@@ -37,13 +37,17 @@ ns.tests.add("script execution order tests", {
 		parseXml([[
 			<Frame name="ScriptInheritanceTemplate" virtual="true">
 				<Scripts>
-					<OnLoad function="TemplateExec">
+					<OnLoad>
+						TemplateExec(self)
+					</OnLoad>
 				</Scripts>
 			</Frame>
 
 			<Frame name="ScriptInheritanceInstance" inherits="ScriptInheritanceTemplate">
 				<Scripts>
-					<OnLoad function="InstanceExec">
+					<OnLoad>
+						InstanceExec(self)
+					</OnLoad>
 				</Scripts>
 			</Frame>
 		]])
@@ -53,7 +57,7 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
-	when_creating_a_frame_template_onload_should_run_if_there_is_no_child_onload = function()
+	template_with_onload_child_with_nothing = function()
 
 		local templateRan = false
 
@@ -76,7 +80,7 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
-	when_creating_a_frame_instance_onload_should_run_if_no_template_onload = function()
+	template_with_nothing_child_with_onload = function()
 
 		local instanceRan = false
 
@@ -99,7 +103,7 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
-	when_creating_a_frame_instance_onload_should_run_if_no_template = function()
+	frame_with_onload_and_no_template = function()
 
 		local instanceRan = false
 
