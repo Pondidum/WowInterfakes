@@ -23,15 +23,15 @@ ns.tests.add("script execution order tests", {
 
 	template_with_onload_child_with_onload = function()
 
-		local instanceRan = false
-		local templateRan = false
+		local instanceRan = 0
+		local templateRan = 0
 
 		function InstanceExec(self)
-			instanceRan = true
+			instanceRan = instanceRan + 1
 		end
 
 		function TemplateExec(self)
-			templateRan = true
+			templateRan = templateRan + 1
 		end
 
 		parseXml([[
@@ -52,17 +52,17 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
-		should.beTrue(instanceRan, "The instance script didn't run, it should have.")
-		should.beFalse(templateRan, "The template script ran, it shouldn't have.")
+		should.equal(1, instanceRan, "The instance script should have run %s times, but ran %s times.")
+		should.equal(0, templateRan, "The template script should have run %s times, but ran %s times.")
 
 	end,
 
 	template_with_onload_child_with_nothing = function()
 
-		local templateRan = false
+		local templateRan = 0
 
 		function TemplateExec(self)
-			templateRan = true
+			templateRan = templateRan + 1
 		end
 
 		parseXml([[
@@ -76,16 +76,16 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
-		should.beTrue(templateRan, "The template script didn't run, it should have.")
+		should.equal(1, templateRan, "The template script should have run %s times, but ran %s times.")
 
 	end,
 
 	template_with_nothing_child_with_onload = function()
 
-		local instanceRan = false
+		local instanceRan = 0
 
 		function InstanceExec(self)
-			instanceRan = true
+			instanceRan = instanceRan + 1
 		end
 
 		parseXml([[
@@ -99,16 +99,16 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
-		should.beTrue(instanceRan, "The instance script didn't run, it should have.")
+		should.equal(1, instanceRan, "The instance script should have run %s times, but ran %s times.")
 
 	end,
 
 	frame_with_onload_and_no_template = function()
 
-		local instanceRan = false
+		local instanceRan = 0
 
 		function InstanceExec(self)
-			instanceRan = true
+			instanceRan = instanceRan + 1
 		end
 
 		parseXml([[
@@ -119,16 +119,16 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
-		should.beTrue(instanceRan, "The instance script didn't run, it should have.")
+		should.equal(1, instanceRan, "The instance script should have run %s times, but ran %s times.")
 
 	end,
 
 	create_frame_should_run_template_onload = function()
 
-		local templateRan = false
+		local templateRan = 0
 
 		function TemplateExec(self)
-			templateRan = true
+			templateRan = templateRan + 1
 		end
 
 		parseXml([[
@@ -141,7 +141,7 @@ ns.tests.add("script execution order tests", {
 
 		local f = CreateFrame("Frame", "ScriptInheritanceInstance", nil, "ScriptInheritanceTemplate")
 
-		should.beTrue(templateRan, "The template script didn't run, it should have.")
+		should.equal(1, templateRan, "The template script should have run %s times, but ran %s times.")
 
 	end,
 
