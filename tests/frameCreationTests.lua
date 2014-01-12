@@ -214,35 +214,4 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
-	when_creating_a_frame_onload_scripts_should_override_base_onload = function()
-
-		local instanceRan = false
-		local templateRan = false 
-
-		function InstanceExec(self)
-			instanceRan = true
-		end
-
-		function TemplateExec(self)
-			templateRan = true
-		end
-
-		parseXml([[
-			<Frame name="ScriptInheritanceTemplate" virtual="true">
-				<Scripts>
-					<OnLoad function="TemplateExec">
-				</Scripts>
-			</Frame>
-
-			<Frame name="ScriptInheritanceInstance" inherits="ScriptInheritanceTemplate">
-			<Scripts>
-					<OnLoad function="InstanceExec">
-				</Scripts>
-			</Frame>
-		]])
-
-		should.beTrue(instanceRan, "The instance script didn't run, it should have.")
-		should.beFalse(templateRan, "The template script ran, it shouldn't have.")
-
-	end,
 })
