@@ -55,9 +55,20 @@ local tag = ns.parsers.xmlTag:new({
 		local script = target:GetScript("OnLoad")
 
 		if script then
-			log.debug("Running OnLoad Script on", target:GetName())
-			script(target)
+
+			target.finalize = function()
+			 	log.debug("Running OnLoad Script on", target:GetName())
+				script(target)
+			end
+
 		end
+
+		
+
+		-- if script then
+		
+		-- 	script(target)
+		-- end
 
 	end
 })

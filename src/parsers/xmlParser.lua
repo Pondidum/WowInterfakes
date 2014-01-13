@@ -107,6 +107,12 @@ local xmlParser = {
 			if result then
 				stack.push(result)
 			elseif handler.stepOut then
+
+				if stack.tip().finalize then
+					stack.tip().finalize()
+					stack.tip().finalize = nil
+				end
+
 				stack.pop()
 			end
 
