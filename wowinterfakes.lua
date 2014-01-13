@@ -1,6 +1,7 @@
 local project = loadfile("lib\\project.lua")()
 
 local print = print
+GlobalPrint = print
 
 local wowinterfakes = project:new({
 
