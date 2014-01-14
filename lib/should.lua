@@ -1,4 +1,4 @@
-local VERSION = "1.0.0"
+local VERSION = "1.0.1"
 
 local should = {
 
@@ -102,6 +102,29 @@ local should = {
 
 		assert(item, string.format(message or "Expected item to not be nil, but it was.",
 								   tostring(item)))
+
+	end,
+
+	beEmpty = function(collection, message)
+
+		if next(collection) then
+
+			local count = 0
+
+			for k,v in pairs(collection) do
+				count = count + 1
+			end
+
+			assert(false, string.format(message or "Expected the collection to be empty, but it had %s items.",
+										tostring(count)))
+
+		end
+
+	end,
+
+	notBeEmpty = function(collection, message)
+
+		assert(next(collection), string.format(message or "Expected the collection to have items, but it had none."))
 
 	end,
 
