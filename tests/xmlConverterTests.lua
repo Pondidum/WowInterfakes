@@ -64,7 +64,10 @@ ns.tests.add("xml converter tests", {
 		local content = xml.eval("<Ui>" .. input .. "</Ui>")
 		local sanitised = ns.wow.xmlConverter.parse(content)
 
-		should.haveCount(1, sanitised.elements)
+		should.haveCount(2, sanitised.elements)
+		should.equal("Ui", sanitised.tag)
+		should.equal("ScriptInheritanceTemplate", sanitised.elements[1].attributes.name)
+		should.equal("ScriptInheritanceInstance", sanitised.elements[2].attributes.name)
 
 	end,
 
