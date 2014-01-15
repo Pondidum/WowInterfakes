@@ -100,16 +100,16 @@ local xmlParser = {
 
 		log.debug("executing chain")
 
-		local target = ns.stack.new()
+		local stack = ns.stack.new()
 
 		for i, handler in ipairs(handlerChain) do
 
-			local result = handler.build(handler.file, handler.element, target.tip())
+			local result = handler.build(handler.file, handler.element, stack.tip())
 
 			if result then
-				target.push(result)
+				stack.push(result)
 			elseif handler.stepOut then
-				target.pop()
+				stack.pop()
 			end
 
 		end
