@@ -45,50 +45,48 @@ local xmlParser = {
 
 		local function recurseTree(parent, chain)
 
-			for i, element in ipairs(parent.elements) do
+			local currentChain = chain
+			local virtual = isVirtual(parent)
 
-				local virtual = isVirtual(element)
-				local currentChain = chain
 
-				if virtual then
-					currentChain = {}
-				end
+			if virtual then
+				currentChain = {}
+			end
 
-				if not element.tag then
-					log.warn("No Tag on", element)
-				else
+			if not parent.tag then
+				log.warn("No Tag on", parent)
+			else
 
-					local tag = element.tag
-					local handler = tags[tag]
+				local tag = parent.tag
+				local handler = tags[tag]
 
-					if handler then
+				local data = decoratorData:new({
+					tag = tag,
+					file = file,
+					element = parent,
+					build = function(...)
+						return handler:build(...)
+					end,
+				})
 
-						local data = decoratorData:new({
-							tag = tag,
-							file = file,
-							element = element,
-							build = function(...)
-								return handler:build(...)
-							end,
-						})
+				table.insert(currentChain, data)
 
-						table.insert(currentChain, data)
+				if handler.processChildren and #parent.elements > 0 then
 
-						if handler.processChildren and #element.elements > 0 then
-							recurseTree(element, currentChain)
-						end
-
-						if handler.createsElement then
-							table.insert(currentChain, decoratorData:new({ stepOut = true }))
-						end
-
-					end
-
-					if virtual then
-						ns.templateManager.addTemplate(element.attributes.name, currentChain)
+					for i, element in ipairs(parent.elements) do
+						recurseTree(element, currentChain)
 					end
 
 				end
+
+				if handler.createsElement then
+					table.insert(currentChain, decoratorData:new({ stepOut = true }))
+				end
+
+			end
+
+			if virtual then
+				ns.templateManager.addTemplate(parent.attributes.name, currentChain)
 			end
 
 		end
