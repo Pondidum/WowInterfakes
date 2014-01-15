@@ -15,9 +15,9 @@ local decoratorData = {
 	build = function() end,
 }
 
-local tagNotFound = function(t, k) 
+local tagNotFound = function(t, k)
 	return t.__default
-end 
+end
 
 local tags = setmetatable({}, { __index = tagNotFound })
 
@@ -38,7 +38,12 @@ local xmlParser = {
 			return element.attributes.virtual == "true" and not element.attributes.name:find("$parent")
 		end
 
-		local function recurseTree(file, parent, chain)
+		-- args object, may get expanded later
+		local file = {
+			root = root
+		}
+
+		local function recurseTree(parent, chain)
 
 			for i, element in ipairs(parent.elements) do
 
@@ -48,10 +53,10 @@ local xmlParser = {
 				if virtual then
 					currentChain = {}
 				end
-				
+
 				if not element.tag then
 					log.warn("No Tag on", element)
-				else				
+				else
 
 					local tag = element.tag
 					local handler = tags[tag]
@@ -62,15 +67,15 @@ local xmlParser = {
 							tag = tag,
 							file = file,
 							element = element,
-							build = function(...) 
-								return handler:build(...) 
+							build = function(...)
+								return handler:build(...)
 							end,
 						})
 
 						table.insert(currentChain, data)
-					
+
 						if handler.processChildren and #element.elements > 0 then
-							recurseTree(file, element, currentChain)
+							recurseTree(element, currentChain)
 						end
 
 						if handler.createsElement then
@@ -83,22 +88,18 @@ local xmlParser = {
 						ns.templateManager.addTemplate(element.attributes.name, currentChain)
 					end
 
-				end 
+				end
 			end
 
 		end
 
-		local file = { 
-			root = root 
-		}
-		
 		log.debug("building chain")
 
 		local handlerChain = {}
-		recurseTree(file, xmlTable, handlerChain)
+		recurseTree(xmlTable, handlerChain)
 
 		log.debug("executing chain")
-		
+
 		local target = ns.stack.new()
 
 		for i, handler in ipairs(handlerChain) do
@@ -108,7 +109,7 @@ local xmlParser = {
 			if result then
 				target.push(result)
 			elseif handler.stepOut then
-				target.pop()		
+				target.pop()
 			end
 
 		end
