@@ -37,17 +37,13 @@ ns.tests.add("script execution order tests", {
 		parseXml([[
 			<Frame name="ScriptInheritanceTemplate" virtual="true">
 				<Scripts>
-					<OnLoad>
-						TemplateExec(self)
-					</OnLoad>
+					<OnLoad function="TemplateExec" />
 				</Scripts>
 			</Frame>
 
 			<Frame name="ScriptInheritanceInstance" inherits="ScriptInheritanceTemplate">
 				<Scripts>
-					<OnLoad>
-						InstanceExec(self)
-					</OnLoad>
+					<OnLoad function="InstanceExec" />
 				</Scripts>
 			</Frame>
 		]])
@@ -68,7 +64,7 @@ ns.tests.add("script execution order tests", {
 		parseXml([[
 			<Frame name="ScriptInheritanceTemplate" virtual="true">
 				<Scripts>
-					<OnLoad function="TemplateExec">
+					<OnLoad function="TemplateExec" />
 				</Scripts>
 			</Frame>
 
@@ -76,6 +72,7 @@ ns.tests.add("script execution order tests", {
 			</Frame>
 		]])
 
+		should.haveKey("ScriptInheritanceInstance", store)
 		should.equal(1, templateRan, "The template script should have run %s times, but ran %s times.")
 
 	end,
@@ -94,7 +91,7 @@ ns.tests.add("script execution order tests", {
 
 			<Frame name="ScriptInheritanceInstance" inherits="ScriptInheritanceTemplate">
 				<Scripts>
-					<OnLoad function="InstanceExec">
+					<OnLoad function="InstanceExec" />
 				</Scripts>
 			</Frame>
 		]])
@@ -114,7 +111,7 @@ ns.tests.add("script execution order tests", {
 		parseXml([[
 			<Frame name="ScriptInheritanceInstance">
 				<Scripts>
-					<OnLoad function="InstanceExec">
+					<OnLoad function="InstanceExec" />
 				</Scripts>
 			</Frame>
 		]])
@@ -134,7 +131,7 @@ ns.tests.add("script execution order tests", {
 		parseXml([[
 			<Frame name="ScriptInheritanceTemplate" virtual="true">
 				<Scripts>
-					<OnLoad function="TemplateExec">
+					<OnLoad function="TemplateExec" />
 				</Scripts>
 			</Frame>
 		]])

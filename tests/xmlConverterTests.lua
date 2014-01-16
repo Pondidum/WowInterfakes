@@ -56,7 +56,7 @@ ns.tests.add("xml converter tests", {
 
 			<Frame name="ScriptInheritanceInstance" inherits="ScriptInheritanceTemplate">
 				<Scripts>
-					<OnLoad function="InstanceExec">
+					<OnLoad function="InstanceExec" />
 				</Scripts>
 			</Frame>
 		]]
