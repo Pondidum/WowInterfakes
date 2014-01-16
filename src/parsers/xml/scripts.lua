@@ -7,7 +7,7 @@ local scriptParameters = {
 }
 
 local wrapScript = function(type, contents)
-	
+
 	local prefix = scriptParameters[type]
 
 	if not prefix then
@@ -62,13 +62,6 @@ local tag = ns.parsers.xmlTag:new({
 			end
 
 		end
-
-		
-
-		-- if script then
-		
-		-- 	script(target)
-		-- end
 
 	end
 })
