@@ -94,7 +94,7 @@ ns.widgetMetaBuilder.addType({
 			if data == nil then
 				return nil
 			else
-				return data.anchor, ns.frameRegistry.get(data.other), data.otherAnchor, data.x, data.y
+				return data.anchor, data.other, data.otherAnchor, data.x, data.y
 			end
 
 		end
