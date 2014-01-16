@@ -7,7 +7,7 @@ local scriptParameters = {
 }
 
 local wrapScript = function(type, contents)
-	
+
 	local prefix = scriptParameters[type]
 
 	if not prefix then
@@ -55,8 +55,12 @@ local tag = ns.parsers.xmlTag:new({
 		local script = target:GetScript("OnLoad")
 
 		if script then
-			log.debug("Running OnLoad Script on", target:GetName())
-			script(target)
+
+			target.finalize = function()
+			 	log.debug("Running OnLoad Script on", target:GetName())
+				script(target)
+			end
+
 		end
 
 	end

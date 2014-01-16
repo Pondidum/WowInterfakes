@@ -56,7 +56,6 @@ builder.createFrame = function(frameType, name, parent, template)
 		templateManager.apply(template, frame)
 	end
 
-
 	return frame
 
 end
