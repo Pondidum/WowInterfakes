@@ -1,5 +1,6 @@
 local ns = ...
 local builder = ns.builder
+local log = ns.log:new("apply.region")
 
 ns.widgetMetaBuilder.addType({
 	name = "Region",
@@ -46,6 +47,16 @@ ns.widgetMetaBuilder.addType({
 				if point.anchor == anchor then
 					index = i
 				end
+			end
+
+			if type(other) == "string" then
+				local frame = ns.frameRegistry.get(other)
+
+				if frame == nil then
+					log.warn("Unable to find a frame called " .. other)
+				end
+
+				other = frame
 			end
 
 			local data = {
