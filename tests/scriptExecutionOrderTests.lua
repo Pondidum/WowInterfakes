@@ -142,4 +142,31 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
+	when_a_template_is_used_multiple_times = function()
+
+		local templateRan = 0
+
+		function TemplateExec(self)
+			templateRan = templateRan + 1
+		end
+
+		parseXml([[
+			<Frame name="ScriptInheritanceTemplate" virtual="true">
+				<Scripts>
+					<OnLoad function="TemplateExec" />
+				</Scripts>
+			</Frame>
+
+			<Frame name="ScriptInheritanceInstance1" inherits="ScriptInheritanceTemplate">
+			</Frame>
+
+			<Frame name="ScriptInheritanceInstance2" inherits="ScriptInheritanceTemplate">
+			</Frame>
+		]])
+
+		should.haveCount(2, store)
+		should.equal(2, templateRan)
+
+	end,
+
 })
