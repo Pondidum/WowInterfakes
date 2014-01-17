@@ -214,4 +214,31 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_anchoring_frames_on_creation = function()
+
+		parseXml([[
+			<Frame name="ExampleButtonFrame">
+				<Frames>
+					<Button name="ExampleButtonFrameBtn1">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT" />
+						</Anchors>
+					</Button>
+					<Button name="ExampleButtonFrameBtn2">
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="ExampleButtonFrameBtn1" relativePoint="TOPLEFT" />
+						</Anchors>
+					</Button>
+				</Frames>
+			</Frame>
+		]])
+
+		local button1 = store["ExampleButtonFrameBtn1"]
+		local button2 = store["ExampleButtonFrameBtn2"]
+
+		local point, relativeTo, relativePoint, offsetX, offsetY = button2:GetPoint(1)
+
+		should.equal(button1, relativeTo)
+
+	end,
 })
