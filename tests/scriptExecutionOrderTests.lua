@@ -169,4 +169,41 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
+	when_a_template_has_children_with_scripts_and_the_instance_has_onload_sript = function()
+
+		local instanceRan = 0
+		local categoryTemplateRan = 0
+
+		function VideoOptionsFrame_OnLoad()
+			instanceRan = instanceRan + 1
+		end
+
+		function CategoryTemplate_OnLoad()
+			categoryTemplateRan = categoryTemplateRan + 1
+		end
+
+		parseXml([[
+			<Frame name="OptionsFrameTemplate" virtual="true">
+				<Frames>
+					<Frame name="$parentCategoryFrame">
+						<Scripts function="CategoryTemplate_OnLoad"/>
+					</Frame>
+				</Frames>
+			</Frame>
+
+			<Frame name="VideoOptionsFrame" inherits="OptionsFrameTemplate">
+				<Scripts>
+					<OnLoad function="VideoOptionsFrame_OnLoad"/>
+				</Scripts>
+			</Frame>
+		]])
+
+		should.haveKey("VideoOptionsFrame", store)
+		should.haveKey("VideoOptionsFrameCategoryFrame", store)
+
+		should.equal(1, instanceRan)
+		should.equal(1, categoryTemplateRan)
+
+	end,
+
 })
