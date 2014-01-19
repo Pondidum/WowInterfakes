@@ -186,14 +186,16 @@ ns.tests.add("script execution order tests", {
 			<Frame name="OptionsFrameTemplate" virtual="true">
 				<Frames>
 					<Frame name="$parentCategoryFrame">
-						<Scripts function="CategoryTemplate_OnLoad"/>
+						<Scripts>
+							<OnLoad function="CategoryTemplate_OnLoad" />
+						</Scripts>
 					</Frame>
 				</Frames>
 			</Frame>
 
 			<Frame name="VideoOptionsFrame" inherits="OptionsFrameTemplate">
 				<Scripts>
-					<OnLoad function="VideoOptionsFrame_OnLoad"/>
+					<OnLoad function="VideoOptionsFrame_OnLoad" />
 				</Scripts>
 			</Frame>
 		]])
@@ -201,8 +203,8 @@ ns.tests.add("script execution order tests", {
 		should.haveKey("VideoOptionsFrame", store)
 		should.haveKey("VideoOptionsFrameCategoryFrame", store)
 
-		should.equal(1, instanceRan)
-		should.equal(1, categoryTemplateRan)
+		should.equal(1, instanceRan, "The instance script should have run %s times, but ran %s times.")
+		should.equal(1, categoryTemplateRan, "The template subframe script should have run %s times, but ran %s times.")
 
 	end,
 
