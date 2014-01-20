@@ -169,7 +169,7 @@ ns.tests.add("script execution order tests", {
 
 	end,
 
-	when_a_template_has_children_with_scripts_and_the_instance_has_onload_sript = function()
+	when_a_template_has_children_with_scripts_and_the_instance_has_onload_script = function()
 
 		local instanceRan = 0
 		local categoryTemplateRan = 0
