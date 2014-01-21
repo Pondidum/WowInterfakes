@@ -80,7 +80,21 @@ local xmlParser = {
 				end
 
 				if handler.createsElement then
-					table.insert(currentChain, decoratorData:new({ stepOut = true }))
+					table.insert(currentChain, decoratorData:new({
+						stepOut = true,
+						build = function(file, element, target)
+
+							if virtual then
+								return
+							end
+
+							if target.finalize then
+								target.finalize()
+								target.finalize = nil
+							end
+
+						end,
+					}))
 				end
 
 			end
@@ -107,12 +121,6 @@ local xmlParser = {
 			if result then
 				stack.push(result)
 			elseif handler.stepOut then
-
-				if stack.tip().finalize then
-					stack.tip().finalize()
-					stack.tip().finalize = nil
-				end
-
 				stack.pop()
 			end
 
