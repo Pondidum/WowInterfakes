@@ -37,9 +37,11 @@ local tag = ns.parsers.xmlTag:new({
 		end
 
 		-- process other attribs etc
-		--
-		--
-		
+
+		if element.attributes.id then
+			frame:SetID(element.attributes.id)
+		end
+
 		return frame
 
 	end,
