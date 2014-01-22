@@ -63,5 +63,9 @@ ns.widgetMetaBuilder.addType({
 			return self.__storage.attributes[name]
 		end
 
+		target.GetID = function(self)
+			return self.__storage.id
+		end
+
 	end,
 })
