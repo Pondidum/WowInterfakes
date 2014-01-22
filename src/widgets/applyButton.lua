@@ -63,6 +63,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.highlightLocked = nil
 		end
 
+		target.LockHighlight = function(self)
+			self.__storage.highlightLocked = true
+		end
+
 	end,
 
 	initInstance = function(target)
