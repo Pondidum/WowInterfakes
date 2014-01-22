@@ -59,6 +59,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.disabledFont = font
 		end
 
+		target.UnlockHighlight = function(self)
+			self.__storage.highlightLocked = nil
+		end
+
 	end,
 
 	initInstance = function(target)
