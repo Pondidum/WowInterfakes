@@ -51,5 +51,11 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.enableMouse = value
 		end
 
+		target.SetAttribute = function(self, name, value)
+			self.__storage.attributes = self.__storage.attributes or {}
+
+			self.__storage.attributes[name] = value
+		end
+
 	end,
 })
