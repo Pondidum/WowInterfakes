@@ -57,5 +57,11 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.attributes[name] = value
 		end
 
+		target.GetAttribute = function(self, name)
+			self.__storage.attributes = self.__storage.attributes or {}
+
+			return self.__storage.attributes[name]
+		end
+
 	end,
 })
