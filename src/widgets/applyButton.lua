@@ -35,6 +35,10 @@ ns.widgetMetaBuilder.addType({
 
 		end
 
+		target.SetText = function(self, text)
+			self.__storage.text = text
+		end
+
 		target.GetFontString = function(self)
 			return self.__storage.textFontString
 		end
