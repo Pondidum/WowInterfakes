@@ -84,6 +84,9 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 	texture:SetParent(parent)
 	texture:SetDrawLayer(layer, sublevel)
 
+	local init = metaStore.getInitialiser("texture")
+	init(texture)
+
 	if inherits and inherits ~= "" then
 		-- dunno yet, maybe just templateManager
 	end
@@ -115,6 +118,9 @@ builder.createFontString = function(parent, name, layer, inherits)
 	font.__storage.name = name
 	font.__storage.type = "fontstring"
 
+	local init = metaStore.getInitialiser("FontString")
+	init(font)
+
 	return font
 
 end
@@ -141,6 +147,9 @@ builder.createAnimationGroup = function(parent, name, inherits)
 
 	group.__storage.name = name
 	group.__storage.type = "animationgroup"
+
+	local init = metaStore.getInitialiser("animationGroup")
+	init(group)
 
 	return group
 
