@@ -18,7 +18,7 @@ templateManager.apply = function(name, target)
 
 	if handlerChain then
 
-		log.debug("applying", name .. " to " .. target:GetName())
+		log.debug("applying", name .. " to " .. tostring(target:GetName()))
 
 		local first = handlerChain[1]
 
