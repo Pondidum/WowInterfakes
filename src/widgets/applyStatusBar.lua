@@ -10,5 +10,9 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.minValue = maxValue
 		end
 
+		target.SetValue = function(self, value)
+			self.__storage.value = value
+		end
+
 	end,
 })
