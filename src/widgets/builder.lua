@@ -79,7 +79,7 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 
 	frameRegistry.register(realName, texture)
 
-	texture.__storage.name = name 	--no publicly accessable SetName method()
+	texture.__storage.realName = name 	--no publicly accessable SetName method()
 	texture.__storage.type = "texture"
 	texture:SetParent(parent)
 	texture:SetDrawLayer(layer, sublevel)
@@ -115,7 +115,7 @@ builder.createFontString = function(parent, name, layer, inherits)
 
 	frameRegistry.register(realName, font)
 
-	font.__storage.name = name
+	font.__storage.name = realName
 	font.__storage.type = "fontstring"
 
 	local init = metaStore.getInitialiser("FontString")
@@ -145,7 +145,7 @@ builder.createAnimationGroup = function(parent, name, inherits)
 
 	frameRegistry.register(realName, group)
 
-	group.__storage.name = name
+	group.__storage.name = realName
 	group.__storage.type = "animationgroup"
 
 	local init = metaStore.getInitialiser("animationGroup")
