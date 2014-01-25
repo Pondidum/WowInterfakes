@@ -14,7 +14,7 @@ local buildName = function(parent, name)
 	local parentName = ""
 
 	if parent and parent.GetName then
-		parentName = parent:GetName()
+		parentName = parent:GetName() or ""
 	end
 
 	return name:gsub("$parent", parentName)
