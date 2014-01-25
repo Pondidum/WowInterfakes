@@ -9,13 +9,15 @@ local cvars = {
 	["useUiScale"] = 0,
 	["sunshafts"] = 0,
 	["locale"] = "enGB",
+	["VoiceChatMode"] = 0,
 }
 
 local getCVar = function(name)
 
 	log.debug(name, cvars[name])
 
-	return tostring(cvars[name] or "")
+	return cvars[name]
+
 end
 
 ns.api.export("GetCVar", getCVar)
