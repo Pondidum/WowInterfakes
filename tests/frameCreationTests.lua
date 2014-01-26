@@ -289,10 +289,16 @@ ns.tests.add("frame creation tests", {
 			</Frame>
 		]])
 
+
+		should.haveKey("AudioOptionsVoicePanel", store)
+		should.haveKey("AudioOptionsVoicePanelChatMode1", store)
+		should.haveKey("AudioOptionsVoicePanelChatMode1KeyBindingButton", store)
+		should.haveKey("AudioOptionsVoicePanelPushToTalkSound", store)
+
 		local check = store["AudioOptionsVoicePanelPushToTalkSound"]
 
-		should.haveKey("AudioOptionsVoicePanelPushToTalkSound", store)
-		should.notBeNil(check:GetParent())
+		should.notBeNil(check:GetParent(), "Grandchild element should not have a nil parent.")
+		should.notBeNil(check:GetParent():GetParent(), "Grandchild element should not have a nil GrandParent.")
 
 	end,
 })
