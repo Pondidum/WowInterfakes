@@ -10,6 +10,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.text = text
 		end
 
+		target.SetFormattedText = function(self, formatString, ...)
+			self:SetText(string.format(formatString, ...))
+		end
+
 	end,
 
 	initInstance = function(target)
