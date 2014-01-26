@@ -18,21 +18,7 @@ local tag = ns.parsers.xmlTag:new({
 			local name = element.attributes.name
 			local templates = element.attributes.inherits
 
-			local parent = element.attributes.parent
-			local parentElement = element.parent
-
-			while parent == nil and parentElement ~= nil do
-
-				if parentElement.attributes.name then
-					parent = parentElement.attributes.name
-					break
-				end
-
-				parentElement = parentElement.parent
-
-			end
-
-			frame = builder.createFrame(element.tag, name, parent, templates)
+			frame = builder.createFrame(element.tag, name, target, templates)
 
 		end
 
