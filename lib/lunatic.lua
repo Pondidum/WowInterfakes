@@ -1,4 +1,4 @@
-local VERSION = "0.0.4"
+local VERSION = "0.0.5"
 
 local testRunner = {}
 
@@ -86,12 +86,32 @@ local testEngine = {
 			sets[name] = set
 		end
 
-		this.run = function()
+		this.run = function(setName, testName)
 
 			results = {}
 
-			for name, set in pairs(sets) do
-				results[name] = testRunner.runSet(set)
+			if setName then
+
+				local set = sets[setName]
+				assert(set, string.format("Unable to find a set called %s.", setName))
+
+				if testName then
+
+					local test = set[testName]
+					assert(test, string.format("Unable to find a test called %s.", testName))
+
+					results[setName] = testRunner.runSet({ before = set.before, [testName] = test, after = set.after })
+
+				else
+					results[setName] = testRunner.runSet(set)
+				end
+
+			else
+
+				for name, set in pairs(sets) do
+					results[name] = testRunner.runSet(set)
+				end
+
 			end
 
 		end
