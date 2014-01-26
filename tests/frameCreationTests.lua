@@ -241,4 +241,58 @@ ns.tests.add("frame creation tests", {
 		should.equal(button1, relativeTo)
 
 	end,
+
+	when_creating_a_frame_hierarchy = function()
+
+		parseXml([[
+			<Frame name="UltimateParent">
+				<Frames>
+					<Frame name="ParentFrame">
+						<Frames>
+							<Frame name="ChildOne">
+							</Frame>
+							<Frame name="ChildTwo">
+							</Frame>
+						</Frames>
+					</Frame>
+				</Frames>
+			</Frame>
+		]])
+
+		local ultimate = store["UltimateParent"]
+		local parent = store["ParentFrame"]
+		local child1 = store["ChildOne"]
+		local child2 = store["ChildTwo"]
+
+		should.equal(ultimate, parent:GetParent())
+		should.equal(parent, child1:GetParent())
+		should.equal(parent, child2:GetParent())
+		should.equal(ultimate, child1:GetParent():GetParent())
+		should.equal(ultimate, child2:GetParent():GetParent())
+
+	end,
+
+	when_creating_a_complex_hierarchy = function()
+
+		parseXml([[
+			<Frame name="AudioOptionsVoicePanel">
+				<Frames>
+					<Frame name="$parentChatMode1">
+						<Frames>
+							<Button name="$parentKeyBindingButton">
+							</Button>
+							<CheckButton name="AudioOptionsVoicePanelPushToTalkSound">
+							</CheckButton>
+						</Frames>
+					</Frame>
+				</Frames>
+			</Frame>
+		]])
+
+		local check = store["AudioOptionsVoicePanelPushToTalkSound"]
+
+		should.haveKey("AudioOptionsVoicePanelPushToTalkSound", store)
+		should.notBeNil(check:GetParent())
+
+	end,
 })
