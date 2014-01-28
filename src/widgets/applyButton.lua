@@ -51,6 +51,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.pushedTexture = texture
 		end
 
+		target.SetHighlightTexture = function(self, texture)
+			self.__storage.highlightTexture = texture
+		end
+
 		target.GetHighlightTexture = function(self)
 			return self.__storage.highlightTexture
 		end
