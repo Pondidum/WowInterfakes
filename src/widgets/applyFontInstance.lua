@@ -26,5 +26,9 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.parentFont = nameOrObject
 		end
 
+		target.SetTextColor = function(self, textR, textG, textB, textAlpha)
+			self.__storage.textColor = { r = textR, g = textG, b = textB, a = textAlpha }
+		end
+
 	end,
 })
