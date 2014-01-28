@@ -28,6 +28,12 @@ local tag = ns.parsers.xmlTag:new({
 			frame:SetID(element.attributes.id)
 		end
 
+		local key = element.attributes.parentKey
+
+		if key then
+			target[key] = frame
+		end
+
 		return frame
 
 	end,
