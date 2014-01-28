@@ -1,0 +1,3 @@
+local ns = ...
+
+ns.data = {}
