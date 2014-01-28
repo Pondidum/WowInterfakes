@@ -43,6 +43,10 @@ ns.widgetMetaBuilder.addType({
 			return self.__storage.textFontString
 		end
 
+		target.SetNormalTexture = function(self, texture)
+			self.__storage.normalTexture = texture
+		end
+
 		target.GetHighlightTexture = function(self)
 			return self.__storage.highlightTexture
 		end
