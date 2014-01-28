@@ -19,6 +19,9 @@ local wowinterfakes = project:new({
 		io.addFilesIn("src\\parsers")
 		io.addFilesIn("src\\parsers\\xml")
 		io.addFilesIn("src\\parsers\\toc")
+
+		io.addFile("src\\data\\namespace.lua")
+		io.addFilesIn("src\\data")
 		io.addFilesIn("src\\api")
 
 	end),

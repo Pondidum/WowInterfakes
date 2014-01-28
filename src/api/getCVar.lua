@@ -1,16 +1,6 @@
 local ns = ...
 local log = ns.log:new("api.getCVar")
-
-local cvars = {
-	["gxMonitor"] = 1,
-	["waterDetail"] = 1,
-	["rippleDetail"] = 1,
-	["reflectionMode"] = 3,
-	["useUiScale"] = 0,
-	["sunshafts"] = 0,
-	["locale"] = "enGB",
-	["VoiceChatMode"] = 0,
-}
+local cvars = ns.data.cvars
 
 local getCVar = function(name)
 
