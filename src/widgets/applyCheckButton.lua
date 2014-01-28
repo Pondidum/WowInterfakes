@@ -11,5 +11,9 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.checked = enable
 		end
 
+		target.GetChecked = function(self)
+			return self.__storage.checked
+		end
+
 	end,
 })
