@@ -63,6 +63,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.disabledTexture = texture
 		end
 
+		target.GetDisabledTexture = function(self)
+			return self.__storage.disabledTexture
+		end
+
 		target.SetNormalFontObject = function(self, font)
 			self.__storage.normalFont = font
 		end
