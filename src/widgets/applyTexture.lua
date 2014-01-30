@@ -67,6 +67,10 @@ ns.widgetMetaBuilder.addType({
 			self.__storage.rotation = radians
 		end
 
+		target.SetDesaturated = function(self, desaturate)
+			self.__storage.desaturated = desaturate
+		end
+
 	end,
 
 	initInstance = function(target)
