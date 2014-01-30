@@ -60,7 +60,13 @@ ns.widgetMetaBuilder.addType({
 		end
 
 		target.SetDisabledTexture = function(self, texture)
-			self.__storage.disabledTexture = texture
+
+			if type(texture) == "string" then
+				self.__storage.disabledTexture:SetTexture(texture)
+			else
+				self.__storage.disabledTexture = builder.createTexture(self)
+			end
+
 		end
 
 		target.GetDisabledTexture = function(self)
@@ -94,6 +100,7 @@ ns.widgetMetaBuilder.addType({
 
 		target.__storage.textFontString = builder.createFontString(target)
 		target.__storage.highlightTexture = builder.createTexture(target)
+		target.__storage.disabledTexture = builder.createTexture(target)
 
 	end,
 })
