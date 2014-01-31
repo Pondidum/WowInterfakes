@@ -35,6 +35,10 @@ ns.widgetMetaBuilder.addType({
 			return builder.createFontString(self, name, layer, inherits)
 		end
 
+		target.RegisterForDrag = function(self, ...)
+			self.__storage.drags = { ... }
+		end
+
 		target.IgnoreDepth = function(self, enabled)
 			self.__storage.ingoreDepth = enabled
 		end
