@@ -76,4 +76,10 @@ ns.widgetMetaBuilder.addType({
 		end
 
 	end,
+
+	initInstance = function(target)
+
+		target:SetID(0)
+
+	end,
 })
