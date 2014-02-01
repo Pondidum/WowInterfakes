@@ -39,6 +39,10 @@ ns.builder.addType({
 			self.__storage.text = text
 		end
 
+		target.GetText = function(self)
+			return self.__storage.text
+		end
+
 		target.GetFontString = function(self)
 			return self.__storage.textFontString
 		end
