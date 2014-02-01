@@ -1,18 +1,6 @@
 local ns = ...
 local log = ns.log:new("widgetMetaBuilder")
 
-local function recurseTypes(builder, target)
-
-	builder.build(target)
-
-	for i, builderName in ipairs(builder.extends) do
-
-		local subBuilder = typeBuilders[builderName]
-		recurseTypes(subBuilder, target)
-
-	end
-
-end
 
 local baseConfig = {
 	name = "",
@@ -28,6 +16,19 @@ local widgetBuilder = {
 		local typeBuilders = {}
 		local metas = {}
 		local initialisers = {}
+
+		local function recurseTypes(builder, target)
+
+			builder.build(target)
+
+			for i, builderName in ipairs(builder.extends) do
+
+				local subBuilder = typeBuilders[builderName]
+				recurseTypes(subBuilder, target)
+
+			end
+
+		end
 
 		local builder = {}
 
