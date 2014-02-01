@@ -1,7 +1,7 @@
 local ns = ...
 local builder = ns.builder
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "VisibleRegion",
 	extends = { "Region" },
 	build = function(target)

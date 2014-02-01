@@ -2,7 +2,7 @@ local ns = ...
 local builder = ns.builder
 local log = ns.log:new("apply.region")
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "Region",
 	extends = { "ParentedObject" },
 	build = function(target)

@@ -1,7 +1,7 @@
 local ns = ...
 local builder = ns.builder
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "AnimationGroup",
 	extends = { "ScriptObject", "ParentedObject" },
 	build = function(target)

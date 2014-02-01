@@ -1,6 +1,6 @@
 local ns = ...
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "Slider",
 	extends = { "Frame" },
 	build = function(target)

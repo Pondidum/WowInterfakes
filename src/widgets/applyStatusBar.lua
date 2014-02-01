@@ -1,6 +1,6 @@
 local ns = ...
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "StatusBar",
 	extends = { "Frame" },
 	build = function(target)

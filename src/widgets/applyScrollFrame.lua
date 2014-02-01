@@ -2,7 +2,7 @@ local ns = ...
 local log = ns.log:new("apply.scrollFrame")
 local builder = ns.builder
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "ScrollFrame",
 	extends = { "Frame" },
 	build = function(target)

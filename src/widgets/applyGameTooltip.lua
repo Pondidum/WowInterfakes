@@ -1,6 +1,6 @@
 local ns = ...
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "GameTooltip",
 	extends = { "Frame" },
 	build = function(target)

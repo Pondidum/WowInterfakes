@@ -2,7 +2,7 @@ local ns = ...
 local builder = ns.builder
 local eventRegistry = ns.eventRegistry
 
-ns.widgetMetaBuilder.addType({
+ns.builder.addType({
 	name = "Button",
 	extends = { "Frame" },
 	build = function(target)
