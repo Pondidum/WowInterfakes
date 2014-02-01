@@ -26,6 +26,7 @@ local builder = {}
 
 builder.addType = metaStore.addType
 builder.init = metaStore.init
+builder.listBuilders = metaStore.listBuilders
 
 builder.createFrame = function(frameType, name, parent, template)
 

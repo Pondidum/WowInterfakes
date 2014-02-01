@@ -47,12 +47,12 @@ local map = {
 ns.tests.add("WidgetMetaBuilder Tests", {
 	
 	before = function()
-		ns.wow.widgetMetaBuilder.init()
+		ns.wow.builder.init()
 	end,
 
 	all_builders_should_extend_the_correct_builders = function()
 
-		local builders = ns.wow.widgetMetaBuilder.listBuilders()
+		local builders = ns.wow.builder.listBuilders()
 
 		for widgetName, baseWidgets in pairs(map) do
 			
