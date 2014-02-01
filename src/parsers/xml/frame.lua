@@ -25,7 +25,7 @@ local tag = ns.parsers.xmlTag:new({
 		-- process other attribs etc
 
 		if element.attributes.id then
-			frame:SetID(element.attributes.id)
+			frame:SetID(tonumber(element.attributes.id))
 		end
 
 		local key = element.attributes.parentKey
