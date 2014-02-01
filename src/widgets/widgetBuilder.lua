@@ -17,14 +17,15 @@ local widgetBuilder = {
 		local metas = {}
 		local initialisers = {}
 
-		local function recurseTypes(builder, target)
+		local function recurseTypes(builder, target, chain)
 
 			builder.build(target)
+			table.insert(chain, builder.initInstance)
 
 			for i, builderName in ipairs(builder.extends) do
 
 				local subBuilder = typeBuilders[builderName]
-				recurseTypes(subBuilder, target)
+				recurseTypes(subBuilder, target, chain)
 
 			end
 
@@ -45,11 +46,18 @@ local widgetBuilder = {
 
 				local target = {}
 				local name = string.lower(name)
+				local chain = {}
 
-				recurseTypes(builder, target)
+				recurseTypes(builder, target, chain)
 
 				metas[name] = { __index = target }
-				initialisers[name] = builder.initInstance
+				initialisers[name] = function(target)
+
+					for i,v in ipairs(chain) do
+						v(target)
+					end
+
+				end
 
 			end
 

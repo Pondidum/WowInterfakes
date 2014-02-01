@@ -69,4 +69,32 @@ ns.tests.add("WidgetMetaBuilder Tests", {
 		end
 
 	end,
+
+	when_a_meta_is_built_the_constructors_should_get_chained = function()
+
+		local firstCtor = 0
+		local secondCtor = 0
+		local thirdCtor = 0
+
+		local first = { name = "First", initInstance = function(target) firstCtor = firstCtor + 1 end, }
+		local second = { name = "Second", initInstance = function(target) secondCtor = secondCtor + 1 end, }
+		local third = { name = "Third", extends = { "First", "Second" }, initInstance = function(target) thirdCtor = thirdCtor + 1 end, }
+
+		local builder = ns.wow.widgetBuilder.new()
+
+		builder.addType(first)
+		builder.addType(second)
+		builder.addType(third)
+
+		builder.init()
+
+		local meta = builder.getInitialiser("Third")
+		meta({})
+
+		should.equal(1, firstCtor, "Expected the first ctor to be called %s time, but was called %s times.")
+		should.equal(1, secondCtor, "Expected the second ctor to be called %s time, but was called %s times.")
+		should.equal(1, thirdCtor, "Expected the third ctor to be called %s time, but was called %s times.")
+
+	end,
+
 })
