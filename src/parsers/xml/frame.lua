@@ -40,6 +40,7 @@ local tag = ns.parsers.xmlTag:new({
 })
 
 ns.parsers.xml.addTag("Frame", tag)
+ns.parsers.xml.addTag("Cooldown", tag)
 ns.parsers.xml.addTag("WorldFrame", tag)
 ns.parsers.xml.addTag("GameTooltip", tag)
 ns.parsers.xml.addTag("Button", tag)
