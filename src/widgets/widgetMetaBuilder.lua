@@ -1,10 +1,6 @@
 local ns = ...
 local log = ns.log:new("widgetMetaBuilder")
 
-local typeBuilders = {}
-local metas = {}
-local initialisers = {}
-
 local function recurseTypes(builder, target)
 
 	builder.build(target)
@@ -12,7 +8,6 @@ local function recurseTypes(builder, target)
 	for i, builderName in ipairs(builder.extends) do
 
 		local subBuilder = typeBuilders[builderName]
-
 		recurseTypes(subBuilder, target)
 
 	end
@@ -22,57 +17,64 @@ end
 local baseConfig = {
 	name = "",
 	extends = { },
-	build = function(target)
-	end,
-	initInstance = function(target)
-	end,
+	build = function(target) end,
+	initInstance = function(target) end,
 }
 
-local builder = {
+local widgetBuilder = {
 
-	addType = function(config)
+	new = function()
 
-		setmetatable(config, { __index = baseConfig })
+		local typeBuilders = {}
+		local metas = {}
+		local initialisers = {}
 
-		typeBuilders[config.name] = config
+		local builder = {}
 
-	end,
+		builder.addType = function(config)
+			typeBuilders[config.name] = setmetatable(config, { __index = baseConfig })
+		end
 
-	init = function()
+		builder.init = function()
 
-		metas = {}
-		initialisers = {}
+			metas = {}
+			initialisers = {}
 
-		for name, builder in pairs(typeBuilders) do
+			for name, builder in pairs(typeBuilders) do
 
-			local target = {}
-			local name = string.lower(name)
+				local target = {}
+				local name = string.lower(name)
 
-			recurseTypes(builder, target)
+				recurseTypes(builder, target)
 
-			metas[name] = { __index = target }
-			initialisers[name] = builder.initInstance
+				metas[name] = { __index = target }
+				initialisers[name] = builder.initInstance
+
+			end
 
 		end
 
-	end,
+		builder.get = function(type)
+			return metas[string.lower(type)]
+		end
 
-	get = function(type)
-		return metas[string.lower(type)]
-	end,
+		builder.getInitialiser = function(type)
+			return initialisers[string.lower(type)]
+		end
 
-	getInitialiser = function(type)
-		return initialisers[string.lower(type)]
-	end,
+		builder.listBuilders = function()
+			return typeBuilders
+		end
 
-	listBuilders = function()
-		return typeBuilders
-	end,
+		builder.listMetas = function()
+			return metas
+		end
 
-	listMetas = function()
-		return metas
-	end,
+		return builder
 
+	end,
 }
 
-ns.widgetMetaBuilder = builder
+
+
+ns.widgetMetaBuilder = widgetBuilder
