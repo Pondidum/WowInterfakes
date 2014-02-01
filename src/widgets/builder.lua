@@ -3,7 +3,7 @@ local log = ns.log:new("builder")
 
 local templateManager = ns.templateManager
 local frameRegistry = ns.frameRegistry
-local metaStore = ns.widgetMetaBuilder
+local metaStore = ns.widgetMetaBuilder.new()
 
 local buildName = function(parent, name)
 
@@ -23,6 +23,9 @@ end
 
 
 local builder = {}
+
+builder.addType = metaStore.addType
+builder.init = metaStore.init
 
 builder.createFrame = function(frameType, name, parent, template)
 
