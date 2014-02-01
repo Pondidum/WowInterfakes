@@ -1,5 +1,5 @@
 local ns = ...
-local log = ns.log:new("widgetMetaBuilder")
+local log = ns.log:new("widgetBuilder")
 
 
 local baseConfig = {
@@ -78,4 +78,4 @@ local widgetBuilder = {
 
 
 
-ns.widgetMetaBuilder = widgetBuilder
+ns.widgetBuilder = widgetBuilder

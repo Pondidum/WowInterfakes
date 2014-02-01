@@ -11,7 +11,7 @@ local wowinterfakes = project:new({
 
 		io.addFilesIn("src\\core")
 
-		io.addFile("src\\widgets\\widgetMetaBuilder.lua")
+		io.addFile("src\\widgets\\widgetBuilder.lua")
 		io.addFile("src\\widgets\\builder.lua")
 		io.addFilesIn("src\\widgets")
 
