@@ -10,5 +10,10 @@ ns.builder.addType({
 			self.__storage.duration = duration
 		end
 
+		target.SetLossOfControlCooldown = function(self, start, duration)
+			self.__storage.lossStart = start
+			self.__storage.lossDuration = duration
+		end
+
 	end,
 })
