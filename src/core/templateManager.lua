@@ -1,18 +1,30 @@
 local ns = ...
 local log = ns.log:new("templateManager")
 
+local split = ns.stringUtilities.split
+
 local templates = {}
 local templateManager = {}
 
 templateManager.addTemplate = function(name, handlerChain)
 
 	log.debug("registering template", name)
-	
+
 	templates[name] = handlerChain
 
 end
 
 templateManager.apply = function(name, target)
+
+	local names = split(name)
+
+	for i, templateName in ipairs(names) do
+		templateManager.applySingle(templateName, target)
+	end
+
+end
+
+templateManager.applySingle = function(name, target)
 
 	local handlerChain = templates[name]
 
@@ -32,11 +44,11 @@ templateManager.apply = function(name, target)
 			local handler = handlerChain[i]
 
 			local element = handler.element
-			local file = handler.file 
+			local file = handler.file
 
 			local result = handler.build(file, element, stack.tip())
 
-			local nextTemplate = element.attributes.inherits 
+			local nextTemplate = element.attributes.inherits
 			local isVirtual = element.attributes.virtual == "true"
 
 			if nextTemplate ~= nil and nextTemplate ~= "" and isVirtual then
