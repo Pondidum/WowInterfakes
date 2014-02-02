@@ -8,7 +8,8 @@ local wowinterfakes = project:new({
 	files = project:io(function(io)
 
 		io.addFile("src\\core\\logger.lua")	-- load this before other things!
-
+		io.addFile("src\\core\\utilities.lua")
+		io.addFile("src\\core\\stack.lua")
 		io.addFilesIn("src\\core")
 
 		io.addFile("src\\widgets\\widgetBuilder.lua")
