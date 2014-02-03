@@ -9,5 +9,9 @@ ns.builder.addType({
 			return self.__storage.owner ~= nil
 		end
 
+		target.GetOwner = function(self)
+			return self.__storage.owner
+		end
+
 	end,
 })
