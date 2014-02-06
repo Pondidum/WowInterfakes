@@ -14,6 +14,10 @@ ns.builder.addType({
 			self.__storage.value = value
 		end
 
+		target.GetValue = function(self)
+			return self.__storage.value
+		end
+
 		target.SetStatusBarColor = function(self, red, green, blue, alpha)
 			self.__storage.barColor = { r = red, g = green, b = blue, a = alpha }
 		end
