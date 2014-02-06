@@ -27,6 +27,10 @@ ns.builder.addType({
 			return eventRegistry.isRegistered(self, event)
 		end
 
+		target.RegisterUnitEvent = function(self, event, unit)
+			-- nothing for now.
+		end
+
 		target.CreateTexture = function(self, name, layer, inherits, sublevel)
 			return builder.createTexture(self, name, layer, inherits, sublevel)
 		end
