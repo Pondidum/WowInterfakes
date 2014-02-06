@@ -7,7 +7,11 @@ ns.builder.addType({
 
 		target.SetMinMaxValues = function(self, minValue, maxValue)
 			self.__storage.minValue = minValue
-			self.__storage.minValue = maxValue
+			self.__storage.maxValue = maxValue
+		end
+
+		target.GetMinMaxValues = function(self)
+			return self.__storage.minValue, self.__storage.maxValue
 		end
 
 		target.SetValue = function(self, value)
@@ -22,5 +26,10 @@ ns.builder.addType({
 			self.__storage.barColor = { r = red, g = green, b = blue, a = alpha }
 		end
 
+	end,
+
+	initInstance = function(target)
+		target:SetMinMaxValues(0, 1)
+		target:SetValue(0)
 	end,
 })
