@@ -7,7 +7,9 @@ ns.builder.addType({
 	build = function(target)
 
 		target.Play = function(self)
+		end
 
+		target.Stop = function(self)
 		end
 
 	end,
