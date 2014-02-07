@@ -59,6 +59,10 @@ ns.builder.addType({
 			self.__storage.pushedTexture = texture
 		end
 
+		target.GetPushedTexture = function(self)
+			return self.__storage.pushedTexture
+		end
+
 		target.SetHighlightTexture = function(self, texture)
 			self.__storage.highlightTexture = texture
 		end
