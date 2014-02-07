@@ -11,5 +11,9 @@ ns.builder.addType({
 			self.__storage.facing = facing
 		end
 
+		target.SetPortraitZoom = function(self, value)
+			self.__storage.zoom = value
+		end
+
 	end,
 })
