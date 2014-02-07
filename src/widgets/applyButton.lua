@@ -51,6 +51,10 @@ ns.builder.addType({
 			self.__storage.normalTexture = texture
 		end
 
+		target.GetNormalTexture = function(self)
+			return self.__storage.normalTexture
+		end
+
 		target.SetPushedTexture = function(self, texture)
 			self.__storage.pushedTexture = texture
 		end
