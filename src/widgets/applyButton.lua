@@ -111,8 +111,13 @@ ns.builder.addType({
 		target:Enable()
 
 		target.__storage.textFontString = builder.createFontString(target)
-		target.__storage.highlightTexture = builder.createTexture(target)
-		target.__storage.disabledTexture = builder.createTexture(target)
+
+		local name = target:GetName() or ""
+
+		target:SetNormalTexture(builder.createTexture(target, name .. "NormalTexture"))
+		target:SetDisabledTexture(builder.createTexture(target, name .. "DisabledTexture"))
+		target:SetPushedTexture(builder.createTexture(target, name .. "PushedTexture"))
+		target:SetHighlightTexture(builder.createTexture(target, name .. "HighlightTexture"))
 
 	end,
 })
