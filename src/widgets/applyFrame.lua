@@ -79,6 +79,10 @@ ns.builder.addType({
 			self.__storage.id = id
 		end
 
+		target.SetScale = function(self, scale)
+			self.__storage.scale = scale
+		end
+
 	end,
 
 	initInstance = function(target)
