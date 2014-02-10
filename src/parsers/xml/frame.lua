@@ -54,3 +54,5 @@ ns.parsers.xml.addTag("ScrollingMessageFrame", tag)
 ns.parsers.xml.addTag("PlayerModel", tag)
 ns.parsers.xml.addTag("DressUpModel", tag)
 ns.parsers.xml.addTag("ScrollFrame", tag)
+ns.parsers.xml.addTag("Minimap", tag)
+
