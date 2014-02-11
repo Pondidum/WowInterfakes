@@ -23,3 +23,7 @@ local tag = ns.parsers.xmlTag:new({
 })
 
 ns.parsers.xml.addTag("Texture", tag)
+ns.parsers.xml.addTag("NormalTexture", tag)
+ns.parsers.xml.addTag("PushedTexture", tag)
+ns.parsers.xml.addTag("DisabledTexture", tag)
+ns.parsers.xml.addTag("HighlightTexture", tag)
