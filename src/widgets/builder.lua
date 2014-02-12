@@ -5,7 +5,15 @@ local templateManager = ns.templateManager
 local frameRegistry = ns.frameRegistry
 local metaStore = ns.widgetBuilder.new()
 
-local buildName = function(parent, name)
+
+
+local builder = {}
+
+builder.addType = metaStore.addType
+builder.init = metaStore.init
+builder.listBuilders = metaStore.listBuilders
+
+builder.buildName = function(parent, name)
 
 	if not name then
 		return nil
@@ -21,20 +29,13 @@ local buildName = function(parent, name)
 
 end
 
-
-local builder = {}
-
-builder.addType = metaStore.addType
-builder.init = metaStore.init
-builder.listBuilders = metaStore.listBuilders
-
 builder.createFrame = function(frameType, name, parent, template)
 
 	if parent ~= nil and type(parent) == "string" then
 		parent = frameRegistry.get(parent)
 	end
 
-	local realName = buildName(parent, name)
+	local realName = builder.buildName(parent, name)
 
 	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s",
 							frameType,
@@ -70,7 +71,7 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 		parent = frameRegistry.get(parent)
 	end
 
-	local realName = buildName(parent, name)
+	local realName = builder.buildName(parent, name)
 
 	log.debug(string.format("Creating Texture called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
@@ -105,7 +106,7 @@ builder.createFontString = function(parent, name, layer, inherits)
 		parent = frameRegistry.get(parent)
 	end
 
-	local realName = buildName(parent, name)
+	local realName = builder.buildName(parent, name)
 
 	log.debug(string.format("Creating FontString called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
@@ -135,7 +136,7 @@ builder.createAnimationGroup = function(parent, name, inherits)
 		parent = frameRegistry.get(parent)
 	end
 
-	local realName = buildName(parent, name)
+	local realName = builder.buildName(parent, name)
 
 	log.debug(string.format("Creating AnimationGroup called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
