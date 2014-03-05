@@ -50,6 +50,9 @@ ns.builder.addType({
 			end
 
 			if type(other) == "string" then
+
+				other = builder.buildName(self:GetParent(), other)
+
 				local frame = ns.frameRegistry.get(other)
 
 				if frame == nil then
