@@ -92,7 +92,7 @@
 						<Offset>
 							<AbsDimension x="0" y="0"/>
 						</Offset>
-					</Anchor>                   
+					</Anchor>
 				</Anchors>
 				<Scripts>
 					<OnClick>
@@ -146,7 +146,7 @@
 			</Button>
 		</Frames>
 		<Scripts>
-			<OnLoad>				
+			<OnLoad>
 				self:SetFrameLevel(self:GetParent():GetFrameLevel()+2);
 			</OnLoad>
 			<OnClick>
@@ -234,6 +234,8 @@
 			<Button name="$parentButton6" inherits="UIDropDownMenuButtonTemplate" id="6"/>
 			<Button name="$parentButton7" inherits="UIDropDownMenuButtonTemplate" id="7"/>
 			<Button name="$parentButton8" inherits="UIDropDownMenuButtonTemplate" id="8"/>
+			<Button name="$parentButton9" inherits="UIDropDownMenuButtonTemplate" id="9"/>
+			<Button name="$parentButton10" inherits="UIDropDownMenuButtonTemplate" id="10"/>
 		</Frames>
 		<Scripts>
 			<OnClick>
