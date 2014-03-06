@@ -55,4 +55,4 @@ ns.parsers.xml.addTag("PlayerModel", tag)
 ns.parsers.xml.addTag("DressUpModel", tag)
 ns.parsers.xml.addTag("ScrollFrame", tag)
 ns.parsers.xml.addTag("Minimap", tag)
-
+ns.parsers.xml.addTag("EditBox", tag)
