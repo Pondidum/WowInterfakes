@@ -83,6 +83,10 @@ ns.builder.addType({
 			self.__storage.scale = scale
 		end
 
+		target.SetClampRectInsets = function(self, left, right, top, bottom)
+			self.__storage.clampRectInsets = { left, right, top, bottom }
+		end
+
 	end,
 
 	initInstance = function(target)
