@@ -30,5 +30,9 @@ ns.builder.addType({
 			self.__storage.textColor = { r = textR, g = textG, b = textB, a = textAlpha }
 		end
 
+		target.SetShadowOffset = function(self, xOffset, yOffset)
+			self.__storage.shadowOffset = { x = xOffset, y = yOffset }
+		end
+
 	end,
 })
