@@ -1,7 +1,7 @@
 local ns = ...
 
-local getPlayersInConversation = function()
+local getMaxPlayersInConversation = function()
 	return 0
 end
 
-ns.api.export("BNGetMaxPlayersInConversation", getPlayersInConversation)
+ns.api.export("BNGetMaxPlayersInConversation", getMaxPlayersInConversation)
