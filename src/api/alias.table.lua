@@ -13,3 +13,4 @@ table.wipe = wipe
 
 ns.api.export("tinsert", table.insert)
 ns.api.export("getn", table.getn)
+ns.api.export("sort", table.sort)
