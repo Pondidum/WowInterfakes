@@ -105,6 +105,11 @@ ns.builder.addType({
 			self.__storage.highlightLocked = true
 		end
 
+		target.GetTextWidth = function(self)
+			self.__storage.textWidth = self.__storage.textWidth or 0
+			return self.__storage.textWidth
+		end
+
 	end,
 
 	initInstance = function(target)
