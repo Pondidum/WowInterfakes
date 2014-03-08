@@ -87,6 +87,10 @@ ns.builder.addType({
 			self.__storage.clampRectInsets = { left, right, top, bottom }
 		end
 
+		target.SetUserPlaced = function(self, enabled)
+			self.__storage.userPlaced = enabled
+		end
+
 	end,
 
 	initInstance = function(target)
