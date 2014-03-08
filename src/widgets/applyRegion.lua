@@ -32,6 +32,10 @@ ns.builder.addType({
 			self.__storage.height = h
 		end
 
+		target.GetLeft = function(self)
+			return self.__storage.left
+		end
+
 		target.ClearAllPoints = function(self, value)
 			self.__storage.points = {}
 		end
