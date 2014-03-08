@@ -8,11 +8,11 @@ ns.builder.addType({
 	build = function(target)
 
 		target.GetWidth = function(self)
-			return self.__storage.width
+			return self.__storage.width or 0
 		end
 
 		target.GetHeight = function(self)
-			return self.__storage.height
+			return self.__storage.height or 0
 		end
 
 		target.GetSize = function(self)
@@ -33,7 +33,11 @@ ns.builder.addType({
 		end
 
 		target.GetLeft = function(self)
-			return self.__storage.left
+			return self.__storage.left or 0
+		end
+
+		target.GetRight = function(self)
+			return self:GetLeft() + self:GetWidth()
 		end
 
 		target.ClearAllPoints = function(self, value)
