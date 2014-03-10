@@ -4,6 +4,7 @@ local log = ns.log:new("tag.scripts")
 
 local scriptParameters = {
 	OnLoad = "local self = ...",
+	OnAttributeChanged = "local self, name, value = ..."
 }
 
 local wrapScript = function(type, contents)
