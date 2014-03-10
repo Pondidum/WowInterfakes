@@ -63,6 +63,13 @@ ns.builder.addType({
 			self.__storage.attributes = self.__storage.attributes or {}
 
 			self.__storage.attributes[name] = value
+
+			local script = self:GetScript("OnAttributeChanged")
+
+			if script then
+				script(self, name, value)
+			end
+
 		end
 
 		target.GetAttribute = function(self, name)
