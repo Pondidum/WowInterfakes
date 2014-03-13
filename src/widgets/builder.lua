@@ -36,12 +36,17 @@ builder.createFrame = function(frameType, name, parent, template)
 	end
 
 	local realName = builder.buildName(parent, name)
+	local parentName = "nil"
+
+	if parent and parent.GetName then
+		parentName = parent:GetName() or "nil"
+	end
 
 	log.debug(string.format("Creating %s called %s (%s), parented to %s, with templates %s",
 							frameType,
 							realName or "nil",
 							name or "nil",
-							tostring(parent or "nil"),
+							parentName,
 							template or "nil"))
 
 	local meta = metaStore.get(frameType) or metaStore.get("frame")
@@ -72,11 +77,16 @@ builder.createTexture = function(parent, name, layer, inherits, sublevel)
 	end
 
 	local realName = builder.buildName(parent, name)
+	local parentName = "nil"
+
+	if parent and parent.GetName then
+		parentName = parent:GetName() or "nil"
+	end
 
 	log.debug(string.format("Creating Texture called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
 							name or "nil",
-							tostring(parent or "nil"),
+							parentName,
 							template or "nil"))
 
 	local texture = { __storage = {} }
@@ -107,11 +117,16 @@ builder.createFontString = function(parent, name, layer, inherits)
 	end
 
 	local realName = builder.buildName(parent, name)
+	local parentName = "nil"
+
+	if parent and parent.GetName then
+		parentName = parent:GetName() or "nil"
+	end
 
 	log.debug(string.format("Creating FontString called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
 							name or "nil",
-							tostring(parent or "nil"),
+							parentName,
 							template or "nil"))
 
 	local font = { __storage = {} }
@@ -137,11 +152,16 @@ builder.createAnimationGroup = function(parent, name, inherits)
 	end
 
 	local realName = builder.buildName(parent, name)
+	local parentName = "nil"
+
+	if parent and parent.GetName then
+		parentName = parent:GetName() or "nil"
+	end
 
 	log.debug(string.format("Creating AnimationGroup called %s (%s), parented to %s, with templates %s",
 							realName or "nil",
 							name or "nil",
-							tostring(parent or "nil"),
+							parentName,
 							template or "nil"))
 
 	local group = { __storage = {} }
