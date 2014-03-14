@@ -301,4 +301,36 @@ ns.tests.add("frame creation tests", {
 		should.notBeNil(check:GetParent():GetParent(), "Grandchild element should not have a nil GrandParent.")
 
 	end,
+
+	when_creating_a_hierarchy_with_parented_textures = function()
+
+		parseXml([[
+			<Button name="CompactUnitFrameTemplate" virtual="true">
+				<Layers>
+					<Layer>
+						<Texture name="$parentOverAbsorbGlow" parentKey="overAbsorbGlow"/>
+					</Layer>
+				</Layers>
+			</Button>
+
+
+			<Frame name="CompactRaidGroupTemplate"virtual="true">
+				<Frames>
+					<Button name="$parentMember1" inherits="CompactUnitFrameTemplate">
+					</Button>
+				</Frames>
+			</Frame>
+
+			<Frame name="CompactPartyFrameTemplate" inherits="CompactRaidGroupTemplate" virtual="true">
+			</Frame>
+		]])
+
+		local f = CreateFrame("Frame", "CompactPartyFrame", nil, "CompactPartyFrameTemplate")
+
+		should.haveKey("CompactPartyFrame", store)
+		should.haveKey("CompactPartyFrameMember1", store)
+		should.haveKey("CompactPartyFrameMember1OverAbsorbGlow", store)
+
+	end,
+
 })
