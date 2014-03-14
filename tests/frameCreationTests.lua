@@ -337,4 +337,29 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_creating_a_frame_with_non_named_sub_frames = function()
+
+		parseXml([[
+			<Button name="PlayerFrame">
+				<Frames>
+					<Frame>
+						<Frames>
+							<Frame>
+								<Layers>
+									<Layer>
+										<Texture name="$parentOverAbsorbGlow" inherits="OverAbsorbGlowTemplate"/>
+									</Layer>
+								</Layers>
+							</Frame>
+						</Frames>
+					</Frame>
+				</Frames>
+			</Button>
+		]])
+
+		should.haveKey("PlayerFrame", store)
+		should.haveKey("PlayerFrameOverAbsorbGlow", store)
+
+	end,
+
 })
