@@ -314,7 +314,7 @@ ns.tests.add("frame creation tests", {
 			</Button>
 
 
-			<Frame name="CompactRaidGroupTemplate"virtual="true">
+			<Frame name="CompactRaidGroupTemplate" virtual="true">
 				<Frames>
 					<Button name="$parentMember1" inherits="CompactUnitFrameTemplate">
 					</Button>
@@ -330,6 +330,10 @@ ns.tests.add("frame creation tests", {
 		should.haveKey("CompactPartyFrame", store)
 		should.haveKey("CompactPartyFrameMember1", store)
 		should.haveKey("CompactPartyFrameMember1OverAbsorbGlow", store)
+
+		local member = store["CompactPartyFrameMember1"]
+
+		should.notBeNil(member.overAbsorbGlow)
 
 	end,
 
