@@ -21,8 +21,16 @@ builder.buildName = function(parent, name)
 
 	local parentName = ""
 
-	if parent and parent.GetName then
-		parentName = parent:GetName() or ""
+	if parent then
+
+		if parent.GetName then
+			parentName = parent:GetName() or ""
+		end
+
+		if parentName == "" and parent.GetParent and parent:GetParent() then
+			return builder.buildName(parent:GetParent(), name)
+		end
+
 	end
 
 	return name:gsub("$parent", parentName)
