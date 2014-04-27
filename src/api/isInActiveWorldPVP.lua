@@ -1,6 +1,6 @@
 local ns = ...
 
-local isInActiveWorldPVP = function(unit, unitOther)
+local isInActiveWorldPVP = function()
 	return nil
 end
 

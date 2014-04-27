@@ -1,6 +1,6 @@
 local ns = ...
 
-local partialPlayTime = function(unit)
+local partialPlayTime = function()
 	return nil
 end
 

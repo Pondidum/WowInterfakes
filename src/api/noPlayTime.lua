@@ -1,6 +1,6 @@
 local ns = ...
 
-local noPlayTime = function(unit)
+local noPlayTime = function()
 	return nil
 end
 

@@ -1,6 +1,6 @@
 local ns = ...
 
-local isVoiceChatEnabled = function(unit)
+local isVoiceChatEnabled = function()
 	return 1
 end
 

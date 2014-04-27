@@ -1,6 +1,6 @@
 local ns = ...
 
-local isResting = function(unit)
+local isResting = function()
 	return nil
 end
 

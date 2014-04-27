@@ -1,6 +1,6 @@
 local ns = ...
 
-local isRatedMap = function(unit, unitOther)
+local isRatedMap = function()
 	return nil
 end
 
