@@ -362,4 +362,29 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_creating_a_frame_the_id_should_be_accessable = function()
+
+		local id = 0
+
+		function TestFrame_OnLoad(self)
+			id = self:GetID()
+		end
+
+		parseXml([[
+			<Frame name="TestFrame" id=23>
+				<Scripts>
+					<OnLoad>
+						TestFrame_OnLoad(self);
+					</OnLoad>
+				</Scripts>
+			</Frame>
+		]])
+
+		should.haveKey("TestFrame", store)
+
+		should.equal(23, store["TestFrame"]:GetID())
+		should.equal(23, id)
+
+	end,
+
 })
