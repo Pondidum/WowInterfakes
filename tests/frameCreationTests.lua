@@ -387,4 +387,46 @@ ns.tests.add("frame creation tests", {
 
 	end,
 
+	when_creating_a_frame_with_a_template_the_id_should_be_read = function()
+
+		local petTemplateID
+		local templateID
+
+		function PetTemplateID(id)
+			petTemplateID = id
+		end
+
+		function TemplateID(id)
+			templateID = id
+		end
+
+		parseXml([[
+			<Button name="PartyMemberPetFrameTemplate" frameStrata="LOW" toplevel="true" inherits="SecureUnitButtonTemplate" virtual="true">
+				<Scripts>
+					<OnLoad>
+						PetTemplateID(self:GetParent():GetID());
+					</OnLoad>
+				</Scripts>
+			</Button>
+
+			<Button name="PartyMemberFrameTemplate" virtual="true">
+				<Frames>
+					<Button name="$parentPetFrame" inherits="PartyMemberPetFrameTemplate"/>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						TemplateID(self:GetID());
+					</OnLoad>
+				</Scripts>
+			</Button>
+
+			<Button name="PartyMemberFrame1" inherits="PartyMemberFrameTemplate" id="1">
+			</Button>
+		]])
+
+
+		should.equal(1, templateID, "id from template should have been %s but was %s.")
+		should.equal(1, petTemplateID, "id from child template should have been %s but was %s.")
+
+	end,
 })
