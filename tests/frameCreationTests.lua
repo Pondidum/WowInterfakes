@@ -371,7 +371,7 @@ ns.tests.add("frame creation tests", {
 		end
 
 		parseXml([[
-			<Frame name="TestFrame" id=23>
+			<Frame name="TestFrame" id="23">
 				<Scripts>
 					<OnLoad>
 						TestFrame_OnLoad(self);
@@ -382,8 +382,8 @@ ns.tests.add("frame creation tests", {
 
 		should.haveKey("TestFrame", store)
 
-		should.equal(23, store["TestFrame"]:GetID())
-		should.equal(23, id)
+		should.equal(23, store["TestFrame"]:GetID(), "id from frame should have been %s, but was %s.")
+		should.equal(23, id, "id from script should have been %s, but was %s.")
 
 	end,
 
